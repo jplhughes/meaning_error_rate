@@ -3,8 +3,8 @@
 all: deps check
 
 deps:
-	pip3 install --upgrade pip
-	pip3 install -r requirements.txt
+	pip install --upgrade pip
+	pip install -r requirements.txt
 	[ -d .git ] && pre-commit install || echo "no git repo to install hooks"
 check:
 	black --check .
@@ -14,4 +14,4 @@ format:
 	black .
 	isort **/*.py
 unittest:
-	pytest unittests
+	python -m pytest unittests
