@@ -1,5 +1,9 @@
 openai
-black==20.8b1
+
+# dev
+pytest
+black==22.6.0
 flake8
 pre-commit
 pylint
+isort==5.10.1
