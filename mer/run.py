@@ -1,6 +1,4 @@
 import argparse
-import copy
-import json
 
 from mer.utils import Prompt
 
@@ -40,12 +38,7 @@ def main():
             ref = ref_h.read().strip()
             rec = rec_h.read().strip()
 
-        prompt_specific = copy.deepcopy(prompt.base)
-        prompt_specific.append(f"Reference: {ref}")
-        prompt_specific.append(f"Recognised: {rec}")
-        prompt_specific.append(f"Result:")
-
-        prompt_string = "\n".join(prompt_specific)
+        prompt_string = prompt.create_prompt(ref, rec)
 
         print(prompt_string)
 

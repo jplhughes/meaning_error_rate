@@ -1,3 +1,4 @@
+import copy
 import json
 
 
@@ -33,3 +34,10 @@ class Prompt:
         for error_type in self.config["errors"]:
             error2score[error_type] = self.config["errors"][error_type]["score"]
         return error2score
+
+    def create_prompt(self, ref, rec):
+        prompt = copy.deepcopy(self.base)
+        prompt.append(f"Reference: {ref}")
+        prompt.append(f"Recognised: {rec}")
+        prompt.append(f"Result:")
+        return "\n".join(prompt)
