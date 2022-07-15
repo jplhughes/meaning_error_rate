@@ -1,0 +1,71 @@
+{
+    "errors": {
+        "none": {
+            "description": "perfect recognised transcript or non-issues (e.g. comma placement, differences in hyphens, additional words due to stutter or disfluency)",
+            "score": 0.0
+        },
+        "minor": {
+            "description": "something a viewer would easily be able to read through (e.g. incorrect capitalisation, spacing, pronouns/prepositions, omission of secondary detail",
+            "score": 0.25
+        },
+        "standard": {
+            "description": "disrupts the flow, affects a viewer's comprehension (e.g. misrecognised/omitted names, homophones/sound-alikes, omission of primary detail)",
+            "score": 0.5
+        },
+        "serious": {
+            "description": "misinformation - errors which read logically but changes the text's meaning, giving the viewer a false impression (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation)",
+            "score": 1.0
+        }
+    },
+    "examples": [
+        {
+            "error": "none",
+            "reference": "Um, um, yes I am um very happy to see you.",
+            "recognised": "Um, yes I am very happy to see you.",
+            "reason": "disfluences"
+        },
+        {
+            "error": "none",
+            "reference": "I think it is an is a lower-performing company.",
+            "recognised": "I think it is a lower performing company.",
+            "reason": "hyphens"
+        },
+        {
+            "error": "minor",
+            "reference": "I don't believe an executive should be able to overturn a decision.",
+            "recognised": "I don't believe in executive should be able to overturn a decision.",
+            "reason": "incorrect pronouns/prepositions"
+        },
+        {
+            "error": "minor",
+            "reference": "When we lost, I laughed and cried, perhaps too much of the latter but had it not been for this guy supporting me I would've just cried.",
+            "recognised": "When we lost, I laughed and cried but had it not been for this guy supporting me I would've just cried.",
+            "reason": "omission of secondary detail"
+        },
+        {
+            "error": "standard",
+            "reference": "Ra'Shede Hageman, a top defensive tackle prospect...",
+            "recognised": "Rash eared haggard man, a top defensive tackle prospect...",
+            "reason": "sound-alikes of the name"
+        },
+        {
+            "error": "standard",
+            "reference": "This is my sister, who works at the hospital.",
+            "recognised": "This is my sister. Who works at the hospital?",
+            "reason": "incorrect punctuation that changed statement to question"
+        },
+        {
+            "error": "serious",
+            "reference": "This has been confirmed by the Pentagon.",
+            "recognised": "This hasn't been confirmed by the Pentagon.",
+            "reason": "reversed meaning causing misinformation"
+        },
+        {
+            "error": "serious",
+            "reference": "This man is a suspected murderer.",
+            "recognised": "This man is a murderer.",
+            "reason": "omission of word causing misinformation"
+        }
+    ],
+    "prompt_termination": "I hope this is correct."
+}

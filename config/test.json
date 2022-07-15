@@ -1,0 +1,52 @@
+{
+    "examples": [
+        {
+            "error": "none",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "none",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "minor",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "minor",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "standard",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "standard",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "major",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        },
+        {
+            "error": "major",
+            "reference": "",
+            "recognised": "",
+            "reason": ""
+        }
+    ]
+}
