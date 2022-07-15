@@ -5,7 +5,7 @@
             "score": 0.0
         },
         "minor": {
-            "description": "something a viewer would easily be able to read through (e.g. incorrect capitalisation, spacing, pronouns/prepositions, omission of secondary detail",
+            "description": "something a viewer would easily be able to read through (e.g. incorrect capitalisation, spacing, pronouns/prepositions, omission of secondary detail)",
             "score": 0.25
         },
         "standard": {
@@ -66,6 +66,5 @@
             "recognised": "This man is a murderer.",
             "reason": "omission of word causing misinformation"
         }
-    ],
-    "prompt_termination": "I hope this is correct."
+    ]
 }
