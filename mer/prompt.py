@@ -41,3 +41,27 @@ class Prompt:
         prompt.append(f"Recognised: {rec}")
         prompt.append(f"Result:")
         return "\n".join(prompt)
+
+    def get_result(self, text):
+        assert text is not None, "Text is empty"
+
+        # Error type should be first word and should be contained in error2score
+        error_type = text.split()[0]
+        if error_type in self.error2score:
+            score = self.error2score[error_type]
+        else:
+            raise f"Got unexpected error type {error_type}"
+
+        # Get reason by disecting the known parts expected in the continuation
+        try:
+            reason = text.split["due to "][1].split[". I hope it is correct"][0]
+        except:
+            reason = (
+                text.replace(error_type, "")
+                .replace("due to", "")
+                .replace("I hope it is correct", "")
+                .replace(".", "")
+                .strip()
+            )
+
+        return error_type, reason, score

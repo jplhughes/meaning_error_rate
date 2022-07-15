@@ -42,9 +42,11 @@ def main():
 
         prompt_string = prompt.create_prompt(ref, rec)
         text, _ = lm.get_continuation(prompt_string)
-        # error_type, reason, score = prompt.get_result(text)
+        error_type, reason, score = prompt.get_result(text)
 
-        print(text)
+        print(error_type)
+        print(reason)
+        print(score)
 
 
 if __name__ == "__main__":
