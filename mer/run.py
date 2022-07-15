@@ -2,6 +2,8 @@ import argparse
 import copy
 import json
 
+from mer.utils import Prompt
+
 
 def main():
 
@@ -19,8 +21,8 @@ def main():
         help="Dbl file containing paths to recognised transcripts",
     )
     parser.add_argument(
-        "--prompt_config",
-        type=argparse.FileType("r"),
+        "--prompt_config_path",
+        type=str,
         default="./config/prompt.json",
         help="path to prompt config json",
     )
@@ -31,39 +33,21 @@ def main():
 
     assert len(ref_list) == len(rec_list), "Length of reference and recognised dbls differ"
 
-    prompt_config = json.load(args.prompt_config)
-
-    prompt_base = []
-    error2score = {}
-    for error_type in prompt_config["errors"]:
-        description = prompt_config["errors"][error_type]["description"]
-        error2score[error_type] = prompt_config["errors"][error_type]["score"]
-
-        prompt_base.append(f"{error_type.capitalize()} error - {description}.\n")
-
-    for example in prompt_config["examples"]:
-        error = example["error"]
-        ref = example["reference"]
-        rec = example["recognised"]
-        reason = example["reason"]
-
-        prompt_base.append(f"Reference: {ref}")
-        prompt_base.append(f"Recognised: {rec}")
-        prompt_base.append(f"Result: {error} due to {reason}. I hope it is correct.\n")
+    prompt = Prompt(args.prompt_config_path)
 
     for ref_file, rec_file in zip(ref_list, rec_list):
         with open(ref_file) as ref_h, open(rec_file) as rec_h:
             ref = ref_h.read().strip()
             rec = rec_h.read().strip()
 
-        prompt_specific = copy.deepcopy(prompt_base)
+        prompt_specific = copy.deepcopy(prompt.base)
         prompt_specific.append(f"Reference: {ref}")
         prompt_specific.append(f"Recognised: {rec}")
         prompt_specific.append(f"Result:")
 
-        prompt = "\n".join(prompt_specific)
+        prompt_string = "\n".join(prompt_specific)
 
-        print(prompt)
+        print(prompt_string)
 
 
 if __name__ == "__main__":
