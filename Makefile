@@ -13,3 +13,5 @@ check:
 format:
 	black .
 	isort **/*.py
+unittest:
+	pytest unittests
