@@ -16,6 +16,10 @@ class Prompt:
             config = json.load(f)
         return cls(config)
 
+    @staticmethod
+    def unpack_example(example):
+        return example["error"], example["reference"], example["recognised"], example["reason"]
+
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
         base = []
@@ -25,10 +29,7 @@ class Prompt:
 
         random.shuffle(self.config["examples"])  # shuffle so no order to examples
         for example in self.config["examples"]:
-            error = example["error"]
-            ref = example["reference"]
-            rec = example["recognised"]
-            reason = example["reason"]
+            error, ref, rec, reason = self.unpack_example(example)
 
             base.append(f"Reference: {ref}")
             base.append(f"Recognised: {rec}")
