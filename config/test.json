@@ -2,51 +2,27 @@
     "examples": [
         {
             "error": "none",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
-        },
-        {
-            "error": "none",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
+            "reference": "I think it is an is a lower-performing company.",
+            "recognised": "I think it is a lower performing company.",
+            "reason": "hyphens"
         },
         {
             "error": "minor",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
-        },
-        {
-            "error": "minor",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
+            "reference": "When we lost, I laughed and cried, perhaps too much of the latter but had it not been for this guy supporting me I would've just cried.",
+            "recognised": "When we lost, I laughed and cried but had it not been for this guy supporting me I would've just cried.",
+            "reason": "omission of secondary detail"
         },
         {
             "error": "standard",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
+            "reference": "This is my sister, who works at the hospital.",
+            "recognised": "This is my sister. Who works at the hospital?",
+            "reason": "incorrect punctuation that changed statement to question"
         },
         {
-            "error": "standard",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
-        },
-        {
-            "error": "major",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
-        },
-        {
-            "error": "major",
-            "reference": "",
-            "recognised": "",
-            "reason": ""
+            "error": "serious",
+            "reference": "This man is a suspected murderer.",
+            "recognised": "This man is a murderer.",
+            "reason": "omission of word causing misinformation"
         }
     ]
 }
