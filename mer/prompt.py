@@ -1,14 +1,20 @@
 import copy
 import json
+import random
 
 
 class Prompt:
-    def __init__(self, config_path):
-        with open(config_path, "r") as f:
-            self.config = json.load(f)
-
+    def __init__(self, config, seed=10):
+        self.config = config
         self.base = self.get_prompt_base()
         self.error2score = self.get_score_mapping()
+        random.seed(seed)
+
+    @classmethod
+    def from_file(cls, config_path):
+        with open(config_path, "r") as f:
+            config = json.load(f)
+        return cls(config)
 
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
@@ -17,6 +23,7 @@ class Prompt:
             description = self.config["errors"][error_type]["description"]
             base.append(f"{error_type.capitalize()} error - {description}.\n")
 
+        random.shuffle(self.config["examples"])  # shuffle so no order to examples
         for example in self.config["examples"]:
             error = example["error"]
             ref = example["reference"]

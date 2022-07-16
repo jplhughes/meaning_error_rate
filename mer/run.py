@@ -32,7 +32,7 @@ def main():
 
     assert len(ref_list) == len(rec_list), "Length of reference and recognised dbls differ"
 
-    prompt = Prompt(args.prompt_config_path)
+    prompt = Prompt.from_file(args.prompt_config_path)
     lm = LanguageModel()
 
     for ref_file, rec_file in zip(ref_list, rec_list):
@@ -41,6 +41,8 @@ def main():
             rec = rec_h.read().strip()
 
         prompt_string = prompt.create_prompt(ref, rec)
+        lm.print_cost(prompt_string)
+        break
         text, _ = lm.get_continuation(prompt_string)
         error_type, reason, score = prompt.get_result(text)
 
