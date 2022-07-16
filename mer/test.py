@@ -11,10 +11,10 @@ def get_accuracy(test_json, prompt_config_path, output_json):
     with open(test_json, "r") as f:
         testset = json.load(f)
 
-    prompt = Prompt.from_file(prompt_config_path)
+    prompt = Prompt.from_file(prompt_config_path, simple=True)
     lm = LanguageModel()
 
-    output = copy.deepcopy(testset["examples"])
+    output = []
     for i, example in enumerate(testset["examples"]):
         error_type, ref, rec, reason = prompt.unpack_example(example)
 
@@ -28,12 +28,13 @@ def get_accuracy(test_json, prompt_config_path, output_json):
             print(f"Got example {i} correct")
             outcome = "correct"
 
-        output[i]["predicted"] = {}
-        output[i]["predicted"]["error"] = error_type_pred
-        output[i]["predicted"]["reason"] = reason_pred
-        output[i]["predicted"]["outcome"] = outcome
+        data = {"reference": ref, "recognised": rec}
+        data["target"] = {"error": error_type, "reason": reason}
+        data["predicted"] = {"error": error_type_pred, "reason": reason_pred}
+        data["outcome"] = outcome
+        output.append(data)
 
-    with open(output_json, "w", encoding="utf-8") as f:
+    with open(output_json, "w") as f:
         json.dump(output, f, indent=4)
 
 

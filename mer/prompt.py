@@ -4,17 +4,19 @@ import random
 
 
 class Prompt:
-    def __init__(self, config, seed=10):
+    def __init__(self, config, simple=False, seed=10):
         self.config = config
+        self.simple = simple
+        random.seed(seed)
+        # Create prompt based on config
         self.base = self.get_prompt_base()
         self.error2score = self.get_score_mapping()
-        random.seed(seed)
 
     @classmethod
-    def from_file(cls, config_path):
+    def from_file(cls, config_path, **kwargs):
         with open(config_path, "r") as f:
             config = json.load(f)
-        return cls(config)
+        return cls(config, kwargs)
 
     @staticmethod
     def unpack_example(example):
@@ -23,9 +25,18 @@ class Prompt:
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
         base = []
-        for error_type in self.config["errors"]:
-            description = self.config["errors"][error_type]["description"]
-            base.append(f"{error_type.capitalize()} error - {description}.\n")
+        if self.simple:
+            # Just enumerate errors in prompt
+            errors = self.config["errors"].keys()
+            errors_joined = ", ".join(errors)
+            base.append(
+                f"Classify the severity of error out of {len(errors)} categories: {errors_joined}.\n"
+            )
+        else:
+            # Add description of each error type into top of prompt
+            for error_type in self.config["errors"]:
+                description = self.config["errors"][error_type]["description"]
+                base.append(f"{error_type.capitalize()} error - {description}.\n")
 
         random.shuffle(self.config["examples"])  # shuffle so no order to examples
         for example in self.config["examples"]:
