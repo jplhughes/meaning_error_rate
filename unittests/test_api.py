@@ -6,7 +6,7 @@ import openai
 from mer.lm import LanguageModel
 
 
-class Test_API(unittest.TestCase):
+class TestAPI(unittest.TestCase):
     def test_api(self):
         lm = LanguageModel()
         self.assertIsNotNone(openai.api_key)
