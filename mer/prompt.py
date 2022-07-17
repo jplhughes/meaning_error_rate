@@ -21,7 +21,7 @@ class Prompt:
     def from_file(cls, config_path, **kwargs):
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
-        return cls(config, kwargs)
+        return cls(config, **kwargs)
 
     @staticmethod
     def unpack_example(example):

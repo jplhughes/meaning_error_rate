@@ -11,7 +11,7 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
     with open(test_json, "r", encoding="utf-8") as f:
         testset = json.load(f)
 
-    prompt = Prompt.from_file(prompt_config_path, simple=True)
+    prompt = Prompt.from_file(prompt_config_path, simple=False)
     lm = LanguageModel(api_key=api_key)
 
     output = []
