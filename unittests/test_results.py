@@ -17,8 +17,8 @@ def test_results():
 
     _, ref, rec, _ = prompt.unpack_example(test_example)
     prompt_string = prompt.create_prompt(ref, rec)
-    text, _ = lm.get_continuation(prompt_string)
-    error_type_pred, _, _ = prompt.get_result(text)
+    continuations, _ = lm.get_continuation(prompt_string)
+    error_type_pred, _, _ = prompt.get_result(continuations[0])
 
     assert error_type_pred in list(prompt.error2score)
 
@@ -27,8 +27,8 @@ def test_api():
     with open("./unittests/prompt.txt", "r", encoding="utf-8") as f:
         prompt = f.read().strip()
     lm = LanguageModel()
-    text, _ = lm.get_continuation(prompt)
-    assert "Jupiter" in text
+    continuations, _ = lm.get_continuation(prompt)
+    assert "Jupiter" in continuations[0]
 
 
 if __name__ == "__main__":

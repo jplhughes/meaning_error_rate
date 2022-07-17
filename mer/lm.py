@@ -28,34 +28,30 @@ class LanguageModel:
         assert self.api_key != "", "Pass api_key or set OPENAI_API_KEY evironment variable"
         openai.api_key = self.api_key
 
-    def get_continuation(
-        self,
-        prompt,
-        temperature=0.7,
-        max_tokens=64,
-        top_p=1.0,
-        frequency_penalty=0.0,
-        presence_penalty=0.0,
-    ):
+    def get_continuation(self, prompt, temperature=0.7, max_tokens=64, num_samples=1):
         response = openai.Completion.create(
             model=self.model,
             prompt=prompt,
             temperature=temperature,
             max_tokens=max_tokens,
-            top_p=top_p,
-            frequency_penalty=frequency_penalty,
-            presence_penalty=presence_penalty,
+            top_p=1.0,
+            best_of=num_samples,
+            n=num_samples,
         )
 
-        item = response["choices"][0]
-        assert item["finish_reason"] in ["stop", "length"]
+        continuations = []
+        for item in response["choices"]:
+            text = item["text"].strip()
+            assert text is not None
+            continuations.append(item["text"].strip())
 
-        text = item["text"].strip()
-        assert text is not None
+        return continuations, response
 
-        return text, response
-
-    def print_cost(self, prompt):
-        tokens = len(prompt) / 4  # each token is approximately 4 chars
+    def print_cost(self, prompt, tokens=None, num_samples=1):
+        if tokens is None:
+            # Find estimate number of tokens based on prompt
+            approx_completion_tokens = 25 * num_samples  # based on ~100 char continuation, ~20 words
+            approx_prompt_tokens = len(prompt) / 4  # each token is approximately 4 chars
+            tokens = approx_prompt_tokens + approx_completion_tokens
         cost = models2cost[self.model] * tokens / 1000
-        print(f"#char: {len(prompt)}, #token: {tokens}, cost: ${cost}, runs/$: {1/cost:.1f}")
+        print(f"COST: #char: {len(prompt)}, #tokens: {tokens}, cost: ${cost}, runs/$: {1/cost:.1f}")
