@@ -1,7 +1,7 @@
 {
     "errors": {
         "none": {
-            "description": "almost perfect recognised transcript (e.g. comma or hyphen placement, repeated words, disfluencies)",
+            "description": "almost perfect recognised transcript (e.g. comma/space/hyphen placement, repeated words, disfluencies)",
             "score": 0.0
         },
         "minor": {
@@ -22,25 +22,25 @@
             "error": "none",
             "reference": "Um, um, yes I am um very happy to see you.",
             "recognised": "Um, yes I am very happy to see you.",
-            "reason": "disfluences"
+            "reason": "There are missing disfluences but output more readble so this shouldn't be penalised"
         },
         {
             "error": "minor",
             "reference": "I don't believe an executive should be able to overturn a decision.",
             "recognised": "I don't believe in executive should be able to overturn a decision.",
-            "reason": "incorrect pronouns/prepositions"
+            "reason": "The word an has been substitued with in which is an incorrect use of a preposition"
         },
         {
             "error": "standard",
             "reference": "Ra'Shede Hageman, a top defensive tackle prospect...",
             "recognised": "Rash eared haggard man, a top defensive tackle prospect...",
-            "reason": "misrecognised/omitted names"
+            "reason": "The name Ra'Shede Hageman has been misrecognised by words that soundalike"
         },
         {
             "error": "serious",
             "reference": "This has been confirmed by the Pentagon.",
             "recognised": "This hasn't been confirmed by the Pentagon.",
-            "reason": "reversed meaning causing misinformation"
+            "reason": "The word has is reversed which causes misinformation about the message"
         }
     ]
 }

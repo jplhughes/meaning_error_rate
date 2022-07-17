@@ -2,7 +2,7 @@
     "examples": [
         {
             "error": "none",
-            "reference": "I think it is an is a lower-performing company.",
+            "reference": "I think it is a lower-performing company.",
             "recognised": "I think it is a lower performing company.",
             "reason": "hyphens"
         },

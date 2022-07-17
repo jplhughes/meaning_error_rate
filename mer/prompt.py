@@ -47,7 +47,7 @@ class Prompt:
 
             base.append(f"Reference: {ref}")
             base.append(f"Recognised: {rec}")
-            base.append(f"Result: {error} due to {reason}. I hope it is correct.\n")
+            base.append(f"Result: {reason}. Therefore, the error is likely {error}.\n")
 
         return base
 
@@ -68,22 +68,13 @@ class Prompt:
         assert text is not None, "Text is empty"
 
         # Error type should be first word and should be contained in error2score
-        error_type = text.split()[0].replace(",", "").replace(".", "")
+        error_type = text.strip().split()[-1].replace(".", "")
         if error_type in self.error2score:
             score = self.error2score[error_type]
         else:
             raise f"Got unexpected error type {error_type}"
 
         # Get reason by disecting the known parts expected in the continuation
-        try:
-            reason = text.split("due to ")[1].split(". I hope it is correct")[0]
-        except IndexError:
-            reason = (
-                text.replace(error_type, "")
-                .replace("due to", "")
-                .replace("I hope it is correct", "")
-                .replace(".", "")
-                .strip()
-            )
+        reason = text.split(". Therefore")[0].strip()
 
         return error_type, reason, score
