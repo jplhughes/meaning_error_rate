@@ -32,25 +32,12 @@ def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None):
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--ref_dbl",
-        type=argparse.FileType("r"),
-        required=True,
-        help="Dbl file containing paths to reference transcripts",
-    )
-    parser.add_argument(
-        "--rec_dbl",
-        type=argparse.FileType("r"),
-        required=True,
-        help="Dbl file containing paths to recognised transcripts",
-    )
-    parser.add_argument(
-        "--prompt_config_path",
-        type=str,
-        default="./config/prompt.json",
-        help="path to prompt config json",
-    )
-    parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")
+    # fmt: off
+    parser.add_argument( "--ref_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to reference transcripts")  # noqa:  E201
+    parser.add_argument( "--rec_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to recognised transcripts")  # noqa:  E201
+    parser.add_argument( "--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
+    parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
+    # fmt: on
     args = parser.parse_args()
 
     get_results_dbls(args.ref_dbl, args.rec_dbl, args.prompt_config_path, api_key=args.api_key)

@@ -41,25 +41,12 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None):
 def main():
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--test_json",
-        type=str,
-        default="./config/test.json",
-        help="Json file containing examples with labels",
-    )
-    parser.add_argument(
-        "--prompt_config_path",
-        type=str,
-        default="./config/prompt.json",
-        help="path to prompt config json",
-    )
-    parser.add_argument(
-        "--output_json",
-        type=str,
-        default="./data/results.json",
-        help="path to output json to store results",
-    )
-    parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")
+    # fmt: off
+    parser.add_argument("--test_json", type=str,default="./config/test.json", help="Json file containing examples with labels")  # noqa:  E201
+    parser.add_argument( "--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
+    parser.add_argument( "--output_json", type=str, default="./data/results.json", help="path to output json to store results")  # noqa:  E201
+    parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
+    # fmt: on
     args = parser.parse_args()
 
     get_accuracy(args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key)
