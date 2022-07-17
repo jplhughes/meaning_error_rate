@@ -2,8 +2,6 @@ import os
 
 import openai
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
 # Cost for 1k tokens for each model
 models2cost = {
     "text-davinci-002": 0.0600,
@@ -14,9 +12,17 @@ models2cost = {
 
 
 class LanguageModel:
-    def __init__(self, model="text-davinci-002"):
+    def __init__(self, model="text-davinci-002", api_key=None):
         self.model = model
         assert model in models2cost, f"Model {model} not supported"
+
+        # Use api key passed in or environment variable if not
+        if api_key:
+            self.api_key = api_key
+        else:
+            self.api_key = os.getenv("OPENAI_API_KEY")
+        assert self.api_key != "", "Pass api_key or set OPENAI_API_KEY evironment variable"
+        openai.api_key = api_key
 
     def get_continuation(
         self,

@@ -8,12 +8,9 @@ from mer.lm import LanguageModel
 
 class TestAPI(unittest.TestCase):
     def test_api(self):
-        lm = LanguageModel()
-        self.assertIsNotNone(openai.api_key)
-
         with open("./unittests/prompt.txt", "r") as f:
             prompt = f.read().strip()
-
+        lm = LanguageModel()
         text, _ = lm.get_continuation(prompt)
         self.assertIn("Jupiter", text)
 

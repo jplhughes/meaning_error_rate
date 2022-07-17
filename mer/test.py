@@ -6,13 +6,13 @@ from mer.lm import LanguageModel
 from mer.prompt import Prompt
 
 
-def get_accuracy(test_json, prompt_config_path, output_json):
+def get_accuracy(test_json, prompt_config_path, output_json, api_key=None):
 
     with open(test_json, "r") as f:
         testset = json.load(f)
 
     prompt = Prompt.from_file(prompt_config_path, simple=True)
-    lm = LanguageModel()
+    lm = LanguageModel(api_key=api_key)
 
     output = []
     for i, example in enumerate(testset["examples"]):
@@ -59,9 +59,10 @@ def main():
         default="./data/results.json",
         help="path to output json to store results",
     )
+    parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")
     args = parser.parse_args()
 
-    get_accuracy(args.test_json, args.prompt_config_path, args.output_json)
+    get_accuracy(args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key)
 
 
 if __name__ == "__main__":
