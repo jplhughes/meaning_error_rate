@@ -1,5 +1,4 @@
 import argparse
-import copy
 import json
 
 from mer.lm import LanguageModel

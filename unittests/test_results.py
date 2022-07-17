@@ -1,8 +1,5 @@
 import json
-import os
 import unittest
-
-import pytest
 
 from mer.lm import LanguageModel
 from mer.prompt import Prompt

@@ -1,7 +1,4 @@
-import os
 import unittest
-
-import openai
 
 from mer.lm import LanguageModel
 
