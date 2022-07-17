@@ -4,6 +4,11 @@ import random
 
 
 class Prompt:
+    """
+    Prompt object that generates the LM prompt given a config file.
+    It can also find the result given the LM output.
+    """
+
     def __init__(self, config, simple=False, seed=10):
         self.config = config
         self.simple = simple
@@ -14,7 +19,7 @@ class Prompt:
 
     @classmethod
     def from_file(cls, config_path, **kwargs):
-        with open(config_path, "r") as f:
+        with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
         return cls(config, kwargs)
 
@@ -29,9 +34,7 @@ class Prompt:
             # Just enumerate errors in prompt
             errors = self.config["errors"].keys()
             errors_joined = ", ".join(errors)
-            base.append(
-                f"Classify the severity of error out of {len(errors)} categories: {errors_joined}.\n"
-            )
+            base.append(f"Classify the severity of error out of {len(errors)} categories: {errors_joined}.\n")
         else:
             # Add description of each error type into top of prompt
             for error_type in self.config["errors"]:
@@ -58,7 +61,7 @@ class Prompt:
         prompt = copy.deepcopy(self.base)
         prompt.append(f"Reference: {ref}")
         prompt.append(f"Recognised: {rec}")
-        prompt.append(f"Result:")
+        prompt.append("Result:")
         return "\n".join(prompt)
 
     def get_result(self, text):
@@ -74,7 +77,7 @@ class Prompt:
         # Get reason by disecting the known parts expected in the continuation
         try:
             reason = text.split["due to "][1].split[". I hope it is correct"][0]
-        except:
+        except IndexError:
             reason = (
                 text.replace(error_type, "")
                 .replace("due to", "")

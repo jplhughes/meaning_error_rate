@@ -12,6 +12,10 @@ models2cost = {
 
 
 class LanguageModel:
+    """
+    LM object that handles the open AI API and response given a prompt.
+    """
+
     def __init__(self, model="text-davinci-002", api_key=None):
         self.model = model
         assert model in models2cost, f"Model {model} not supported"

@@ -7,7 +7,7 @@ from mer.prompt import Prompt
 
 def get_accuracy(test_json, prompt_config_path, output_json, api_key=None):
 
-    with open(test_json, "r") as f:
+    with open(test_json, "r", encoding="utf-8") as f:
         testset = json.load(f)
 
     prompt = Prompt.from_file(prompt_config_path, simple=True)
@@ -33,13 +33,14 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None):
         data["outcome"] = outcome
         output.append(data)
 
-    with open(output_json, "w") as f:
+    with open(output_json, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=4)
 
 
 def main():
 
     parser = argparse.ArgumentParser()
+    # pylint: disable=line-too-long
     # fmt: off
     parser.add_argument("--test_json", type=str,default="./config/test.json", help="Json file containing examples with labels")  # noqa:  E201
     parser.add_argument( "--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201

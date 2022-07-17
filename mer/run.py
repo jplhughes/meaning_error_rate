@@ -14,7 +14,7 @@ def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None):
     lm = LanguageModel(api_key=api_key)
 
     for ref_file, rec_file in zip(ref_list, rec_list):
-        with open(ref_file) as ref_h, open(rec_file) as rec_h:
+        with open(ref_file, "r", encoding="utf-8") as ref_h, open(rec_file, "r", encoding="utf-8") as rec_h:
             ref = ref_h.read().strip()
             rec = rec_h.read().strip()
 
@@ -32,6 +32,7 @@ def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None):
 def main():
 
     parser = argparse.ArgumentParser()
+    # pylint: disable=line-too-long
     # fmt: off
     parser.add_argument( "--ref_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to reference transcripts")  # noqa:  E201
     parser.add_argument( "--rec_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to recognised transcripts")  # noqa:  E201
