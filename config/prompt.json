@@ -1,7 +1,7 @@
 {
     "errors": {
         "none": {
-            "description": "almost perfect recognised transcript (e.g. comma/space/hyphen placement, repeated words, disfluencies)",
+            "description": "almost perfect recognized transcript (e.g. differing comma/space/hyphen placement, repeated words and disfluencies are fine)",
             "score": 0.0
         },
         "minor": {
@@ -9,7 +9,7 @@
             "score": 0.25
         },
         "standard": {
-            "description": "disrupts the flow and comprehension (e.g. misrecognised/omitted names, homophones/sound-alikes, omission of primary detail)",
+            "description": "disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail)",
             "score": 0.5
         },
         "serious": {
@@ -22,25 +22,25 @@
             "error": "none",
             "reference": "Um, um, yes I am um very happy to see you.",
             "recognised": "Um, yes I am very happy to see you.",
-            "reason": "There are missing disfluences but output more readble so this shouldn't be penalised"
+            "reason": "There are 2 missing disfluencies 'um' but output more readable so this shouldn't be penalised"
         },
         {
             "error": "minor",
             "reference": "I don't believe an executive should be able to overturn a decision.",
             "recognised": "I don't believe in executive should be able to overturn a decision.",
-            "reason": "The word an has been substitued with in which is an incorrect use of a preposition"
+            "reason": "The word 'an' has been substituted with 'in' which is an incorrect use of a preposition"
         },
         {
             "error": "standard",
             "reference": "Ra'Shede Hageman, a top defensive tackle prospect...",
             "recognised": "Rash eared haggard man, a top defensive tackle prospect...",
-            "reason": "The name Ra'Shede Hageman has been misrecognised by words that soundalike"
+            "reason": "The name 'Ra'Shede Hageman' has been misrecognized by words that soundalike"
         },
         {
             "error": "serious",
             "reference": "This has been confirmed by the Pentagon.",
             "recognised": "This hasn't been confirmed by the Pentagon.",
-            "reason": "The word has is reversed which causes misinformation about the message"
+            "reason": "The word 'has' is reversed which causes misinformation about the message"
         }
     ]
 }

@@ -4,25 +4,25 @@
             "error": "none",
             "reference": "I think it is a lower-performing company.",
             "recognised": "I think it is a lower performing company.",
-            "reason": "hyphens"
+            "reason": "There is not a hyphen between lower and performing this should not be penalised"
         },
         {
             "error": "minor",
             "reference": "When we lost, I laughed and cried, perhaps too much of the latter but had it not been for this guy supporting me I would've just cried.",
             "recognised": "When we lost, I laughed and cried but had it not been for this guy supporting me I would've just cried.",
-            "reason": "omission of secondary detail"
+            "reason": "The phrase 'perhaps too much of the latter' is omitted but it is only secondary detail"
         },
         {
             "error": "standard",
             "reference": "This is my sister, who works at the hospital.",
             "recognised": "This is my sister. Who works at the hospital?",
-            "reason": "incorrect punctuation that changed statement to question"
+            "reason": "The comma has been misrecognised leading to a question mark issue that changes the meaning"
         },
         {
             "error": "serious",
             "reference": "This man is a suspected murderer.",
             "recognised": "This man is a murderer.",
-            "reason": "omission of word causing misinformation"
+            "reason": "The word suspected has been omitted causing major misinformation"
         }
     ]
 }
