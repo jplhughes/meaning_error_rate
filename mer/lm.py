@@ -26,7 +26,7 @@ class LanguageModel:
         else:
             self.api_key = os.getenv("OPENAI_API_KEY")
         assert self.api_key != "", "Pass api_key or set OPENAI_API_KEY evironment variable"
-        openai.api_key = api_key
+        openai.api_key = self.api_key
 
     def get_continuation(
         self,

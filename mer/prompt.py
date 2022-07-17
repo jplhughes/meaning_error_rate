@@ -68,7 +68,7 @@ class Prompt:
         assert text is not None, "Text is empty"
 
         # Error type should be first word and should be contained in error2score
-        error_type = text.split()[0]
+        error_type = text.split()[0].replace(",", "").replace(".", "")
         if error_type in self.error2score:
             score = self.error2score[error_type]
         else:
@@ -76,7 +76,7 @@ class Prompt:
 
         # Get reason by disecting the known parts expected in the continuation
         try:
-            reason = text.split["due to "][1].split[". I hope it is correct"][0]
+            reason = text.split("due to ")[1].split(". I hope it is correct")[0]
         except IndexError:
             reason = (
                 text.replace(error_type, "")
