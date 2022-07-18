@@ -1,9 +1,9 @@
 import argparse
 import json
-from collections import Counter
 
 from mer.lm import LanguageModel
 from mer.prompt import Prompt
+from mer.utils import create_result_dict, majority_voting
 
 
 def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
@@ -18,42 +18,33 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
     results = []
     for i, example in enumerate(testset["examples"]):
         error_type, ref, rec, reason = prompt.unpack_example(example)
-        # Add example information to item in json
-        data = {"reference": ref, "recognised": rec}
-        data["target"] = {"error": error_type, "reason": reason}
 
         # Create prompt and get continuations from lm
         prompt_string = prompt.create_prompt(ref, rec)
         continuations, response = lm.get_continuation(prompt_string, num_samples=num_samples)
         total_tokens += response["usage"]["total_tokens"]
 
-        # Loop over text in continuatinos and extract results
-        data["predicted"] = []
-        errors = []
-        for text in continuations:
-            error_type_pred, reason_pred, _ = prompt.get_result(text)
-            errors.append(error_type_pred)
-            data["predicted"].append({"error": error_type_pred, "reason": reason_pred})
-
-        # Run majority voting given the predicted error tpes
-        counts = Counter(errors)
-        final_prediction, count = counts.most_common()[0]
+        # Get prediction for each continuation and find the most common error
+        voted_prediction, vote_count, predictions = majority_voting(continuations, prompt)
 
         outcome = "incorrect"
-        if final_prediction == error_type:
-            print(f"Got example {i} correct ({count}/{len(errors)})")
+        if voted_prediction == error_type:
+            print(f"Got example {i} correct ({vote_count}/{len(continuations)})")
             outcome = "correct"
             total_correct += 1
-        data["decided_error"] = final_prediction
-        data["outcome"] = outcome
-        results.append(data)
+
+        # Add example information to item in json
+        result = create_result_dict(ref, rec, predictions, voted_prediction, vote_count)
+        result["target"] = {"error": error_type, "reason": reason}
+        result["outcome"] = outcome
+        results.append(result)
 
         # Keep track of score penalties to work out MER
         total_num_sentences += 1
-        total_penalty += prompt.error2score[final_prediction]
+        total_penalty += prompt.error2score[voted_prediction]
 
     # Print total combined cost of running testset
-    lm.print_cost("", tokens=total_tokens, num_samples=num_samples)  # actual cost
+    lm.print_actual_cost(total_tokens)
 
     # All serious errors makes this accuracy go to 0%, no errors and it is 100%
     meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
@@ -95,7 +86,7 @@ def main():
     accuracy, meaning_error_rate = get_accuracy(
         args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key, num_samples=args.num_samples
     )
-    print(f"accuracy: {accuracy}, meaning_error_rate {meaning_error_rate}")
+    print(f"accuracy: {accuracy}, meaning_error_rate: {meaning_error_rate}")
 
 
 if __name__ == "__main__":

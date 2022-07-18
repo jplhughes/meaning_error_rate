@@ -47,11 +47,14 @@ class LanguageModel:
 
         return continuations, response
 
-    def print_cost(self, prompt, tokens=None, num_samples=1):
-        if tokens is None:
-            # Find estimate number of tokens based on prompt
-            approx_completion_tokens = 25 * num_samples  # based on ~100 char continuation, ~20 words
-            approx_prompt_tokens = len(prompt) / 4  # each token is approximately 4 chars
-            tokens = approx_prompt_tokens + approx_completion_tokens
+    def print_actual_cost(self, tokens):
         cost = models2cost[self.model] * tokens / 1000
-        print(f"COST: #char: {len(prompt)}, #tokens: {tokens}, cost: ${cost}, runs/$: {1/cost:.1f}")
+        print(f"COST: #tokens: {tokens}, cost: ${cost:.2f}, runs/$: {1/cost:.1f}")
+
+    def print_estimated_cost(self, prompt, num_samples=1):
+        # Find estimate number of tokens based on prompt
+        approx_completion_tokens = 25 * num_samples  # based on ~100 char continuation, ~20 words
+        approx_prompt_tokens = len(prompt) / 4  # each token is approximately 4 chars
+        tokens = approx_prompt_tokens + approx_completion_tokens
+        cost = models2cost[self.model] * tokens / 1000
+        print(f"COST: #char: {len(prompt)}, #tokens: {tokens}, cost: ${cost:.2f}, runs/$: {1/cost:.1f}")
