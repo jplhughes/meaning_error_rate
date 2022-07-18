@@ -40,7 +40,7 @@ def test_running_with_dbls():
     output_json = "./unittests/data/results_dbl.json"
     with open(ref_dbl, "r", encoding="utf-8") as ref, open(rec_dbl, "r", encoding="utf-8") as rec:
         meaning_error_rate = get_results_dbls(ref, rec, prompt_config_path, output_json, num_samples=2, simple=True)
-        print(f"meaning_error_rate: {meaning_error_rate}")
+        print(f"meaning_error_rate: {meaning_error_rate}%")
 
 
 def test_running_with_testset():
@@ -48,7 +48,7 @@ def test_running_with_testset():
     test_json = "./unittests/data/test.json"
     output_json = "./unittests/data/results.json"
     accuracy, meaning_error_rate = get_accuracy(test_json, prompt_config_path, output_json, num_samples=2, simple=False)
-    print(f"accuracy: {accuracy}, meaning_error_rate: {meaning_error_rate}")
+    print(f"accuracy: {accuracy}%, meaning_error_rate: {meaning_error_rate}%")
 
 
 if __name__ == "__main__":

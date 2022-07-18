@@ -50,6 +50,7 @@ class LanguageModel:
     def print_actual_cost(self, tokens):
         cost = models2cost[self.model] * tokens / 1000
         print(f"COST: #tokens: {tokens}, cost: ${cost:.2f}, runs/$: {1/cost:.1f}")
+        return cost
 
     def print_estimated_cost(self, prompt, num_samples=1):
         # Find estimate number of tokens based on prompt

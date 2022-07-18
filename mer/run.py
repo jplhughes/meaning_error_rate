@@ -1,9 +1,13 @@
 import argparse
-import json
 
 from mer.lm import LanguageModel
 from mer.prompt import Prompt
-from mer.utils import create_result_dict, majority_voting
+from mer.utils import (
+    calculate_meaning_error_rate,
+    create_result_dict,
+    majority_voting,
+    save_results,
+)
 
 
 def get_results_dbls(
@@ -42,25 +46,9 @@ def get_results_dbls(
         total_num_sentences += 1
         total_penalty += prompt.error2score[voted_prediction]
 
-    # Print total combined cost of running dbls
-    lm.print_actual_cost(total_tokens)
-
-    # All serious errors makes this accuracy go to 0%, no errors and it is 100%
-    meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
-    meaning_error_rate = 100 - meaning_accuracy
-
-    # Store all information in output json
-    output = {}
-    output["results"] = results
-    output["summary"] = {
-        "total_tokens": total_tokens,
-        "total_num_sentences": total_num_sentences,
-        "total_penalty": total_penalty,
-        "meaning_error_rate": round(meaning_error_rate, 2),
-    }
-
-    with open(output_json, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=4)
+    cost = lm.print_actual_cost(total_tokens)
+    meaning_error_rate = calculate_meaning_error_rate(total_num_sentences, total_penalty)
+    save_results(output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate)
 
     return meaning_error_rate
 
@@ -87,7 +75,7 @@ def main():
         api_key=args.api_key,
         num_samples=args.num_samples,
     )
-    print(f"meaning_error_rate: {meaning_error_rate}")
+    print(f"meaning_error_rate: {meaning_error_rate}%")
 
 
 if __name__ == "__main__":

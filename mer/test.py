@@ -3,7 +3,12 @@ import json
 
 from mer.lm import LanguageModel
 from mer.prompt import Prompt
-from mer.utils import create_result_dict, majority_voting
+from mer.utils import (
+    calculate_meaning_error_rate,
+    create_result_dict,
+    majority_voting,
+    save_results,
+)
 
 
 def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
@@ -35,6 +40,7 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
 
         # Add example information to item in json
         result = create_result_dict(ref, rec, predictions, voted_prediction, vote_count)
+        # Add label specific info
         result["target"] = {"error": error_type, "reason": reason}
         result["outcome"] = outcome
         results.append(result)
@@ -43,29 +49,15 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
         total_num_sentences += 1
         total_penalty += prompt.error2score[voted_prediction]
 
-    # Print total combined cost of running testset
-    lm.print_actual_cost(total_tokens)
-
-    # All serious errors makes this accuracy go to 0%, no errors and it is 100%
-    meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
-    meaning_error_rate = 100 - meaning_accuracy
+    cost = lm.print_actual_cost(total_tokens)
+    meaning_error_rate = calculate_meaning_error_rate(total_num_sentences, total_penalty)
 
     # Accuracy of LLM method to match human labels
     accuracy = 100 * total_correct / total_num_sentences
 
-    # Store all information in output json
-    output = {}
-    output["results"] = results
-    output["summary"] = {
-        "total_tokens": total_tokens,
-        "total_num_sentences": total_num_sentences,
-        "total_penalty": total_penalty,
-        "meaning_error_rate": round(meaning_error_rate, 2),
-        "accuracy": round(accuracy, 2),
-    }
-
-    with open(output_json, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=4)
+    save_results(
+        output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate, accuracy
+    )
 
     return accuracy, meaning_error_rate
 
@@ -86,7 +78,7 @@ def main():
     accuracy, meaning_error_rate = get_accuracy(
         args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key, num_samples=args.num_samples
     )
-    print(f"accuracy: {accuracy}, meaning_error_rate: {meaning_error_rate}")
+    print(f"accuracy: {accuracy}%, meaning_error_rate: {meaning_error_rate}%")
 
 
 if __name__ == "__main__":
