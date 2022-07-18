@@ -6,12 +6,12 @@ from mer.lm import LanguageModel
 from mer.prompt import Prompt
 
 
-def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_samples=3):
+def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
 
     with open(test_json, "r", encoding="utf-8") as f:
         testset = json.load(f)
 
-    prompt = Prompt.from_file(prompt_config_path, simple=False)
+    prompt = Prompt.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
     output = []

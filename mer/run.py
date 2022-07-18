@@ -4,13 +4,13 @@ from mer.lm import LanguageModel
 from mer.prompt import Prompt
 
 
-def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None, num_samples=3):
+def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None, num_samples=3, simple=False):
     ref_list = ref_dbl.read().split("\n")
     rec_list = rec_dbl.read().split("\n")
 
     assert len(ref_list) == len(rec_list), "Length of reference and recognised dbls differ"
 
-    prompt = Prompt.from_file(prompt_config_path)
+    prompt = Prompt.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
     for ref_file, rec_file in zip(ref_list, rec_list):

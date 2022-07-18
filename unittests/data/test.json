@@ -1,0 +1,10 @@
+{
+    "examples": [
+        {
+            "error": "serious",
+            "reference": "This man is a suspected murderer.",
+            "recognised": "This man is a murderer.",
+            "reason": "The word suspected has been omitted causing major misinformation"
+        }
+    ]
+}

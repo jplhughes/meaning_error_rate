@@ -1,0 +1,28 @@
+{
+    "errors": {
+        "none": {
+            "description": "almost perfect recognized transcript (e.g. differing comma/space/hyphen placement, repeated words and disfluencies are fine)",
+            "score": 0.0
+        },
+        "minor": {
+            "description": "easily able to read through (e.g. incorrect capitalisation, pronouns/prepositions, omission of secondary detail)",
+            "score": 0.25
+        },
+        "standard": {
+            "description": "disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail)",
+            "score": 0.5
+        },
+        "serious": {
+            "description": "misinformation which changes meaning (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation)",
+            "score": 1.0
+        }
+    },
+    "examples": [
+        {
+            "error": "serious",
+            "reference": "This has been confirmed by the Pentagon.",
+            "recognised": "This hasn't been confirmed by the Pentagon.",
+            "reason": "The word 'has' is reversed which causes misinformation about the message"
+        }
+    ]
+}
