@@ -20,6 +20,7 @@ def get_results_dbls(ref_dbl, rec_dbl, prompt_config_path, api_key=None, num_sam
 
         prompt_string = prompt.create_prompt(ref, rec)
         lm.print_cost(prompt_string, num_samples=num_samples)  # estimated cost
+        print(prompt_string)
         continuations, response = lm.get_continuation(prompt_string, num_samples=num_samples)
         lm.print_cost(prompt_string, tokens=response["usage"]["total_tokens"], num_samples=num_samples)  # actual cost
 
@@ -40,10 +41,13 @@ def main():
     parser.add_argument("--rec_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to recognised transcripts")  # noqa:  E201
     parser.add_argument("--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
     parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
+    parser.add_argument("--num_samples", type=str, default=3, help="number of times to sample GPT3 for majority voting")  # noqa:  E201
     # fmt: on
     args = parser.parse_args()
 
-    get_results_dbls(args.ref_dbl, args.rec_dbl, args.prompt_config_path, api_key=args.api_key)
+    get_results_dbls(
+        args.ref_dbl, args.rec_dbl, args.prompt_config_path, api_key=args.api_key, num_samples=args.num_samples
+    )
 
 
 if __name__ == "__main__":

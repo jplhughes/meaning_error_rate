@@ -43,6 +43,7 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
         if final_prediction == error_type:
             print(f"Got example {i} correct ({count}/{len(errors)})")
             outcome = "correct"
+        data["decided_error"] = final_prediction
         data["outcome"] = outcome
         output.append(data)
 
@@ -59,10 +60,13 @@ def main():
     parser.add_argument("--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
     parser.add_argument("--output_json", type=str, default="./data/results.json", help="path to output json to store results")  # noqa:  E201
     parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
+    parser.add_argument("--num_samples", type=str, default=3, help="number of times to sample GPT3 for majority voting")  # noqa:  E201
     # fmt: on
     args = parser.parse_args()
 
-    get_accuracy(args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key)
+    get_accuracy(
+        args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key, num_samples=args.num_samples
+    )
 
 
 if __name__ == "__main__":

@@ -72,7 +72,10 @@ class Prompt:
         if error_type in self.error2score:
             score = self.error2score[error_type]
         else:
-            raise f"Got unexpected error type {error_type}"
+            # Don't penalise an unknown error (unlikely to get through majority voting anyway)
+            error_type = "unknown"
+            score = 0.0
+            print(f"WARNING: Got unexpected error type {error_type} in text {text}")
 
         # Get reason by disecting the known parts expected in the continuation
         reason = text.split(". Therefore")[0].strip()
