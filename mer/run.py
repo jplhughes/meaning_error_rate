@@ -4,7 +4,7 @@ from mer.lm import LanguageModel
 from mer.prompt import Prompt
 from mer.utils import (
     calculate_meaning_error_rate,
-    create_result_dict,
+    calculate_wer,
     majority_voting,
     save_results,
 )
@@ -22,12 +22,19 @@ def get_results_dbls(
     lm = LanguageModel(api_key=api_key)
 
     total_num_sentences, total_penalty, total_tokens = 0, 0, 0
+    total_errors, total_reference_count = 0, 0
     results = []
     for ref_file, rec_file in zip(ref_list, rec_list):
         with open(ref_file, "r", encoding="utf-8") as ref_h, open(rec_file, "r", encoding="utf-8") as rec_h:
             ref = ref_h.read().strip()
             rec = rec_h.read().strip()
 
+        # WER
+        errors, reference_count, wer_result = calculate_wer(ref, rec)
+        total_errors += errors
+        total_reference_count += reference_count
+
+        # Prompt and LM continuation
         prompt_string = prompt.create_prompt(ref, rec)
         if dry_run:
             lm.print_estimated_cost(prompt_string, num_samples=num_samples)  # estimated cost
@@ -37,18 +44,17 @@ def get_results_dbls(
         continuations, response = lm.get_continuation(prompt_string, num_samples=num_samples)
         total_tokens += response["usage"]["total_tokens"]
 
-        voted_prediction, vote_count, predictions = majority_voting(continuations, prompt)
-
-        result = create_result_dict(ref, rec, predictions, voted_prediction, vote_count)
-        results.append(result)
-
-        # Keep track of score penalties to work out MER
+        # Majority voting (keep track of score penalties to work out MER)
+        voted_prediction, _, prediction_result = majority_voting(continuations, prompt)
         total_num_sentences += 1
         total_penalty += prompt.error2score[voted_prediction]
 
+        results.append({**wer_result, **prediction_result})
+
     cost = lm.print_actual_cost(total_tokens)
     meaning_error_rate = calculate_meaning_error_rate(total_num_sentences, total_penalty)
-    save_results(output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate)
+    wer = 100 * total_errors / total_reference_count
+    save_results(output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate, wer)
 
     return meaning_error_rate
 
