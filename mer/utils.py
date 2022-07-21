@@ -4,6 +4,8 @@ from collections import Counter
 
 from kaldialign import align  # pylint: disable=E0611
 
+GAP = "***"
+
 
 def majority_voting(continuations, prompt):
     # Loop over text in continuatinos and extract results
@@ -27,18 +29,59 @@ def majority_voting(continuations, prompt):
     return voted_prediction, vote_count, result
 
 
-def calculate_wer(ref_text, rec_text):
-    GAP = "***"
+def get_alignment(ref_text, rec_text):
     # separate punctuation and split into words
     # TODO this will fail for abbreviations e.g. Mr.
     ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
     rec_words = re.findall(r"[\w'-]+|[.,!?;]", rec_text)
 
-    edits = align(ref_words, rec_words, GAP)
+    alignment = align(ref_words, rec_words, GAP)
+    reference_count = len(ref_words)
+    return alignment, reference_count
+
+
+def get_sentences(ref_text, rec_text):
+    """
+    We don't want to pass whole paragraphs so this splits up the reference and recognised transcript
+    based on the alignment. You need the alignment to deal with the cases where a whole sentence is missing
+    if the ref/rec or eos punctuation is missing.
+    """
+    alignment, _ = get_alignment(ref_text, rec_text)
+
+    ref_sentences = []
+    rec_sentences = []
+    ref_sentence = []
+    rec_sentence = []
+    for (ref, rec) in alignment:
+        # If EOS found in reference, start a new sentence at that point in the alignment
+        if ref in ".!?":
+            ref_sentence.append(ref)
+            if rec != GAP:
+                rec_sentence.append(rec)
+            # Rejoin the punctuation in the string and save to list
+            ref_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(ref_sentence))
+            rec_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(rec_sentence))
+            ref_sentences.append(ref_sentence)
+            rec_sentences.append(rec_sentence)
+            # reset the current sentence
+            ref_sentence = []
+            rec_sentence = []
+        else:
+            # Kepp adding words if they are not a "gap"
+            if ref != GAP:
+                ref_sentence.append(ref)
+            if rec != GAP:
+                rec_sentence.append(rec)
+    return ref_sentences, rec_sentences
+
+
+def calculate_wer(ref_text, rec_text):
+
+    alignment, reference_count = get_alignment(ref_text, rec_text)
 
     comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
     insertions, deletions, substitions = 0, 0, 0
-    for (ref, rec) in edits:
+    for (ref, rec) in alignment:
         # Correct
         if ref == rec:
             comparison.append(ref)
