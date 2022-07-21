@@ -1,0 +1,27 @@
+None error - almost perfect recognized transcript (e.g. differing comma/space/hyphen placement, repeated words and disfluencies are fine).
+
+Minor error - easily able to read through (e.g. incorrect capitalisation, pronouns/prepositions, omission of secondary detail).
+
+Standard error - disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail).
+
+Serious error - misinformation which changes meaning (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation).
+
+Reference: This has been confirmed by the Pentagon.
+Recognised: This hasn't been confirmed by the Pentagon.
+Result: The word 'has' is reversed which causes misinformation about the message. Therefore, the error is likely serious.
+
+Reference: Ra'Shede Hageman, a top defensive tackle prospect...
+Recognised: Rash eared haggard man, a top defensive tackle prospect...
+Result: The name 'Ra'Shede Hageman' has been misrecognized by words that soundalike. Therefore, the error is likely standard.
+
+Reference: I don't believe an executive should be able to overturn a decision.
+Recognised: I don't believe in executive should be able to overturn a decision.
+Result: The word 'an' has been substituted with 'in' which is an incorrect use of a preposition. Therefore, the error is likely minor.
+
+Reference: Um, um, yes I am um very happy to see you.
+Recognised: Um, yes I am very happy to see you.
+Result: There are 2 missing disfluencies 'um' but output more readable so this shouldn't be penalised. Therefore, the error is likely none.
+
+Reference: Ra’Shede Hageman, a top defensive tackle prospect...
+Recognised: Rash eared haggard man, a top defensive tackle prospect...
+Result:

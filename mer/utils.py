@@ -49,7 +49,7 @@ def calculate_wer(ref_text, rec_text):
         # Deletion Error
         elif rec == GAP:
             deletions += 1
-            comparison.append(f"{{ref}}")
+            comparison.append("{" + ref + "}")
         # Subsitution Error
         else:
             substitions += 1
