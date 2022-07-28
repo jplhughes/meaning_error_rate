@@ -11,18 +11,16 @@ from mer.utils import (
 )
 
 
-def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
-
-    with open(test_json, "r", encoding="utf-8") as f:
-        testset = json.load(f)
-
+def run_meaning_error_rate(examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
     prompt = Prompt.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
-    total_num_sentences, total_penalty, total_correct, total_tokens = 0, 0, 0, 0
-    total_errors, total_reference_count = 0, 0
+    total_errors, total_reference_count = 0, 0  # For WER
+    total_num_sentences, total_penalty, total_tokens = 0, 0, 0  # For MER
+    total_correct, total_labelled = 0, 0  # For accuracy
+
     results = []
-    for i, example in enumerate(testset["examples"]):
+    for i, example in enumerate(examples):
         error_type, ref, rec, reason = prompt.unpack_example(example)
 
         # WER
@@ -40,23 +38,30 @@ def get_accuracy(test_json, prompt_config_path, output_json, api_key=None, num_s
         total_num_sentences += 1
         total_penalty += prompt.error2score[voted_prediction]
 
-        outcome = "incorrect"
-        if voted_prediction == error_type:
-            print(f"Got example {i} correct ({vote_count}/{len(continuations)})")
-            outcome = "correct"
-            total_correct += 1
+        # If you have human labels (targets for error type), then record extra stats
+        if error_type:
+            outcome = "incorrect"
+            total_labelled += 1
+            if voted_prediction == error_type:
+                print(f"Got example {i} correct ({vote_count}/{len(continuations)})")
+                outcome = "correct"
+                total_correct += 1
 
-        # Add label specific info
-        prediction_result["target"] = {"error": error_type, "reason": reason}
-        prediction_result["outcome"] = outcome
+            # Add label specific info
+            prediction_result["target"] = {"error": error_type, "reason": reason}
+            prediction_result["outcome"] = outcome
+
         results.append({**wer_result, **prediction_result})
 
     cost = lm.print_actual_cost(total_tokens)
     meaning_error_rate = calculate_meaning_error_rate(total_num_sentences, total_penalty)
     wer = 100 * total_errors / total_reference_count
 
-    # Accuracy of LLM method to match human labels
-    accuracy = 100 * total_correct / total_num_sentences
+    # Accuracy of LLM method to match human labels (if they were provided)
+    if total_labelled > 0:
+        accuracy = 100 * total_correct / total_labelled
+    else:
+        accuracy = None
 
     save_results(
         output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate, wer, accuracy
@@ -78,8 +83,12 @@ def main():
     # fmt: on
     args = parser.parse_args()
 
-    accuracy, meaning_error_rate = get_accuracy(
-        args.test_json, args.prompt_config_path, args.output_json, api_key=args.api_key, num_samples=args.num_samples
+    with open(args.test_json, "r", encoding="utf-8") as f:
+        testset = json.load(f)
+        examples = testset["examples"]
+
+    accuracy, meaning_error_rate = run_meaning_error_rate(
+        examples, args.prompt_config_path, args.output_json, api_key=args.api_key, num_samples=args.num_samples
     )
     print(f"accuracy: {accuracy}%, meaning_error_rate: {meaning_error_rate}%")
 
