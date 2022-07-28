@@ -59,3 +59,4 @@ class LanguageModel:
         tokens = approx_prompt_tokens + approx_completion_tokens
         cost = models2cost[self.model] * tokens / 1000
         print(f"COST: #char: {len(prompt)}, #tokens: {tokens}, cost: ${cost:.2f}, runs/$: {1/cost:.1f}")
+        return round(cost, 2)
