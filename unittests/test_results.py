@@ -2,9 +2,9 @@ import json
 import unittest
 
 from mer.lm import LanguageModel
+from mer.mer import get_meaning_error_rate
 from mer.prompt import Prompt
-from mer.run import get_results_dbls
-from mer.test import get_accuracy
+from mer.run import convert_dbl_to_dict
 
 
 def test_api():
@@ -39,16 +39,24 @@ def test_running_with_dbls():
     rec_dbl = "./unittests/data/rec.dbl"
     output_json = "./unittests/data/results_dbl.json"
     with open(ref_dbl, "r", encoding="utf-8") as ref, open(rec_dbl, "r", encoding="utf-8") as rec:
-        meaning_error_rate = get_results_dbls(ref, rec, prompt_config_path, output_json, num_samples=2, simple=True)
-        print(f"meaning_error_rate: {meaning_error_rate}%")
+        examples = convert_dbl_to_dict(ref, rec)
+    meaning_error_rate, _ = get_meaning_error_rate(
+        examples, prompt_config_path, output_json, num_samples=2, simple=True
+    )
+    print(f"meaning_error_rate: {meaning_error_rate}%")
 
 
 def test_running_with_testset():
     prompt_config_path = "./unittests/data/prompt.json"
     test_json = "./unittests/data/test.json"
     output_json = "./unittests/data/results.json"
-    accuracy, meaning_error_rate = get_accuracy(test_json, prompt_config_path, output_json, num_samples=2, simple=False)
-    print(f"accuracy: {accuracy}%, meaning_error_rate: {meaning_error_rate}%")
+    with open(test_json, "r", encoding="utf-8") as f:
+        testset = json.load(f)
+        examples = testset["examples"]
+    meaning_error_rate, accuracy = get_meaning_error_rate(
+        examples, prompt_config_path, output_json, num_samples=2, simple=False
+    )
+    print(f"meaning_error_rate: {meaning_error_rate}%, accuracy: {accuracy}%")
 
 
 if __name__ == "__main__":

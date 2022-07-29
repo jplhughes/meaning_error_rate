@@ -25,7 +25,9 @@ class Prompt:
 
     @staticmethod
     def unpack_example(example):
-        return example["error"], example["reference"], example["recognised"], example["reason"]
+        error = example.get("error", None)
+        reason = example.get("reason", None)
+        return error, example["reference"], example["recognised"], reason
 
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
