@@ -98,7 +98,6 @@ def calculate_wer(ref_text, rec_text):
             substitions += 1
             comparison.append(f"[{rec} {ref}]")
 
-    reference_count = len(ref_words)
     num_errors = insertions + deletions + substitions
     wer = 100 * num_errors / reference_count
     comparison = " ".join(comparison)
