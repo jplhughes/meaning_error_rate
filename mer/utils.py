@@ -32,11 +32,27 @@ def majority_voting(continuations, prompt):
 def get_alignment(ref_text, rec_text):
     # separate punctuation and split into words
     # TODO this will fail for abbreviations e.g. Mr.
-    ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    rec_words = re.findall(r"[\w'-]+|[.,!?;]", rec_text)
 
-    alignment = align(ref_words, rec_words, GAP)
-    reference_count = len(ref_words)
+    # Find indices of punctuation in reference text
+    ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
+    sentence_boudaries = []
+    for i, token in enumerate(ref_words):
+        if token in ".!?":
+            sentence_boudaries.append(i)
+
+    # Remove all punctuation and align
+    ref_text = re.sub(r"[^\w\s]", "", ref_text)
+    rec_text = re.sub(r"[^\w\s]", "", rec_text)
+    ref_words = ref_text.split()
+    rec_words = rec_text.split()
+    alignment = align(rec_words, ref_words, GAP)
+
+    # Re-insert punctuation. Doesn't need to be the exact punctuation
+    # eg (?,!) as it is just used to split the text
+    for i in sentence_boudaries:
+        alignment.insert(i, (".", "."))
+
+    reference_count = len(alignment)
     return alignment, reference_count
 
 
@@ -54,7 +70,7 @@ def get_sentences(ref_text, rec_text):
     rec_sentence = []
     for (ref, rec) in alignment:
         # If EOS found in reference, start a new sentence at that point in the alignment
-        if ref in ".!?":
+        if ref in ".":
             ref_sentence.append(ref)
             if rec != GAP:
                 rec_sentence.append(rec)
