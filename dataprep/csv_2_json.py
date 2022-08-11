@@ -3,7 +3,7 @@ import csv
 import json
 from collections import defaultdict
 
-from mer.utils import get_sentences
+from mer.utils import calculate_wer, get_sentences
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--csv_path", type=str)
@@ -22,7 +22,12 @@ def csv_2_json(csv_path, json_path):
             else:
                 ref_text, rec_text = get_sentences(row[7], row[8])
                 for ref, rec in zip(ref_text, rec_text):
-                    sentences_dict["examples"].append({"reference": ref, "recognised": rec})
+                    wer_results = calculate_wer(ref, rec)
+                    if wer_results is None:
+                        continue
+                    sentences_dict["examples"].append(
+                        {"reference": ref, "recognised": rec, "mimir": wer_results[2]["comparison"], "result": ""}
+                    )
 
         with open(json_path, "w") as outfile:
             json.dump(sentences_dict, outfile, indent=2)

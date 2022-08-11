@@ -35,10 +35,16 @@ def get_alignment(ref_text, rec_text):
 
     # Find indices of punctuation in reference text
     ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    sentence_boudaries = []
+    ref_sentence_boudaries = {}
     for i, token in enumerate(ref_words):
         if token in ".!?":
-            sentence_boudaries.append(i)
+            ref_sentence_boudaries[i] = token
+
+    # rec_words = re.findall(r"[\w'-]+|[.,!?;]", rec_text)
+    # rec_sentence_boudaries = {}
+    # for i, token in enumerate(rec_words):
+    #     if token in ".!?":
+    #         rec_sentence_boudaries[i] = token
 
     # Remove all punctuation and align
     ref_text = re.sub(r"[^\w\s]", "", ref_text)
@@ -47,13 +53,8 @@ def get_alignment(ref_text, rec_text):
     rec_words = rec_text.split()
     alignment = align(rec_words, ref_words, GAP)
 
-    # Re-insert punctuation. Doesn't need to be the exact punctuation
-    # eg (?,!) as it is just used to split the text
-    for i in sentence_boudaries:
-        alignment.insert(i, (".", "."))
-
     reference_count = len(alignment)
-    return alignment, reference_count
+    return alignment, reference_count, ref_sentence_boudaries
 
 
 def get_sentences(ref_text, rec_text):
@@ -62,7 +63,10 @@ def get_sentences(ref_text, rec_text):
     based on the alignment. You need the alignment to deal with the cases where a whole sentence is missing
     if the ref/rec or eos punctuation is missing.
     """
-    alignment, _ = get_alignment(ref_text, rec_text)
+    alignment, _, ref_sentence_boudaries = get_alignment(ref_text, rec_text)
+    # Re-insert punctuation.
+    for i, token in ref_sentence_boudaries.items():
+        alignment.insert(i, (token, token))
 
     ref_sentences = []
     rec_sentences = []
@@ -70,7 +74,7 @@ def get_sentences(ref_text, rec_text):
     rec_sentence = []
     for (ref, rec) in alignment:
         # If EOS found in reference, start a new sentence at that point in the alignment
-        if ref in ".":
+        if ref in ".!?":
             ref_sentence.append(ref)
             if rec != GAP:
                 rec_sentence.append(rec)
@@ -93,7 +97,9 @@ def get_sentences(ref_text, rec_text):
 
 def calculate_wer(ref_text, rec_text):
 
-    alignment, reference_count = get_alignment(ref_text, rec_text)
+    alignment, reference_count, _ = get_alignment(ref_text, rec_text)
+    if reference_count == 0:
+        return
 
     comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
     insertions, deletions, substitions = 0, 0, 0
@@ -158,3 +164,17 @@ def calculate_meaning_error_rate(total_num_sentences, total_penalty):
     # All serious errors makes this accuracy go to 0%, no errors and it is 100%
     meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
     return 100 - meaning_accuracy
+
+
+def split_off_punc(line, punc_str):
+    """
+    Splits punctuation off from its words to make alignment easier
+    Args:
+        line (str): line to be cleaned
+        punc_str (str): string containing punc marks to be separated
+    Resturns:
+        list: original line with punc marks removed, then split into words
+    """
+    out = re.sub(r"([{}]) ".format(punc_str), r" \1 ", line.strip())
+    out = re.sub(r"([{}])$".format(punc_str), r" \1", out)
+    return out.split()
