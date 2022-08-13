@@ -15,12 +15,14 @@ def csv_2_json(csv_path, json_path):
         csv_reader = csv.reader(csvfile, delimiter=",")
         counter = 0
         sentences_dict = defaultdict(list)
-        for row in csv_reader:
-            if counter == 0:
+        for i, row in enumerate(csv_reader):
+            # if i > 2:
+            #     break
+            if counter == 0 or counter == 1:
                 counter += 1
                 continue
             else:
-                ref_text, rec_text = get_sentences(row[7], row[8])
+                ref_text, rec_text = get_sentences(row[7], row[12])
                 for ref, rec in zip(ref_text, rec_text):
                     wer_results = calculate_wer(ref, rec)
                     if wer_results is None:
