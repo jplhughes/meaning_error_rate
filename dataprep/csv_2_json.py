@@ -6,10 +6,6 @@ from collections import defaultdict
 
 from mer.utils import calculate_wer, get_sentences
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--csv_path", type=argparse.FileType("r"))
-parser.add_argument("--json_out_path", type=argparse.FileType("w"), default=sys.stdout)
-
 
 def csv_2_json(csv_path, json_path):
     csv_reader = csv.DictReader(csv_path, delimiter=",")
@@ -35,5 +31,8 @@ def csv_2_json(csv_path, json_path):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--csv_path", type=argparse.FileType("r"))
+    parser.add_argument("--json_out_path", type=argparse.FileType("w"), default=sys.stdout)
     args = parser.parse_args()
     csv_2_json(args.csv_path, args.json_out_path)
