@@ -9,8 +9,8 @@ def main():
     parser = argparse.ArgumentParser()
     # pylint: disable=line-too-long
     # fmt: off
-    parser.add_argument("--test_json", type=str,default="./config/test.json", help="Json file containing examples with labels")  # noqa:  E201
-    parser.add_argument("--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
+    parser.add_argument("--test_json", type=str,default="./config/test_multiple.json", help="Json file containing examples with labels")  # noqa:  E201
+    parser.add_argument("--prompt_config_path", type=str, default="./config/prompt_multiple.json", help="path to prompt config json")  # noqa:  E201
     parser.add_argument("--output_json", type=str, default="./results.json", help="path to output json to store results")  # noqa:  E201
     parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
     parser.add_argument("--num_samples", type=str, default=3, help="number of times to sample GPT3 for majority voting")  # noqa:  E201

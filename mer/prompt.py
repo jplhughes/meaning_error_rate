@@ -125,8 +125,8 @@ class PromptMultiple(PromptBase):
         self.simple = simple
         random.seed(seed)
         # Create prompt based on config
-        self.base = self.get_prompt_base()
         self.error2score = self.get_score_mapping()
+        self.base = self.get_prompt_base()
 
     @staticmethod
     def unpack_example(example):

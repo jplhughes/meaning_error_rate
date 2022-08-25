@@ -1,5 +1,5 @@
 from mer.lm import LanguageModel
-from mer.prompt import Prompt
+from mer.prompt import PromptMultiple
 from mer.utils import (
     calculate_meaning_error_rate,
     calculate_wer,
@@ -11,7 +11,7 @@ from mer.utils import (
 def get_meaning_error_rate(
     examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False, dry_run=False
 ):
-    prompt = Prompt.from_file(prompt_config_path, simple=simple)
+    prompt = PromptMultiple.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
     total_errors, total_reference_count = 0, 0  # For WER
