@@ -1,38 +1,37 @@
 import argparse
 import csv
 import json
+import sys
 from collections import defaultdict
 
 from mer.utils import calculate_wer, get_sentences
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--csv_path", type=str)
-parser.add_argument("--json_out_path", type=str)
+parser.add_argument("--csv_path", type=argparse.FileType("r"))
+parser.add_argument("--json_out_path", type=argparse.FileType("w"), default=sys.stdout)
 
 
 def csv_2_json(csv_path, json_path):
-    with open(csv_path, newline="") as csvfile:
-        csv_reader = csv.DictReader(csvfile, delimiter=",")
-        sentences_dict = defaultdict(list)
-        for i, row in enumerate(csv_reader):
-            ref_text, rec_text = get_sentences(row["content"], row["amazon_transcription"])
-            for ref, rec in zip(ref_text, rec_text):
-                wer_results = calculate_wer(ref, rec)
-                if wer_results is None:
-                    continue
-                sentences_dict["examples"].append(
-                    {
-                        "reference": ref,
-                        "recognised": rec,
-                        "mimir": wer_results[2]["comparison"],
-                        "minor": "",
-                        "standard": "",
-                        "serious": "",
-                    }
-                )
+    csv_reader = csv.DictReader(csv_path, delimiter=",")
+    sentences_dict = defaultdict(list)
+    for row in csv_reader:
+        ref_text, rec_text = get_sentences(row["content"], row["amazon_transcription"])
+        for ref, rec in zip(ref_text, rec_text):
+            wer_results = calculate_wer(ref, rec)
+            if wer_results is None:
+                continue
+            sentences_dict["examples"].append(
+                {
+                    "reference": ref,
+                    "recognised": rec,
+                    "mimir": wer_results[2]["comparison"],
+                    "minor": "",
+                    "standard": "",
+                    "serious": "",
+                }
+            )
 
-        with open(json_path, "w") as outfile:
-            json.dump(sentences_dict, outfile, indent=2)
+    json.dump(sentences_dict, json_path, indent=2)
 
 
 if __name__ == "__main__":
