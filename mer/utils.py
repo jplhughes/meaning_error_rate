@@ -167,17 +167,3 @@ def calculate_meaning_error_rate(total_num_sentences, total_penalty):
     # All serious errors makes this accuracy go to 0%, no errors and it is 100%
     meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
     return 100 - meaning_accuracy
-
-
-def split_off_punc(line, punc_str):
-    """
-    Splits punctuation off from its words to make alignment easier
-    Args:
-        line (str): line to be cleaned
-        punc_str (str): string containing punc marks to be separated
-    Resturns:
-        list: original line with punc marks removed, then split into words
-    """
-    out = re.sub(r"([{}]) ".format(punc_str), r" \1 ", line.strip())
-    out = re.sub(r"([{}])$".format(punc_str), r" \1", out)
-    return out.split()
