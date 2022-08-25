@@ -20,7 +20,7 @@ def csv_2_json(csv_path, json_path):
                 counter += 1
                 continue
             else:
-                ref_text, rec_text = get_sentences(row[7], row[12])
+                ref_text, rec_text = get_sentences(row[7], row[11])
                 for ref, rec in zip(ref_text, rec_text):
                     wer_results = calculate_wer(ref, rec)
                     if wer_results is None:
