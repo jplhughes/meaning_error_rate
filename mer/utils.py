@@ -77,11 +77,6 @@ def get_sentences(ref_text, rec_text):
                 # Rejoin the punctuation in the string and save to list
                 ref_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(ref_sentence))
                 rec_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(rec_sentence))
-                if rec_sentence in ".?!":
-                    # if the rec_sentence is empty omit from test set
-                    ref_sentence = []
-                    rec_sentence = []
-                    continue
                 ref_sentences.append(ref_sentence)
                 rec_sentences.append(rec_sentence)
                 # reset the current sentence
