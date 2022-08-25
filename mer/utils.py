@@ -35,10 +35,7 @@ def get_alignment(ref_text, rec_text):
 
     # Find indices of punctuation in reference text
     ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    punctuation_dict = {}
-    for i, token in enumerate(ref_words):
-        if token in ".!?,":
-            punctuation_dict[i] = token
+    punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
 
     # Remove all punctuation and align
     ref_text = re.sub(r"[^\w\s]", "", ref_text)
