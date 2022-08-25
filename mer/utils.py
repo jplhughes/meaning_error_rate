@@ -96,7 +96,7 @@ def calculate_wer(ref_text, rec_text):
     result = {"reference": ref_text, "recognised": rec_text, "reference_count": reference_count}
     if reference_count == 0:
         # reference is empty after alignment, return wer=100
-        result["wer"] = 100
+        result["wer"] = "null"
         return None, reference_count, result
 
     comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
