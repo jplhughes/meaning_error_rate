@@ -12,29 +12,24 @@ parser.add_argument("--json_out_path", type=str)
 
 def csv_2_json(csv_path, json_path):
     with open(csv_path, newline="") as csvfile:
-        csv_reader = csv.reader(csvfile, delimiter=",")
-        counter = 0
+        csv_reader = csv.DictReader(csvfile, delimiter=",")
         sentences_dict = defaultdict(list)
         for i, row in enumerate(csv_reader):
-            if counter == 0 or counter == 1:
-                counter += 1
-                continue
-            else:
-                ref_text, rec_text = get_sentences(row[7], row[11])
-                for ref, rec in zip(ref_text, rec_text):
-                    wer_results = calculate_wer(ref, rec)
-                    if wer_results is None:
-                        continue
-                    sentences_dict["examples"].append(
-                        {
-                            "reference": ref,
-                            "recognised": rec,
-                            "mimir": wer_results[2]["comparison"],
-                            "minor": "",
-                            "standard": "",
-                            "serious": "",
-                        }
-                    )
+            ref_text, rec_text = get_sentences(row["content"], row["amazon_transcription"])
+            for ref, rec in zip(ref_text, rec_text):
+                wer_results = calculate_wer(ref, rec)
+                if wer_results is None:
+                    continue
+                sentences_dict["examples"].append(
+                    {
+                        "reference": ref,
+                        "recognised": rec,
+                        "mimir": wer_results[2]["comparison"],
+                        "minor": "",
+                        "standard": "",
+                        "serious": "",
+                    }
+                )
 
         with open(json_path, "w") as outfile:
             json.dump(sentences_dict, outfile, indent=2)
