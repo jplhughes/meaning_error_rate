@@ -16,8 +16,6 @@ def csv_2_json(csv_path, json_path):
         counter = 0
         sentences_dict = defaultdict(list)
         for i, row in enumerate(csv_reader):
-            # if i > 2:
-            #     break
             if counter == 0 or counter == 1:
                 counter += 1
                 continue
@@ -28,7 +26,14 @@ def csv_2_json(csv_path, json_path):
                     if wer_results is None:
                         continue
                     sentences_dict["examples"].append(
-                        {"reference": ref, "recognised": rec, "mimir": wer_results[2]["comparison"], "result": ""}
+                        {
+                            "reference": ref,
+                            "recognised": rec,
+                            "mimir": wer_results[2]["comparison"],
+                            "minor": "",
+                            "standard": "",
+                            "serious": "",
+                        }
                     )
 
         with open(json_path, "w") as outfile:
