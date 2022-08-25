@@ -15,7 +15,7 @@ def csv_2_json(csv_path, json_path):
         ref_text, rec_text = get_sentences(row["content"], row["amazon_transcription"])
         for ref, rec in zip(ref_text, rec_text):
             wer_results = calculate_wer(ref, rec)
-            if wer_results[1] == 0 or rec in ".?!":
+            if wer_results[1] == 0 or rec in ".?!" or rec == ref:
                 # This means the reference or recognised is empty. Ignore these test cases.
                 continue
             sentences_dict["examples"].append(

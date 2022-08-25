@@ -70,6 +70,7 @@ def get_sentences(ref_text, rec_text):
         if ref_counter in punctuation_dict:
             if punctuation_dict[ref_counter] in ".?!":
                 # Append end of sentence punctuation.
+                # TODO: Do not use the ref puncutation in recognised as sometimes incorrect punctuation can change meaning.
                 ref_sentence.append(punctuation_dict[ref_counter])
                 rec_sentence.append(punctuation_dict[ref_counter])
                 del punctuation_dict[ref_counter]
