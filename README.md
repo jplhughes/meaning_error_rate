@@ -27,4 +27,8 @@ python -m mer.run --ref_dbl unittests/data/ref.dbl --rec_dbl unittests/data/rec.
 
 # Test on testset
 python -m mer.test --test_json ./config/test.json --prompt_config_path ./config/prompt.json --output_json ./results.json
+
+# Fair speech dataprep
+Download FairSpeech csv from https://github.com/stanford-policylab/asr-disparities/blob/master/input/CORAAL_transcripts.csv
+python3 -m dataprep.csv_2_json --csv_path <path_to_csv> --json_out_path ./CORAAL_transcripts.json
 ```
