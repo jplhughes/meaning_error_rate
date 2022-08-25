@@ -1,0 +1,20 @@
+{
+    "examples": [
+        {
+            "reference": "This man is a suspected murderer and called um John Hughes.",
+            "recognised": "This man is a murderer and called Tom booze.",
+            "reason": "\"suspected\" ommitted causing misinformation (serious), misrecognised name \"John Hughes\" as \"Tom booze\" (standard)",
+            "minor": 0,
+            "standard": 1,
+            "serious": 1
+        },
+        {
+            "reference": "My name is Paul Speyer and I am an engineer.",
+            "recognised": "My name is ball player and I'm an engineer.",
+            "reason": "misrecognised name \"Paul Speyer\" as \"ball player\" (standard), \"I'm\" is contraction of \"I am\" (minor)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        }
+    ]
+}

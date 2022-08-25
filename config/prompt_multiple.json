@@ -1,0 +1,50 @@
+{
+    "errors": {
+        "minor": {
+            "description": "easily able to read through (e.g. incorrect capitalisation, pronouns/prepositions, omission of secondary detail)",
+            "score": 0.25
+        },
+        "standard": {
+            "description": "disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail)",
+            "score": 0.5
+        },
+        "serious": {
+            "description": "misinformation which changes meaning (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation)",
+            "score": 1.0
+        }
+    },
+    "examples": [
+        {
+            "reference": "Um, um, yes I am um very happy to see you Ra'Shede Hageman, bye.",
+            "recognised": "Um, yes I am very happy to see you Rash eared haggard man.",
+            "reason": "misrecognized name \"Ra'Shede Hageman\" as \"Rash eared haggard man\" (standard), \"bye\" is omitted (standard)",
+            "minor": 0,
+            "standard": 2,
+            "serious": 0
+        },
+        {
+            "reference": "This has been confirmed by the Pentagon and an executive will call you.",
+            "recognised": "This hasn't been confirmed by the Pentagon and in executive will call you.",
+            "reason": "\"has\" contraction reversed to \"hasn't\" causing misinformation (serious), \"an\" misrecognized as \"in\" but easy to read through (minor)",
+            "minor": 1,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "I laughed and cried twenty times but it turned out okay.",
+            "recognised": "I laughed and cried, perhaps too much of the latter, 20 times but it turned out ok.",
+            "reason": "\"perhaps too much of the latter\" has been inserted but makes sense (minor)",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "Hi my name is Bob and I like cheese a lot.",
+            "recognised": "Hi my frame is fob and I bike cheeses lot.",
+            "reason": "\"name\" misrecognized as \"frame\" (serious), \"Bob\" misrecognized as \"fob\" (standard), \"like\" misrecognized as \"bike\" (standard), \"cheese\" recognized as \"cheeses\" (minor), \"a\" is missed out (minor)",
+            "minor": 2,
+            "standard": 2,
+            "serious": 1
+        }
+    ]
+}
