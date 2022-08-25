@@ -61,7 +61,7 @@ def get_sentences(ref_text, rec_text):
     ref_sentence = []
     rec_sentence = []
     ref_counter = 0
-    for i, (ref, rec) in enumerate(alignment):
+    for ref, rec in alignment:
         if ref != GAP:
             ref_sentence.append(ref)
             ref_counter += 1
@@ -93,8 +93,11 @@ def get_sentences(ref_text, rec_text):
 def calculate_wer(ref_text, rec_text):
 
     alignment, reference_count, _ = get_alignment(ref_text, rec_text)
+    result = {"reference": ref_text, "recognised": rec_text, "reference_count": reference_count}
     if reference_count == 0:
-        return
+        # reference is empty after alignment, return wer=100
+        result["wer"] = 100
+        return None, reference_count, result
 
     comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
     insertions, deletions, substitions = 0, 0, 0
@@ -119,16 +122,15 @@ def calculate_wer(ref_text, rec_text):
     wer = 100 * num_errors / reference_count
     comparison = " ".join(comparison)
 
-    result = {
-        "reference": ref_text,
-        "recognised": rec_text,
-        "comparison": comparison,
-        "insertions": insertions,
-        "deletions": deletions,
-        "substitions": substitions,
-        "reference_count": reference_count,
-        "wer": round(wer, 2),
-    }
+    result.update(
+        [
+            ("comparison", comparison),
+            ("insertions", insertions),
+            ("deletions", deletions),
+            ("substitions", substitions),
+            ("wer", round(wer, 2)),
+        ]
+    )
 
     return num_errors, reference_count, result
 
