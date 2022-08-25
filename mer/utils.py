@@ -32,12 +32,20 @@ def majority_voting(continuations, prompt):
 def get_alignment(ref_text, rec_text):
     # separate punctuation and split into words
     # TODO this will fail for abbreviations e.g. Mr.
-    ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    rec_words = re.findall(r"[\w'-]+|[.,!?;]", rec_text)
 
+    # Find indices of punctuation in reference text
+    ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
+    punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
+
+    # Remove all punctuation and align
+    ref_text = re.sub(r"[^\w\s]", "", ref_text)
+    rec_text = re.sub(r"[^\w\s]", "", rec_text)
+    ref_words = ref_text.split()
+    rec_words = rec_text.split()
     alignment = align(ref_words, rec_words, GAP)
-    reference_count = len(ref_words)
-    return alignment, reference_count
+
+    reference_count = len(alignment)
+    return alignment, reference_count, punctuation_dict
 
 
 def get_sentences(ref_text, rec_text):
@@ -46,38 +54,51 @@ def get_sentences(ref_text, rec_text):
     based on the alignment. You need the alignment to deal with the cases where a whole sentence is missing
     if the ref/rec or eos punctuation is missing.
     """
-    alignment, _ = get_alignment(ref_text, rec_text)
+    alignment, _, punctuation_dict = get_alignment(ref_text, rec_text)
 
     ref_sentences = []
     rec_sentences = []
     ref_sentence = []
     rec_sentence = []
-    for (ref, rec) in alignment:
-        # If EOS found in reference, start a new sentence at that point in the alignment
-        if ref in ".!?":
+    ref_counter = 0
+    for ref, rec in alignment:
+        if ref != GAP:
             ref_sentence.append(ref)
-            if rec != GAP:
-                rec_sentence.append(rec)
-            # Rejoin the punctuation in the string and save to list
-            ref_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(ref_sentence))
-            rec_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(rec_sentence))
-            ref_sentences.append(ref_sentence)
-            rec_sentences.append(rec_sentence)
-            # reset the current sentence
-            ref_sentence = []
-            rec_sentence = []
-        else:
-            # Kepp adding words if they are not a "gap"
-            if ref != GAP:
-                ref_sentence.append(ref)
-            if rec != GAP:
-                rec_sentence.append(rec)
+            ref_counter += 1
+        if rec != GAP:
+            rec_sentence.append(rec)
+        if ref_counter in punctuation_dict:
+            if punctuation_dict[ref_counter] in ".?!":
+                # Append end of sentence punctuation.
+                # TODO: Do not use the ref puncutation in recognised as sometimes incorrect punctuation can change meaning.
+                ref_sentence.append(punctuation_dict[ref_counter])
+                rec_sentence.append(punctuation_dict[ref_counter])
+                del punctuation_dict[ref_counter]
+                ref_counter += 1
+                # Rejoin the punctuation in the string and save to list
+                ref_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(ref_sentence))
+                rec_sentence = re.sub(r'\s([?.!"](?:\s|$))', r"\1", " ".join(rec_sentence))
+                ref_sentences.append(ref_sentence)
+                rec_sentences.append(rec_sentence)
+                # reset the current sentence
+                ref_sentence = []
+                rec_sentence = []
+            else:
+                # Append other punctuation (eg ,) to sentence and continue
+                ref_sentence.append(punctuation_dict[ref_counter])
+                ref_counter += 1
+
     return ref_sentences, rec_sentences
 
 
 def calculate_wer(ref_text, rec_text):
 
-    alignment, reference_count = get_alignment(ref_text, rec_text)
+    alignment, reference_count, _ = get_alignment(ref_text, rec_text)
+    result = {"reference": ref_text, "recognised": rec_text, "reference_count": reference_count}
+    if reference_count == 0:
+        # reference is empty after alignment, return wer=100
+        result["wer"] = "null"
+        return None, reference_count, result
 
     comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
     insertions, deletions, substitions = 0, 0, 0
@@ -102,16 +123,15 @@ def calculate_wer(ref_text, rec_text):
     wer = 100 * num_errors / reference_count
     comparison = " ".join(comparison)
 
-    result = {
-        "reference": ref_text,
-        "recognised": rec_text,
-        "comparison": comparison,
-        "insertions": insertions,
-        "deletions": deletions,
-        "substitions": substitions,
-        "reference_count": reference_count,
-        "wer": round(wer, 2),
-    }
+    result.update(
+        [
+            ("comparison", comparison),
+            ("insertions", insertions),
+            ("deletions", deletions),
+            ("substitions", substitions),
+            ("wer", round(wer, 2)),
+        ]
+    )
 
     return num_errors, reference_count, result
 
