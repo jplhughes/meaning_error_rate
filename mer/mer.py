@@ -15,13 +15,12 @@ def get_meaning_error_rate(
     lm = LanguageModel(api_key=api_key)
 
     total_errors, total_reference_count = 0, 0  # For WER
-    total_num_sentences, total_penalty, total_tokens = 0, 0, 0  # For MER
-    total_correct, total_labelled = 0, 0  # For accuracy
+    total_penalty, total_target_penalty, total_tokens = 0, 0, 0  # For MER
     cost = 0
 
     results = []
     for i, example in enumerate(examples):
-        error_type, ref, rec, reason = prompt.unpack_example(example)
+        error_count_target, ref, rec = prompt.unpack_example(example)
 
         # WER
         errors, reference_count, wer_result = calculate_wer(ref, rec)
@@ -38,22 +37,19 @@ def get_meaning_error_rate(
         total_tokens += response["usage"]["total_tokens"]
 
         # Majority voting (keep track of score penalties to work out MER)
-        voted_prediction, vote_count, prediction_result = majority_voting(continuations, prompt)
-        total_num_sentences += 1
-        total_penalty += prompt.error2score[voted_prediction]
+        voted_penalty, prediction_result = majority_voting(continuations, prompt)
+        mer_pred = calculate_meaning_error_rate(reference_count, voted_penalty)
+        prediction_result["meaning_error_rate"] = round(mer_pred, 2)
+        total_penalty += voted_penalty
 
-        # If you have human labels (targets for error type), then record extra stats
-        if error_type:
-            outcome = "incorrect"
-            total_labelled += 1
-            if voted_prediction == error_type:
-                print(f"Got example {i} correct ({vote_count}/{len(continuations)})")
-                outcome = "correct"
-                total_correct += 1
-
-            # Add label specific info
-            prediction_result["target"] = {"error": error_type, "reason": reason}
-            prediction_result["outcome"] = outcome
+        # If you have human labels (targets counts for error type), then record extra stats
+        if error_count_target:
+            penalty_target = prompt.get_penalty(error_count_target)
+            total_target_penalty += penalty_target
+            mer_target = calculate_meaning_error_rate(reference_count, penalty_target)
+            error_count_target["meaning_error_rate"] = round(mer_target, 2)
+            prediction_result["target"] = error_count_target
+            prediction_result["mer_diff"] = round(mer_pred - mer_target, 2)
 
         results.append({**wer_result, **prediction_result})
 
@@ -62,17 +58,22 @@ def get_meaning_error_rate(
         return None, None
 
     cost = lm.print_actual_cost(total_tokens)
-    meaning_error_rate = calculate_meaning_error_rate(total_num_sentences, total_penalty)
+    meaning_error_rate = calculate_meaning_error_rate(total_reference_count, total_penalty)
     wer = 100 * total_errors / total_reference_count
 
-    # Accuracy of LLM method to match human labels (if they were provided)
-    if total_labelled > 0:
-        accuracy = 100 * total_correct / total_labelled
-    else:
-        accuracy = None
+    if total_target_penalty > 0:
+        meaning_error_rate_target = calculate_meaning_error_rate(total_reference_count, total_target_penalty)
 
     save_results(
-        output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate, wer, accuracy
+        output_json,
+        results,
+        total_tokens,
+        cost,
+        total_reference_count,
+        total_penalty,
+        meaning_error_rate,
+        wer,
+        meaning_error_rate_target,
     )
 
-    return meaning_error_rate, accuracy
+    return meaning_error_rate, meaning_error_rate_target

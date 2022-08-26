@@ -130,12 +130,33 @@ class PromptMultiple(PromptBase):
 
     @staticmethod
     def unpack_example(example):
-        minor = example.get("minor", None)
-        standard = example.get("standard", None)
-        serious = example.get("serious", None)
-        reason = example.get("reason", None)
-        errors = (minor, standard, serious)
-        return errors, example["reference"], example["recognised"], reason
+        if example.get("minor", None) is not None:
+            error_count_dict = {
+                "minor": example.get("minor"),
+                "standard": example.get("standard"),
+                "serious": example.get("serious"),
+                "reason": example.get("reason", None),
+            }
+        else:
+            error_count_dict = None
+        return error_count_dict, example["reference"], example["recognised"]
+
+    @staticmethod
+    def unpack_error_counts(error_count_dict):
+        minor = error_count_dict["minor"]
+        standard = error_count_dict["standard"]
+        serious = error_count_dict["serious"]
+        reason = error_count_dict["reason"]
+        return minor, standard, serious, reason
+
+    def get_penalty(self, error_count_dict):
+        minor, standard, serious, _ = self.unpack_error_counts(error_count_dict)
+        penalty = (
+            minor * self.error2score["minor"]
+            + standard * self.error2score["standard"]
+            + serious * self.error2score["serious"]
+        )
+        return penalty
 
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
@@ -150,16 +171,15 @@ class PromptMultiple(PromptBase):
             for error_type in self.config["errors"]:
                 description = self.config["errors"][error_type]["description"]
                 base.append(f"{error_type.capitalize()} error - {description}.\n")
+            base.append(
+                "Disfluences, hyphens joining words, equivalent numbering and correct contractions can be ignored completely.\n"
+            )
 
         random.shuffle(self.config["examples"])  # shuffle so no order to examples
         for example in self.config["examples"]:
-            errors, ref, rec, reason = self.unpack_example(example)
-            minor, standard, serious = errors
-            penalty = (
-                minor * self.error2score["minor"]
-                + standard * self.error2score["standard"]
-                + serious * self.error2score["serious"]
-            )
+            error_count_dict, ref, rec = self.unpack_example(example)
+            penalty = self.get_penalty(error_count_dict)
+            minor, standard, serious, reason = self.unpack_error_counts(error_count_dict)
 
             base.append(f"Reference: {ref}")
             base.append(f"Recognised: {rec}")
@@ -189,22 +209,20 @@ class PromptMultiple(PromptBase):
             reason, result = lines[0], lines[1]
             # Unpack the counts from result line
             # e.g. Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
-            minor = result.strip().split()[1]
-            standard = result.strip().split()[4]
-            serious = result.strip().split()[7]
+            error_count_dict = {
+                "minor": result.strip().split()[1],
+                "standard": result.strip().split()[4],
+                "serious": result.strip().split()[7],
+                "reason": reason,
+            }
             penalty_from_prompt = result.strip().split()[10]
-            errors = (minor, standard, serious)
         except IndexError:
             print(f"Bad continuation from LM as can't unpack items {text}")
             return None, None, None
 
-        penalty_from_counts = (
-            minor * self.error2score["minor"]
-            + standard * self.error2score["standard"]
-            + serious * self.error2score["serious"]
-        )
+        penalty_from_counts = self.get_penalty(error_count_dict)
 
         if penalty_from_prompt != penalty_from_counts:
             print(f"WARNING: LM bad at maths! It said {penalty_from_prompt} but should be {penalty_from_counts}.")
 
-        return errors, reason, penalty_from_counts
+        return error_count_dict, penalty_from_counts

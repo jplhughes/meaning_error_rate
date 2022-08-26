@@ -10,23 +10,23 @@ GAP = "***"
 def majority_voting(continuations, prompt):
     # Loop over text in continuatinos and extract results
     predictions = []
-    errors = []
+    penalities = []
     for text in continuations:
-        error_type_pred, reason_pred, _ = prompt.get_result(text)
-        errors.append(error_type_pred)
-        predictions.append({"error": error_type_pred, "reason": reason_pred})
+        error_counts_dict, penalty = prompt.get_result(text)
+        penalities.append(penalty)
+        predictions.append(error_counts_dict)
 
     # Run majority voting given the predicted error tpes
-    counts = Counter(errors)
-    voted_prediction, vote_count = counts.most_common()[0]
+    counts = Counter(penalities)
+    voted_penality, vote_count = counts.most_common()[0]
 
     result = {
         "predictions": predictions,
-        "voted_prediction": voted_prediction,
+        "voted_penality": voted_penality,
         "vote_count": vote_count,
     }
 
-    return voted_prediction, vote_count, result
+    return voted_penality, result
 
 
 def get_alignment(ref_text, rec_text):
@@ -117,7 +117,15 @@ def calculate_wer(ref_text, rec_text):
 
 
 def save_results(
-    output_json, results, total_tokens, cost, total_num_sentences, total_penalty, meaning_error_rate, wer, accuracy=None
+    output_json,
+    results,
+    total_tokens,
+    cost,
+    total_reference_count,
+    total_penalty,
+    meaning_error_rate,
+    wer,
+    meaning_error_rate_target=None,
 ):
     output = {}
     output["results"] = results
@@ -127,18 +135,17 @@ def save_results(
     }
     output["summary"] = {
         "wer": round(wer, 2),
-        "total_num_sentences": total_num_sentences,
+        "total_reference_count": total_reference_count,
         "total_penalty": total_penalty,
         "meaning_error_rate": round(meaning_error_rate, 2),
     }
-    if accuracy:
-        output["summary"]["accuracy"] = round(accuracy, 2)
+    if meaning_error_rate_target:
+        output["summary"]["accuracy"] = round(meaning_error_rate_target, 2)
 
     with open(output_json, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=4)
 
 
-def calculate_meaning_error_rate(total_num_sentences, total_penalty):
-    # All serious errors makes this accuracy go to 0%, no errors and it is 100%
-    meaning_accuracy = 100 * (total_num_sentences - total_penalty) / total_num_sentences
-    return 100 - meaning_accuracy
+def calculate_meaning_error_rate(total_reference_count, total_penalty):
+    # All serious errors makes this error rate go to 100%, no errors and it is 0%
+    return 100 * total_penalty / total_reference_count
