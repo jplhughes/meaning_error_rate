@@ -143,9 +143,9 @@ class PromptMultiple(PromptBase):
 
     @staticmethod
     def unpack_error_counts(error_count_dict):
-        minor = error_count_dict["minor"]
-        standard = error_count_dict["standard"]
-        serious = error_count_dict["serious"]
+        minor = int(error_count_dict["minor"])
+        standard = int(error_count_dict["standard"])
+        serious = int(error_count_dict["serious"])
         reason = error_count_dict["reason"]
         return minor, standard, serious, reason
 
@@ -210,12 +210,12 @@ class PromptMultiple(PromptBase):
             # Unpack the counts from result line
             # e.g. Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
             error_count_dict = {
-                "minor": result.strip().split()[1],
-                "standard": result.strip().split()[4],
-                "serious": result.strip().split()[7],
+                "minor": int(result.strip().split()[1]),
+                "standard": int(result.strip().split()[4]),
+                "serious": int(result.strip().split()[7]),
                 "reason": reason,
             }
-            penalty_from_prompt = result.strip().split()[10]
+            penalty_from_prompt = float(result.strip().split()[10])
         except IndexError:
             print(f"Bad continuation from LM as can't unpack items {text}")
             return None, None, None
