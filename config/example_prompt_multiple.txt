@@ -1,0 +1,61 @@
+SIMPLE MULTIPLE ERRORS
+
+None error - almost perfect recognized transcript (e.g. differing comma/space/hyphen placement, repeated words and disfluencies are fine). Penalty is 0.
+
+Minor error - easily able to read through (e.g. incorrect capitalisation, pronouns/prepositions, omission of secondary detail). Penalty is 0.25.
+
+Standard error - disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail). Penalty is 0.5.
+
+Serious error - misinformation which changes meaning (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation). Penalty is 1.
+
+Reference: This has been confirmed by the Pentagon and an executive will call you.
+Recognised: This hasn't been confirmed by the Pentagon and in executive will call you.
+Result: 1 minor, 0 standard, 1 serious. Therefore, score is 1.25.
+
+Reference: Um, um, yes I am um very happy to see you Ra’Shede Hageman.
+Recognised: Um, yes I am very happy to see you Rash eared haggard man.
+Result: 0 minor, 1 standard, 0 serious. Therefore, score is 0.5.
+
+Reference: This man is a suspected murderer and called Paul.
+Recognised: This man is a murderer and called fool.
+Result: 
+
+
+
+WITH REASONING
+
+Minor error - easily able to read through (e.g. incorrect capitalisation, pronouns/prepositions, omission of secondary detail). Penalty is 0.25.
+
+Standard error - disrupts the flow and comprehension (e.g. misrecognized/omitted names, homophones/sound-alikes, omission of primary detail). Penalty is 0.5.
+
+Serious error - misinformation which changes meaning (e.g. alternative names/numbers, incorrect word endings/contractions, omission causing misinformation). Penalty is 1.
+
+Disfluences, hyphens joining words, equivalent numbering and correct contractions can be ignored completely.
+
+Reference: Um, um, yes I am um very happy to see you Ra’Shede Hageman, bye.
+Recognised: Um, yes I am very happy to see you Rash eared haggard man.
+Reasoning: misrecognized name "Ra’Shede Hageman" as "Rash eared haggard man" (standard), "bye" is omitted (standard)
+Result: 0 minor + 2 standard + 0 serious = 1 penalty
+
+Reference: This has been confirmed by the Pentagon and an executive will call you.
+Recognised: This hasn't been confirmed by the Pentagon and in executive will call you.
+Reasoning: "has" contraction reversed to "hasn't" causing misinformation (serious), "an" misrecognized as "in" but easy to read through (minor)
+Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
+
+Reference: I laughed and cried twenty times but it turned out okay.
+Recognised: I laughed and cried, perhaps too much of the latter, 20 times but it turned out ok.
+Reasoning: "perhaps too much of the latter" has been inserted but makes sense (minor)
+Result: 1 minor, 0 standard, 0 serious = 0.25
+
+Reference: Hi my name is Bob and I like cheese a lot.
+Recognised: Hi my frame is fob and I bike cheeses lot.
+Reasoning: "name" misrecognized as "frame" (serious), "Bob" misrecognized as "fob" (standard), "like" misrecognized as "bike" (standard), "cheese" recognized as "cheeses" (minor), "a" is missed out (minor)
+Result: 2 minor, 2 standard, 1 serious = 2.5.
+
+Reference: This man is a suspected murderer and called um John Hughes.
+Recognised: This man is a murderer and called Tom booze.
+Reasoning:
+
+Reference: My name is Paul Speyer and I am an engineer.
+Recognised: My name is ball player and I'm an engineer.
+Reasoning:
