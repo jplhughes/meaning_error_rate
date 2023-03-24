@@ -173,20 +173,20 @@ def calculate_meaning_error_rate(total_reference_count, total_penalty):
 
 
 def convert_excel_to_json(excel_path="./config/NER_errors_9-3-23_modified.xlsx", json_path="./config/pablo.json"):
-    excel_data_df = pandas.read_excel(excel_path, sheet_name='speechmatics')
-    raw_data = json.loads(excel_data_df.to_json(orient='records'))
-    data = {
-        "examples": []
-    }
+    excel_data_df = pandas.read_excel(excel_path, sheet_name="speechmatics")
+    raw_data = json.loads(excel_data_df.to_json(orient="records"))
+    data = {"examples": []}
     for item in raw_data:
-        data["examples"].append({
-            "reference": item["reference"].lower(),
-            "recognised": item["recognised"].lower(),
-            "reason": item["reason"],
-            "minor": item["error"].lower().count("minor"),
-            "standard": item["error"].lower().count("standard"),
-            "serious": item["error"].lower().count("serious"),
-        })
+        data["examples"].append(
+            {
+                "reference": item["reference"].lower(),
+                "recognised": item["recognised"].lower(),
+                "reason": item["reason"],
+                "minor": item["error"].lower().count("minor"),
+                "standard": item["error"].lower().count("standard"),
+                "serious": item["error"].lower().count("serious"),
+            }
+        )
 
-    with open(json_path, 'w') as json_file:
+    with open(json_path, "w") as json_file:
         json.dump(data, json_file, indent=4)

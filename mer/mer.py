@@ -10,9 +10,7 @@ from mer.utils import (
 )
 
 
-def get_meaning_error_rate(
-    examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False
-):
+def get_meaning_error_rate(examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
     prompt = PromptMultiple.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
