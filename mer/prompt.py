@@ -209,20 +209,28 @@ class PromptMultiple(PromptBase):
             reason, result = lines[0], lines[1]
             # Unpack the counts from result line
             # e.g. Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
+            minor, standard, serious, penalty = 0, 0, 0, None
+            if "minor" in result:
+                minor = result.split("minor")[0].strip().split()[-1]
+            if "standard" in result:
+                standard = result.split("standard")[0].strip().split()[-1]
+            if "serious" in result:
+                serious = result.split("serious")[0].strip().split()[-1]
+            if "penalty" in result:
+                penalty = float(result.split("penalty")[0].strip().split()[-1])
             error_count_dict = {
-                "minor": int(result.strip().split()[1]),
-                "standard": int(result.strip().split()[4]),
-                "serious": int(result.strip().split()[7]),
+                "minor": minor,
+                "standard": standard,
+                "serious": serious,
                 "reason": reason,
             }
-            penalty_from_prompt = float(result.strip().split()[10])
         except IndexError:
             print(f"Bad continuation from LM as can't unpack items {text}")
             return None, None, None
 
         penalty_from_counts = self.get_penalty(error_count_dict)
 
-        if penalty_from_prompt != penalty_from_counts:
-            print(f"WARNING: LM bad at maths! It said {penalty_from_prompt} but should be {penalty_from_counts}.")
+        if penalty != penalty_from_counts:
+            print(f"WARNING: LM bad at maths! It said {penalty} but should be {penalty_from_counts}.")
 
         return error_count_dict, penalty_from_counts
