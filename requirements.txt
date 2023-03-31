@@ -1,5 +1,7 @@
 openai
 kaldialign
+pandas
+openpyxl
 
 # dev
 pytest

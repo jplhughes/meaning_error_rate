@@ -1,4 +1,5 @@
 import json
+import pandas
 import re
 from collections import Counter
 
@@ -8,7 +9,7 @@ GAP = "***"
 
 
 def majority_voting(continuations, prompt):
-    # Loop over text in continuatinos and extract results
+    # Loop over text in continuations and extract results
     predictions = []
     penalities = []
     for text in continuations:
@@ -169,3 +170,23 @@ def save_results(
 def calculate_meaning_error_rate(total_reference_count, total_penalty):
     # All serious errors makes this error rate go to 100%, no errors and it is 0%
     return 100 * total_penalty / total_reference_count
+
+
+def convert_excel_to_json(excel_path="./config/NER_errors_9-3-23_modified.xlsx", json_path="./config/pablo.json"):
+    excel_data_df = pandas.read_excel(excel_path, sheet_name="speechmatics")
+    raw_data = json.loads(excel_data_df.to_json(orient="records"))
+    data = {"examples": []}
+    for item in raw_data:
+        data["examples"].append(
+            {
+                "reference": item["reference"].lower(),
+                "recognised": item["recognised"].lower(),
+                "reason": item["reason"],
+                "minor": item["error"].lower().count("minor"),
+                "standard": item["error"].lower().count("standard"),
+                "serious": item["error"].lower().count("serious"),
+            }
+        )
+
+    with open(json_path, "w") as json_file:
+        json.dump(data, json_file, indent=4)

@@ -1,3 +1,5 @@
+import os
+import json
 from mer.lm import LanguageModel
 from mer.prompt import PromptMultiple
 from mer.utils import (
@@ -8,33 +10,54 @@ from mer.utils import (
 )
 
 
-def get_meaning_error_rate(
-    examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False, dry_run=False
-):
+def get_meaning_error_rate(examples, prompt_config_path, output_json, api_key=None, num_samples=3, simple=False):
     prompt = PromptMultiple.from_file(prompt_config_path, simple=simple)
     lm = LanguageModel(api_key=api_key)
 
-    total_errors, total_reference_count = 0, 0  # For WER
-    total_penalty, total_target_penalty, total_tokens = 0, 0, 0  # For MER
-    cost = 0
+    cost, total_tokens = 0, 0
 
+    # if file exists, load it
+    output_log = f"{output_json}.continuations.json"
+    if os.path.exists(output_log):
+        with open(output_log, "r", encoding="utf-8") as f:
+            continuations_list = list(json.load(f))
+    else:
+        for example in examples:
+            _, ref, rec = prompt.unpack_example(example)
+            prompt_string = prompt.create_prompt(ref, rec)
+            cost += lm.print_estimated_cost(prompt_string, num_samples=num_samples)
+
+        accept_strings = ["Y", "y", "Yes", "yes"]
+        if input(f"Do you want to spend ${round(cost, 2)}? Enter Y/N to continue: ") not in accept_strings:
+            print("You didn't want to proceed, exiting")
+            exit(1)
+
+        continuations_list = []
+        for example in examples:
+            _, ref, rec = prompt.unpack_example(example)
+
+            # Create prompt and get continuations from lm
+            prompt_string = prompt.create_prompt(ref, rec)
+            continuations, response = lm.get_continuation(prompt_string, num_samples=num_samples)
+            total_tokens += response["usage"]["total_tokens"]
+            continuations_list.append(continuations)
+        cost = lm.print_actual_cost(total_tokens)
+        print(f"Cost: ${round(cost, 2)}")
+
+        # save list of continuations to file
+        with open(output_log, "w", encoding="utf-8") as f:
+            json.dump(continuations_list, f, indent=4)
+
+    total_errors, total_reference_count = 0, 0  # For WER
+    total_penalty, total_target_penalty = 0, 0  # For MER
     results = []
-    for i, example in enumerate(examples):
+    for example, continuations in zip(examples, continuations_list):
         error_count_target, ref, rec = prompt.unpack_example(example)
 
         # WER
         errors, reference_count, wer_result = calculate_wer(ref, rec)
         total_errors += errors
         total_reference_count += reference_count
-
-        # Create prompt and get continuations from lm
-        prompt_string = prompt.create_prompt(ref, rec)
-        if dry_run:
-            cost += lm.print_estimated_cost(prompt_string, num_samples=num_samples)  # estimated cost
-            print(i, prompt_string)
-            continue
-        continuations, response = lm.get_continuation(prompt_string, num_samples=num_samples)
-        total_tokens += response["usage"]["total_tokens"]
 
         # Majority voting (keep track of score penalties to work out MER)
         voted_penalty, prediction_result = majority_voting(continuations, prompt)
@@ -53,11 +76,6 @@ def get_meaning_error_rate(
 
         results.append({**wer_result, **prediction_result})
 
-    if dry_run:
-        print(f"This run would cost approximately: £{cost}")
-        return None, None
-
-    cost = lm.print_actual_cost(total_tokens)
     meaning_error_rate = calculate_meaning_error_rate(total_reference_count, total_penalty)
     wer = 100 * total_errors / total_reference_count
 

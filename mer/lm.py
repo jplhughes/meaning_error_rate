@@ -4,10 +4,12 @@ import openai
 
 # Cost for 1k tokens for each model
 models2cost = {
-    "text-davinci-002": 0.0600,
-    "text-curie-001": 0.0060,
-    "text-babbage-001": 0.0012,
-    "text-ada-001": 0.0008,
+    "gpt-3.5-turbo": 0.0020,
+    "text-davinci-003": 0.0200,
+    "text-davinci-002": 0.0200,
+    "text-curie-001": 0.0020,
+    "text-babbage-001": 0.0005,
+    "text-ada-001": 0.0004,
 }
 
 
