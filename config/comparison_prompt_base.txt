@@ -1,0 +1,26 @@
+Work out the severity of errors based on the comparison between the reference and recognised transcript. The comparison encodes substitution, deletion and insertion errors in square brackets. The three error_types are: minor, standard, serious. Consider the effect on what a human viewer could understand.
+ 
+Comparison: the first ['topic' is misrecognised as 'top sick'] is the supreme court .
+Output: 
+[ 
+{ "reason": "The word 'topic' is misrecognised as 'top sick' causing the meaning to be lost.", "error_type": "standard" }
+] 
+ 
+Comparison: the final ['of the' is deleted] 2016 presidential debates between ['is' is inserted] secretary of state hillary clinton and donald j . trump .
+Output:
+[ 
+{ "reason": "The words 'of the' are deleted but the viewer can still understand the sentence.", "error_type": "minor" },
+{ "reason": "The word 'is' is inserted but the viewer can still understand the sentence.", "error_type": "minor" }
+] 
+
+Comparison: but the real winner may have been this young superfan on the sidelines who received djokovic's ['racket; is misrecognised as 'jacket'] .
+Output: 
+[ 
+{ "reason": "'The word 'racket' is misrecognized as 'jacket' and a viewer would not realise there had been a change in meaning.", "error_type": "serious" }
+] 
+
+Comparison: the audience here in the hall has promised to remain ['silent' is misrecognised as 'silence'] .
+Output: 
+[ 
+{ "reason": "The word 'silent' is misrecognised as 'silence' but a viewer can see the words are similar and still understand the sentence.", "error_type": "minor" }
+]

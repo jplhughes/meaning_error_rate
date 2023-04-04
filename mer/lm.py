@@ -30,7 +30,7 @@ class LanguageModel:
         assert self.api_key != "", "Pass api_key or set OPENAI_API_KEY evironment variable"
         openai.api_key = self.api_key
 
-    def get_continuation(self, prompt, temperature=0.7, max_tokens=64, num_samples=1):
+    def get_continuation(self, prompt, temperature=0.7, max_tokens=512, num_samples=1):
         response = openai.Completion.create(
             model=self.model,
             prompt=prompt,
@@ -62,3 +62,4 @@ class LanguageModel:
         cost = models2cost[self.model] * tokens / 1000
         print(f"COST: #char: {len(prompt)}, #tokens: {tokens}, cost: ${cost:.2f}, runs/$: {1/cost:.1f}")
         return round(cost, 2)
+    

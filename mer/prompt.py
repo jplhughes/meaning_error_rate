@@ -2,6 +2,7 @@ import copy
 import json
 import random
 from abc import ABC, abstractmethod
+from mer.utils import calculate_wer
 
 
 class PromptBase(ABC):
@@ -15,6 +16,12 @@ class PromptBase(ABC):
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
         return cls(config, **kwargs)
+
+    @classmethod
+    def from_txt(cls, txt_path, **kwargs):
+        with open(txt_path, "r", encoding="utf-8") as f:
+            txt = f.read()
+        return cls(txt, **kwargs)
 
     @staticmethod
     @abstractmethod
@@ -47,6 +54,7 @@ class Prompt(PromptBase):
     def __init__(self, config, simple=False, seed=10):
         self.config = config
         self.simple = simple
+        self.txt = txt
         random.seed(seed)
         # Create prompt based on config
         self.base = self.get_prompt_base()
@@ -120,13 +128,13 @@ class PromptMultiple(PromptBase):
     It can also find the result given the LM output.
     """
 
-    def __init__(self, config, simple=False, seed=10):
-        self.config = config
+    def __init__(self, txt, config=None, simple=False, seed=10):
+        self.config = txt
         self.simple = simple
         random.seed(seed)
         # Create prompt based on config
         self.error2score = self.get_score_mapping()
-        self.base = self.get_prompt_base()
+        self.base = txt
 
     @staticmethod
     def unpack_example(example):
@@ -189,48 +197,55 @@ class PromptMultiple(PromptBase):
         return base
 
     def get_score_mapping(self):
-        error2score = {}
-        for error_type in self.config["errors"]:
-            error2score[error_type] = self.config["errors"][error_type]["score"]
+        error2score = {"minor": 0.25,
+                       "standard": 0.5,
+                       "serious": 1}
         return error2score
-
+    
     def create_prompt(self, ref, rec):
-        prompt = copy.deepcopy(self.base)
-        prompt.append(f"Reference: {ref}")
-        prompt.append(f"Recognised: {rec}")
-        prompt.append("Reasoning:")
-        return "\n".join(prompt)
+        _, _, wer_result = calculate_wer(ref, rec)
+        comparison = wer_result["comparison"]
+        return f'''{copy.deepcopy(self.base)}
 
+Comparison: {comparison}
+Output:'''
+    
     def get_result(self, text):
         assert text is not None, "Text is empty"
-        lines = text.strip().split("\n")
         try:
-            # Get reason from first line and result (containing error counts) on the second line
-            reason, result = lines[0], lines[1]
-            # Unpack the counts from result line
-            # e.g. Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
-            minor, standard, serious, penalty = 0, 0, 0, None
-            if "minor" in result:
-                minor = result.split("minor")[0].strip().split()[-1]
-            if "standard" in result:
-                standard = result.split("standard")[0].strip().split()[-1]
-            if "serious" in result:
-                serious = result.split("serious")[0].strip().split()[-1]
-            if "penalty" in result:
-                penalty = float(result.split("penalty")[0].strip().split()[-1])
-            error_count_dict = {
-                "minor": minor,
-                "standard": standard,
-                "serious": serious,
-                "reason": reason,
+            output = json.loads(text)
+        except json.decoder.JSONDecodeError:
+                print(f"Bad JSON from LM. Can't decode '{text}'")
+                return None, None
+        
+        error_count_dict = {
+                "minor": 0,
+                "standard": 0,
+                "serious": 0,
+                "reason": []
             }
-        except IndexError:
-            print(f"Bad continuation from LM as can't unpack items {text}")
-            return None, None, None
+        
+        error_string_map = {
+                "minor": "m",
+                "standard": "s",
+                "serious": "e"
+            }
+        error_str = ""
+        for row in output:
+            try:
+                # Get reason from second line and result (containing error counts) on the fourth line
+                reason, error = row["reason"], row["error_type"].strip()
+                # Count the number of errors
+                error_count_dict["reason"].append(reason)
+                error_count_dict[error] += 1
+                error_str += error_string_map[error]
+ 
+            except IndexError:
+                print(f"Bad continuation from LM as can't unpack items {text}")
+                return None, None
 
         penalty_from_counts = self.get_penalty(error_count_dict)
+        error_count_dict["reason"] = " ".join(error_count_dict["reason"])
 
-        if penalty != penalty_from_counts:
-            print(f"WARNING: LM bad at maths! It said {penalty} but should be {penalty_from_counts}.")
-
-        return error_count_dict, penalty_from_counts
+        #return error_count_dict, penalty_from_counts
+        return error_count_dict, error_str
