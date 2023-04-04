@@ -13,32 +13,31 @@ def convert_err_str_to_penalty(err_str):
     param: err_str: string of error codes (m = minor, s = standard, e = serious)
     returns: float representing total penalty (m = 0.25, s = 0.5, e = 1.0)
     """
-    err_map = {'m': 0.25,
-               's': 0.5,
-               'e': 1.0}
-    
+    err_map = {"m": 0.25, "s": 0.5, "e": 1.0}
+
     penalty = sum([err_map[char] for char in err_str])
     return penalty
+
 
 # def convert_err_str_to_dict(err_str):
 #     """
 #     param: err_str: string of error codes (m = minor, s = standard, e = serious)
 #     returns: readable dict of errors
 #     """
-#     return {'minor': err_str.count("m"), 
+#     return {'minor': err_str.count("m"),
 #             'standard': err_str.count("s"),
 #             'serious': err_str.count("e")}
-    
+
+
 def convert_err_str_to_dict(err_str):
     """
     param: err_str: string of error codes (m = minor, s = standard, e = serious)
     returns: readable dict of errors
     """
-    err_map = {'m': "minor",
-               's': "standard",
-               'e': "serious"}
+    err_map = {"m": "minor", "s": "standard", "e": "serious"}
     full_err_str = [err_map[err] for err in err_str]
     return " ".join(full_err_str)
+
 
 def majority_voting(continuations, prompt):
     # Loop over text in continuations and extract results
@@ -58,12 +57,7 @@ def majority_voting(continuations, prompt):
     else:
         penalty = None
 
-    result = {
-        "predictions": predictions,
-        "voted_penalty": penalty,
-        "voted_error": voted_err,
-        "vote_count": vote_count
-    }
+    result = {"predictions": predictions, "voted_penalty": penalty, "voted_error": voted_err, "vote_count": vote_count}
 
     return penalty, result
 
@@ -87,6 +81,7 @@ def get_alignment(ref_text, rec_text):
 
     reference_count = len(alignment)
     return alignment, reference_count, None
+
 
 def get_sentences(ref_text, rec_text):
     """
@@ -173,7 +168,7 @@ def calculate_wer(ref_text, rec_text):
                 prev_ref = prev[0].strip("'")
                 comparison.append(f"{prev_ref} {ref}' is deleted]")
             # if last word was substitution, add it in
-            elif 'misrecognised' in comparison[-1]:
+            elif "misrecognised" in comparison[-1]:
                 prev = comparison.pop()
                 prev_ref, prev_rec = prev.split(" is misrecognised as ")
                 prev_ref = prev_ref.strip("'")

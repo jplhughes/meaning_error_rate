@@ -108,9 +108,9 @@ def get_meaning_error_rate(
         wer,
         meaning_error_rate_target,
     )
-    with open('results/bad_examples.txt', 'w') as f:
+    with open("results/bad_examples.txt", "w") as f:
         for ref, rec in bad_examples:
-            f.write(f'Reference:{ref}\n')
-            f.write(f'Recognised:{rec}\n')
+            f.write(f"Reference:{ref}\n")
+            f.write(f"Recognised:{rec}\n")
             f.write("\n")
     return meaning_error_rate, meaning_error_rate_target

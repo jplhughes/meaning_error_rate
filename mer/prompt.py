@@ -197,39 +197,28 @@ class PromptMultiple(PromptBase):
         return base
 
     def get_score_mapping(self):
-        error2score = {"minor": 0.25,
-                       "standard": 0.5,
-                       "serious": 1}
+        error2score = {"minor": 0.25, "standard": 0.5, "serious": 1}
         return error2score
-    
+
     def create_prompt(self, ref, rec):
         _, _, wer_result = calculate_wer(ref, rec)
         comparison = wer_result["comparison"]
-        return f'''{copy.deepcopy(self.base)}
+        return f"""{copy.deepcopy(self.base)}
 
 Comparison: {comparison}
-Output:'''
-    
+Output:"""
+
     def get_result(self, text):
         assert text is not None, "Text is empty"
         try:
             output = json.loads(text)
         except json.decoder.JSONDecodeError:
-                print(f"Bad JSON from LM. Can't decode '{text}'")
-                return None, None
-        
-        error_count_dict = {
-                "minor": 0,
-                "standard": 0,
-                "serious": 0,
-                "reason": []
-            }
-        
-        error_string_map = {
-                "minor": "m",
-                "standard": "s",
-                "serious": "e"
-            }
+            print(f"Bad JSON from LM. Can't decode '{text}'")
+            return None, None
+
+        error_count_dict = {"minor": 0, "standard": 0, "serious": 0, "reason": []}
+
+        error_string_map = {"minor": "m", "standard": "s", "serious": "e"}
         error_str = ""
         for row in output:
             try:
@@ -239,7 +228,7 @@ Output:'''
                 error_count_dict["reason"].append(reason)
                 error_count_dict[error] += 1
                 error_str += error_string_map[error]
- 
+
             except IndexError:
                 print(f"Bad continuation from LM as can't unpack items {text}")
                 return None, None
@@ -247,5 +236,5 @@ Output:'''
         penalty_from_counts = self.get_penalty(error_count_dict)
         error_count_dict["reason"] = " ".join(error_count_dict["reason"])
 
-        #return error_count_dict, penalty_from_counts
+        # return error_count_dict, penalty_from_counts
         return error_count_dict, error_str

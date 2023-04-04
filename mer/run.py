@@ -23,29 +23,23 @@ def convert_dbl_to_dict(ref_dbl, rec_dbl):
 
     return examples
 
+
 def convert_txt_to_dict(txt):
     examples = txt.read()
-    ref_rec_pairs = examples.split('\n\n')
+    ref_rec_pairs = examples.split("\n\n")
 
     examples = []
     for item in ref_rec_pairs:
         try:
-            ref, rec, targets, reason = item.split('\n')
+            ref, rec, targets, reason = item.split("\n")
         except:
             print(item)
-        _, ref = ref.split(':')
-        _, rec = rec.split(':')
+        _, ref = ref.split(":")
+        _, rec = rec.split(":")
         _, targets = targets.split(":")
         _, reason = reason.split(":")
 
-        example = {
-            "reference": ref,
-            "recognised": rec,
-            "reason": reason,
-            "minor": 0,
-            "standard": 0,
-            "serious": 0
-        }
+        example = {"reference": ref, "recognised": rec, "reason": reason, "minor": 0, "standard": 0, "serious": 0}
 
         for word in targets.split():
             example[word] += 1
