@@ -19,16 +19,6 @@ def convert_err_str_to_penalty(err_str):
     return penalty
 
 
-# def convert_err_str_to_dict(err_str):
-#     """
-#     param: err_str: string of error codes (m = minor, s = standard, e = serious)
-#     returns: readable dict of errors
-#     """
-#     return {'minor': err_str.count("m"),
-#             'standard': err_str.count("s"),
-#             'serious': err_str.count("e")}
-
-
 def convert_err_str_to_dict(err_str):
     """
     param: err_str: string of error codes (m = minor, s = standard, e = serious)
