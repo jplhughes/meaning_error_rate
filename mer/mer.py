@@ -11,15 +11,14 @@ from mer.utils import (
 
 
 def get_meaning_error_rate(
-    examples, prompt_path, output_json, prompt_type="txt", api_key=None, num_samples=3, simple=False, dry_run=True
+    examples, prompt_path, output_json, api_key=None, num_samples=3, simple=False, dry_run=True
 ):
-    if prompt_type == "json":
+    if prompt_path.endswith(".json"):
         prompt = PromptMultiple.from_file(prompt_path, simple=simple)
-    elif prompt_type == "txt":
+    elif prompt_path.endswith(".txt"):
         prompt = PromptMultiple.from_txt(prompt_path, simple=simple)
     else:
-        print("Prompt input type not supported")
-        exit()
+        exit("Prompt input type not supported")
     lm = LanguageModel(api_key=api_key)
 
     cost, total_tokens = 0, 0
