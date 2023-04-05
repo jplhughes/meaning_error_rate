@@ -30,19 +30,17 @@ def convert_txt_to_dict(txt):
 
     examples = []
     for item in ref_rec_pairs:
-        try:
-            ref, rec, targets, reason = item.split("\n")
-        except:
-            print(item)
-        _, ref = ref.split(":")
-        _, rec = rec.split(":")
-        _, targets = targets.split(":")
-        _, reason = reason.split(":")
-
-        example = {"reference": ref, "recognised": rec, "reason": reason, "minor": 0, "standard": 0, "serious": 0}
-
-        for word in targets.split():
-            example[word] += 1
+        example = {"minor": 0, "standard": 0, "serious": 0}
+        for line in item.split("\n"):
+            key, value = line.split(":")
+            key = key.lower()
+            if key == "target":
+                for word in value:
+                    example[word] += 1
+            elif key in ["reference", "recognised", "reason"]:
+                example[key] = value
+            else:
+                exit(f"Text file contains an unrecognised keyword: {key}")
 
         examples.append(example)
 
