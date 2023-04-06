@@ -254,3 +254,34 @@ def convert_excel_to_json(excel_path="./config/NER_errors_9-3-23_modified.xlsx",
 
     with open(json_path, "w") as json_file:
         json.dump(data, json_file, indent=4)
+
+
+def convert_txt_to_dict(examples):
+    """
+    param: examples: string containing reference, recognised, reason (optional), and severity errors (optional); one per line
+    expected formatting includes a linebreak between sentence-pairs
+    return: the same data but in dictionary format 
+    """
+    
+    ref_rec_pairs = examples.split("\n\n")
+
+    examples = []
+    for item in ref_rec_pairs:
+        example = {"minor": 0, "standard": 0, "serious": 0}
+        for line in item.split("\n"):
+            key, value = line.split(":")
+            key = key.lower()
+            value = value.strip()
+            # severity errors need to be split into minor, standard, serious
+            if key == "error":
+                for word in value.split():
+                    example[word] += 1
+            # everything else goes in as is
+            elif key in ["reference", "recognised", "reason"]:
+                example[key] = value
+            else:
+                exit(f"Text file contains an unrecognised keyword: {key}")
+
+        examples.append(example)
+
+    return examples
