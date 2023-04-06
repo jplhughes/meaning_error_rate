@@ -189,10 +189,12 @@ class PromptMultiple(PromptBase):
                     example[key] = value
                 elif key == "reason":
                     reasons = value.split(".")
-                    reasons =[f"{reason.strip()}." if not reason.endswith(".") else reason.strip() for reason in reasons]               
+                    reasons = [
+                        f"{reason.strip()}." if not reason.endswith(".") else reason.strip() for reason in reasons
+                    ]
                 else:
                     exit(f"Text file contains an unrecognised keyword: {key}")
-            
+
             errors = [{"reason": reason, "error_type": error_type} for reason, error_type in zip(reasons, error_types)]
             example["errors"] = errors
 

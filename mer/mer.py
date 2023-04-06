@@ -10,9 +10,7 @@ from mer.utils import (
 )
 
 
-def get_meaning_error_rate(
-    examples, prompt_path, output_json, api_key=None, num_samples=3, simple=False, dry_run=True
-):
+def get_meaning_error_rate(examples, prompt_path, output_json, api_key=None, num_samples=3, simple=False, dry_run=True):
     if prompt_path.endswith(".json"):
         prompt = PromptMultiple.from_file(prompt_path, simple=simple)
     elif prompt_path.endswith(".txt"):

@@ -69,7 +69,7 @@ def get_alignment(ref_text, rec_text, remove_punc=False):
         ref_text = ref_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
         rec_text = rec_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
         ref_punctuation_dict = None
-    
+
     ref_words = ref_text.split()
     rec_words = rec_text.split()
 
@@ -260,9 +260,9 @@ def convert_txt_to_dict(examples):
     """
     param: examples: string containing reference, recognised, reason (optional), and severity errors (optional); one per line
     expected formatting includes a linebreak between sentence-pairs
-    return: the same data but in dictionary format 
+    return: the same data but in dictionary format
     """
-    
+
     ref_rec_pairs = examples.split("\n\n")
 
     examples = []
