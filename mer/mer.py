@@ -74,7 +74,7 @@ def get_meaning_error_rate(
             prediction_result["meaning_error_rate"] = round(mer_pred, 2)
             total_penalty += voted_penalty
         else:
-            bad_examples.append((ref, rec))
+            bad_examples.append((ref, rec, continuations))
             prediction_result["meaning_error_rate"] = None
         # If you have human labels (targets counts for error type), then record extra stats
         if error_count_target:
@@ -108,8 +108,9 @@ def get_meaning_error_rate(
         meaning_error_rate_target,
     )
     with open("results/bad_examples.txt", "w") as f:
-        for ref, rec in bad_examples:
+        for ref, rec, continuations in bad_examples:
             f.write(f"Reference:{ref}\n")
             f.write(f"Recognised:{rec}\n")
+            f.write(f"Continuations:{continuations}\n")
             f.write("\n")
     return meaning_error_rate, meaning_error_rate_target
