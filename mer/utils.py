@@ -52,25 +52,31 @@ def majority_voting(continuations, prompt):
     return penalty, result
 
 
-def get_alignment(ref_text, rec_text):
+def get_alignment(ref_text, rec_text, remove_punc=False):
     # separate punctuation and split into words
     # TODO this will fail for abbreviations e.g. Mr.
 
-    # Find indices of punctuation in reference text
-    # ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    # ref_punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
+    if remove_punc:
+        # Find indices of punctuation in reference text
+        ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
+        ref_punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
 
-    # Remove all punctuation and align
-    # ref_text = re.sub(r"[^\w\s]", "", ref_text)
-    # rec_text = re.sub(r"[^\w\s]", "", rec_text)
-    ref_text = ref_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
-    rec_text = rec_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
+        # Remove all punctuation
+        ref_text = re.sub(r"[^\w\s]", "", ref_text)
+        rec_text = re.sub(r"[^\w\s]", "", rec_text)
+    else:
+        # add spaces in front of punctuation
+        ref_text = ref_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
+        rec_text = rec_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
+        ref_punctuation_dict = None
+    
     ref_words = ref_text.split()
     rec_words = rec_text.split()
+
     alignment = align(ref_words, rec_words, GAP)
 
     reference_count = len(alignment)
-    return alignment, reference_count, None
+    return alignment, reference_count, ref_punctuation_dict
 
 
 def get_sentences(ref_text, rec_text):
