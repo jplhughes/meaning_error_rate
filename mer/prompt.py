@@ -2,6 +2,7 @@ import copy
 import json
 import random
 from abc import ABC, abstractmethod
+from mer.utils import calculate_wer
 
 
 class PromptBase(ABC):
@@ -15,6 +16,12 @@ class PromptBase(ABC):
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
         return cls(config, **kwargs)
+
+    @classmethod
+    def from_txt(cls, txt_path, **kwargs):
+        with open(txt_path, "r", encoding="utf-8") as f:
+            txt = f.read()
+        return cls(txt, **kwargs)
 
     @staticmethod
     @abstractmethod
@@ -47,6 +54,7 @@ class Prompt(PromptBase):
     def __init__(self, config, simple=False, seed=10):
         self.config = config
         self.simple = simple
+        self.txt = txt
         random.seed(seed)
         # Create prompt based on config
         self.base = self.get_prompt_base()
@@ -120,8 +128,8 @@ class PromptMultiple(PromptBase):
     It can also find the result given the LM output.
     """
 
-    def __init__(self, config, simple=False, seed=10):
-        self.config = config
+    def __init__(self, txt, config=None, simple=False, seed=10):
+        self.config = txt
         self.simple = simple
         random.seed(seed)
         # Create prompt based on config
@@ -158,79 +166,109 @@ class PromptMultiple(PromptBase):
         )
         return penalty
 
+    @staticmethod
+    def convert_examples_to_dict(txt):
+        """
+        format a txt input prompt as needed for GPT input
+        """
+
+        examples = []
+        for item in txt:
+            example = {}
+            error_types = []
+            reasons = []
+            for line in item.split("\n"):
+                key, value = line.split(":")
+                key = key.lower()
+                value = value.strip()
+
+                if key == "error":
+                    error_types = value.split()
+
+                elif key in ["reference", "recognised"]:
+                    example[key] = value
+                elif key == "reason":
+                    reasons = value.split(".")
+                    reasons = [
+                        f"{reason.strip()}." if not reason.endswith(".") else reason.strip() for reason in reasons
+                    ]
+                else:
+                    exit(f"Text file contains an unrecognised keyword: {key}")
+
+            errors = [{"reason": reason, "error_type": error_type} for reason, error_type in zip(reasons, error_types)]
+            example["errors"] = errors
+
+            examples.append(example)
+
+        return examples
+
     def get_prompt_base(self):
         """Build the base prompt which has the error descriptions followed by the few shot examples"""
-        base = []
-        if self.simple:
-            # Just enumerate errors in prompt
-            errors = self.config["errors"].keys()
-            errors_joined = ", ".join(errors)
-            base.append(f"Classify the severity of error out of {len(errors)} categories: {errors_joined}.\n")
+
+        if isinstance(self.config, str):
+            base, *examples = self.config.split("\n\n")
+            base += "\n\n"
+            examples = self.convert_examples_to_dict(examples)
         else:
-            # Add description of each error type into top of prompt
-            for error_type in self.config["errors"]:
-                description = self.config["errors"][error_type]["description"]
-                base.append(f"{error_type.capitalize()} error - {description}.\n")
-            base.append(
-                "Disfluences, hyphens joining words, equivalent numbering and correct contractions can be ignored completely.\n"
-            )
+            base = self.config["base"]
+            base += "\n\n"
+            examples = self.config["examples"]
 
-        random.shuffle(self.config["examples"])  # shuffle so no order to examples
-        for example in self.config["examples"]:
-            error_count_dict, ref, rec = self.unpack_example(example)
-            penalty = self.get_penalty(error_count_dict)
-            minor, standard, serious, reason = self.unpack_error_counts(error_count_dict)
+        for example in examples:
+            _, _, results = calculate_wer(example["reference"], example["recognised"])
 
-            base.append(f"Reference: {ref}")
-            base.append(f"Recognised: {rec}")
-            base.append(f"Reasoning: {reason}")
-            base.append(f"Result: {minor} minor + {standard} standard + {serious} serious = {penalty} penalty\n")
+            base += f"Comparison:{results['comparison']}\n"
+            base += "Output:\n"
+            base += "[\n"
+
+            label = []
+
+            for error in example["errors"]:
+                reason = error["reason"].replace('"', "'")
+                label.append(json.dumps({"reason": reason, "error_type": error["error_type"]}))
+
+            base += ",\n".join(label)
+            base += "\n]\n\n"
 
         return base
 
     def get_score_mapping(self):
-        error2score = {}
-        for error_type in self.config["errors"]:
-            error2score[error_type] = self.config["errors"][error_type]["score"]
+        error2score = {"minor": 0.25, "standard": 0.5, "serious": 1}
         return error2score
 
     def create_prompt(self, ref, rec):
-        prompt = copy.deepcopy(self.base)
-        prompt.append(f"Reference: {ref}")
-        prompt.append(f"Recognised: {rec}")
-        prompt.append("Reasoning:")
-        return "\n".join(prompt)
+        _, _, wer_result = calculate_wer(ref, rec)
+        comparison = wer_result["comparison"]
+        return f"""{copy.deepcopy(self.base)}Comparison:{comparison}
+Output:"""
 
     def get_result(self, text):
         assert text is not None, "Text is empty"
-        lines = text.strip().split("\n")
         try:
-            # Get reason from first line and result (containing error counts) on the second line
-            reason, result = lines[0], lines[1]
-            # Unpack the counts from result line
-            # e.g. Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
-            minor, standard, serious, penalty = 0, 0, 0, None
-            if "minor" in result:
-                minor = result.split("minor")[0].strip().split()[-1]
-            if "standard" in result:
-                standard = result.split("standard")[0].strip().split()[-1]
-            if "serious" in result:
-                serious = result.split("serious")[0].strip().split()[-1]
-            if "penalty" in result:
-                penalty = float(result.split("penalty")[0].strip().split()[-1])
-            error_count_dict = {
-                "minor": minor,
-                "standard": standard,
-                "serious": serious,
-                "reason": reason,
-            }
-        except IndexError:
-            print(f"Bad continuation from LM as can't unpack items {text}")
-            return None, None, None
+            output = json.loads(text)
+        except json.decoder.JSONDecodeError:
+            print(f"Bad JSON from LM. Can't decode '{text}'")
+            return None, None
+
+        error_count_dict = {"minor": 0, "standard": 0, "serious": 0, "reason": []}
+
+        error_string_map = {"minor": "m", "standard": "s", "serious": "e"}
+        error_str = ""
+        for row in output:
+            try:
+                # Get reason from second line and result (containing error counts) on the fourth line
+                reason, error = row["reason"], row["error_type"].strip()
+                # Count the number of errors
+                error_count_dict["reason"].append(reason)
+                error_count_dict[error] += 1
+                error_str += error_string_map[error]
+
+            except IndexError:
+                print(f"Bad continuation from LM as can't unpack items {text}")
+                return None, None
 
         penalty_from_counts = self.get_penalty(error_count_dict)
+        error_count_dict["reason"] = " ".join(error_count_dict["reason"])
 
-        if penalty != penalty_from_counts:
-            print(f"WARNING: LM bad at maths! It said {penalty} but should be {penalty_from_counts}.")
-
-        return error_count_dict, penalty_from_counts
+        # return error_count_dict, penalty_from_counts
+        return error_count_dict, error_str

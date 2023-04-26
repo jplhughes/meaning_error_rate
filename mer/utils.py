@@ -8,45 +8,75 @@ from kaldialign import align  # pylint: disable=E0611
 GAP = "***"
 
 
+def convert_err_str_to_penalty(err_str):
+    """
+    param: err_str: string of error codes (m = minor, s = standard, e = serious)
+    returns: float representing total penalty (m = 0.25, s = 0.5, e = 1.0)
+    """
+    err_map = {"m": 0.25, "s": 0.5, "e": 1.0}
+
+    penalty = sum([err_map[char] for char in err_str])
+    return penalty
+
+
+def convert_err_str_to_dict(err_str):
+    """
+    param: err_str: string of error codes (m = minor, s = standard, e = serious)
+    returns: readable dict of errors
+    """
+    err_map = {"m": "minor", "s": "standard", "e": "serious"}
+    full_err_str = [err_map[err] for err in err_str]
+    return " ".join(full_err_str)
+
+
 def majority_voting(continuations, prompt):
     # Loop over text in continuations and extract results
     predictions = []
-    penalities = []
+    err_strings = []
     for text in continuations:
-        error_counts_dict, penalty = prompt.get_result(text)
-        penalities.append(penalty)
+        error_counts_dict, err_str = prompt.get_result(text)
+        err_strings.append(err_str)
         predictions.append(error_counts_dict)
 
     # Run majority voting given the predicted error tpes
-    counts = Counter(penalities)
-    voted_penality, vote_count = counts.most_common()[0]
+    counts = Counter(err_strings)
+    voted_err, vote_count = counts.most_common()[0]
+    if voted_err is not None:
+        penalty = convert_err_str_to_penalty(voted_err)
+        voted_err = convert_err_str_to_dict(voted_err)
+    else:
+        penalty = None
 
-    result = {
-        "predictions": predictions,
-        "voted_penality": voted_penality,
-        "vote_count": vote_count,
-    }
+    result = {"predictions": predictions, "voted_penalty": penalty, "voted_error": voted_err, "vote_count": vote_count}
 
-    return voted_penality, result
+    return penalty, result
 
 
-def get_alignment(ref_text, rec_text):
+def get_alignment(ref_text, rec_text, remove_punc=False):
     # separate punctuation and split into words
     # TODO this will fail for abbreviations e.g. Mr.
 
-    # Find indices of punctuation in reference text
-    ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
-    punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
+    if remove_punc:
+        # Find indices of punctuation in reference text
+        ref_words = re.findall(r"[\w'-]+|[.,!?;]", ref_text)
+        ref_punctuation_dict = {i: v for i, v in enumerate(ref_words) if v in ".!?,"}
 
-    # Remove all punctuation and align
-    ref_text = re.sub(r"[^\w\s]", "", ref_text)
-    rec_text = re.sub(r"[^\w\s]", "", rec_text)
+        # Remove all punctuation
+        ref_text = re.sub(r"[^\w\s]", "", ref_text)
+        rec_text = re.sub(r"[^\w\s]", "", rec_text)
+    else:
+        # add spaces in front of punctuation
+        ref_text = ref_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
+        rec_text = rec_text.replace(".", " .").replace("?", " ?").replace("!", " !").replace(",", " ,")
+        ref_punctuation_dict = None
+
     ref_words = ref_text.split()
     rec_words = rec_text.split()
+
     alignment = align(ref_words, rec_words, GAP)
 
     reference_count = len(alignment)
-    return alignment, reference_count, punctuation_dict
+    return alignment, reference_count, ref_punctuation_dict
 
 
 def get_sentences(ref_text, rec_text):
@@ -101,7 +131,7 @@ def calculate_wer(ref_text, rec_text):
         result["wer"] = "null"
         return None, reference_count, result
 
-    comparison = ["Key: [recognised reference] {deletion} <insertion>\n"]
+    comparison = [""]
     insertions, deletions, substitions = 0, 0, 0
     for (ref, rec) in alignment:
         # Correct
@@ -110,15 +140,49 @@ def calculate_wer(ref_text, rec_text):
         # Insertion Error
         elif ref == GAP:
             insertions += 1
-            comparison.append(f"<{rec}>")
+            # if last word was also insertion, join them together
+            if "inserted" in comparison[-1]:
+                prev = comparison.pop()
+                prev = prev.split(" is inserted")
+                prev_rec = prev[0].strip("'")
+                comparison.append(f"'{prev_rec} {rec}' is inserted")
+            # if last word was substitution, add it in
+            elif "misrecognised" in comparison[-1]:
+                prev = comparison.pop()
+                prev_ref, prev_rec = prev.split(" is misrecognised as ")
+                prev_rec = prev_rec.strip("']")
+                comparison.append(f"{prev_ref} is misrecognised as '{prev_rec} {rec}']")
+            else:
+                comparison.append(f"['{rec}' is inserted]")
         # Deletion Error
         elif rec == GAP:
             deletions += 1
-            comparison.append("{" + ref + "}")
+            # if last word was also deletion, join them together
+            if "deleted" in comparison[-1]:
+                prev = comparison.pop()
+                prev = prev.split(" is deleted")
+                prev_ref = prev[0].strip("'")
+                comparison.append(f"{prev_ref} {ref}' is deleted]")
+            # if last word was substitution, add it in
+            elif "misrecognised" in comparison[-1]:
+                prev = comparison.pop()
+                prev_ref, prev_rec = prev.split(" is misrecognised as ")
+                prev_ref = prev_ref.strip("'")
+                comparison.append(f"{prev_ref} {ref}' is misrecognised as {prev_rec}")
+            else:
+                comparison.append(f"['{ref}' is deleted]")
         # Subsitution Error
         else:
             substitions += 1
-            comparison.append(f"[{rec} {ref}]")
+            # if last word was also substitution, join them together
+            if "misrecognised" in comparison[-1]:
+                prev = comparison.pop()
+                prev_ref, prev_rec = prev.split(" is misrecognised as ")
+                prev_ref = prev_ref.strip("'")
+                prev_rec = prev_rec[:-1].strip("'")
+                comparison.append(f"{prev_ref} {ref}' is misrecognised as '{prev_rec} {rec}']")
+            else:
+                comparison.append(f"['{ref}' is misrecognised as '{rec}']")
 
     num_errors = insertions + deletions + substitions
     wer = 100 * num_errors / reference_count
@@ -190,3 +254,34 @@ def convert_excel_to_json(excel_path="./config/NER_errors_9-3-23_modified.xlsx",
 
     with open(json_path, "w") as json_file:
         json.dump(data, json_file, indent=4)
+
+
+def convert_txt_to_dict(examples):
+    """
+    param: examples: string containing reference, recognised, reason (optional), and severity errors (optional); one per line
+    expected formatting includes a linebreak between sentence-pairs
+    return: the same data but in dictionary format
+    """
+
+    ref_rec_pairs = examples.split("\n\n")
+
+    examples = []
+    for item in ref_rec_pairs:
+        example = {"minor": 0, "standard": 0, "serious": 0}
+        for line in item.split("\n"):
+            key, value = line.split(":")
+            key = key.lower()
+            value = value.strip()
+            # severity errors need to be split into minor, standard, serious
+            if key == "error":
+                for word in value.split():
+                    example[word] += 1
+            # everything else goes in as is
+            elif key in ["reference", "recognised", "reason"]:
+                example[key] = value
+            else:
+                exit(f"Text file contains an unrecognised keyword: {key}")
+
+        examples.append(example)
+
+    return examples

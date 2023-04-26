@@ -1,0 +1,14 @@
+Reference: This man is a suspected murderer and called um John Hughes.
+Recognised: This man is a murderer and called Tom booze.
+
+Reference: My name is Paul Speyer and I am an engineer.
+Recognised: My name is ball player and I'm an engineer.
+
+Reference: ChatGPT is a machine and doesn't have feelings.
+Recognised: ChatGPT is a machine and does have feelings.
+
+Reference: Yesterday my mother told me to wash the dog.
+Recognised: Yesterday my mother wash the dog.
+
+Reference: I passed my math exam with great grades.
+Recognised: I pass my math exam with grate grades.

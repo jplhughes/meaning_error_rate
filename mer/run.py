@@ -29,8 +29,8 @@ def main():
     parser = argparse.ArgumentParser()
     # pylint: disable=line-too-long
     # fmt: off
-    parser.add_argument("--ref_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to reference transcripts")  # noqa:  E201
-    parser.add_argument("--rec_dbl", type=argparse.FileType("r"), required=True, help="Dbl file containing paths to recognised transcripts")  # noqa:  E201
+    parser.add_argument("--ref_dbl", type=argparse.FileType("r"), required=False, help="Dbl file containing paths to reference transcripts")  # noqa:  E201
+    parser.add_argument("--rec_dbl", type=argparse.FileType("r"), required=False, help="Dbl file containing paths to recognised transcripts")  # noqa:  E201
     parser.add_argument("--prompt_config_path", type=str, default="./config/prompt.json", help="path to prompt config json")  # noqa:  E201
     parser.add_argument("--output_json", type=str, default="./results_dbl.json", help="path to output json to store results")  # noqa:  E201
     parser.add_argument("--api_key", type=str, default=None, help="api key for open ai")  # noqa:  E201
