@@ -150,10 +150,10 @@ def calculate_wer(ref_text, rec_text):
             elif "misrecognised" in comparison[-1]:
                 prev = comparison.pop()
                 prev_ref, prev_rec = prev.split(" is misrecognised as ")
-                prev_rec = prev_rec.strip("'")
-                comparison.append(f"{prev_ref} is misrecognised as '{rec} {prev_rec}")
+                prev_rec = prev_rec.strip("']")
+                comparison.append(f"{prev_ref} is misrecognised as '{prev_rec} {rec}']")
             else:
-                comparison.append(f"['{rec}' is inserted ]")
+                comparison.append(f"['{rec}' is inserted]")
         # Deletion Error
         elif rec == GAP:
             deletions += 1
