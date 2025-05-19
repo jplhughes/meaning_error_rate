@@ -1,0 +1,2548 @@
+{
+    "examples": [
+        {
+            "reference": "the first topic is the supreme court.",
+            "recognised": "the first top sick is the supreme court.",
+            "reason": "The word 'topic' is misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the final of the 2016 presidential debates between secretary of state hillary clinton and donald j. trump.",
+            "recognised": "the final of the 2016 presidential debates between is secretary of state hillary clinton and donald j. trump.",
+            "reason": "The word 'is' is added but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the audience here in the hall has promised to remain silent",
+            "recognised": "the audience here in the hall has promised to remain silence",
+            "reason": "The word 'silent' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "no cheers, boos or other interruptions",
+            "recognised": "no choose, boos or other interruptions",
+            "reason": "The word 'cheers' is misrecognised causing the meaning of the sentence is lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the next president will almost certainly have at least one appointment, which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "recognised": "the next president will almost certainly have at least one appointment which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "reason": "Missing comma before 'which' that does not prevent the viewer from understanding the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i think when we talk about the supreme court, it really raises the central issue in this election.",
+            "recognised": "i think when we talk about the supreme court, it really races the central issue in this election.",
+            "reason": "The word 'raises' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the kind of people that i would be looking to nominate to the court would be in the great tradition of standing up to the powerful.",
+            "recognised": "the kind of people that i would be looking to nominate to the court. would be in the great tradition of standing up to the powerful.",
+            "reason": "A full stop has been added but the viewer can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "now we have about ten minutes for open discussion.",
+            "recognised": "now have about ten minutes for open discussion.",
+            "reason": "The word 'we' is not recognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "how will you ensure the 2nd amendment is protected?",
+            "recognised": "how will you ensure the 2nd amendment is protected,",
+            "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "but we know we've got lots of work to do.",
+            "recognised": "but we know it got lots of work to do.",
+            "reason": "The word 'we've' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "if you are too dangerous to fly, you are too dangerous to buy a gun.",
+            "recognised": "if you do dangerous to fly, you are too dangerous to buy a gun.",
+            "reason": "The words 'are too' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i've been reading about going after mosul for how long, hillary, three months?",
+            "recognised": "at the reading about going after mosul for how long, hillary, three months?",
+            "reason": "The words 'I've been' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he violated the red line in the sand, and she made so many mistakes, made all mistakes.",
+            "recognised": "she violated the red line in the sand, and he made so many mistakes, made all mistakes.",
+            "reason": "The word 'he' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it's going to be tough fighting, but i think we can win.",
+            "recognised": "going to be tough fighting, but i think we can win.",
+            "reason": "The word 'it's' is not recognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it is a catastrophe.",
+            "recognised": "is a catastrophe.",
+            "reason": "The word 'it' is not recognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "in fact, they have been the ones that have been bombing and shelling eastern aleppo.",
+            "recognised": "in fact, they have been the ones that up in bombing and schelling eastern aleppo.",
+            "reason": "The words 'have been' are misrecognised causing the meaning of the sentence to be lost (standard), the word 'shelling' is mispelled (minor)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he is now also aligned with iran, who we made very powerful.",
+            "recognised": "he is now also aligned with iran, who made very powerful.",
+            "reason": "The word 'we' is not recognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "they don't want isis, but they have other things.",
+            "recognised": "they don't want ices, but they have other things.",
+            "reason": "The word 'ISIS' is misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "secretary clinton, you have talked about in our last debate and again today that you would impose a no-fly zone to try to protect the people of of aleppo.",
+            "recognised": "secretary clinton, you have talked about in our last debate ends today that you would impose a no-fly zone to try to protect the people of of aleppo.",
+            "reason": "The words 'and again' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "this would take a lot of negotiation.",
+            "recognised": "this would take a left negotiation.",
+            "reason": "The words 'lot of' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "it's important that we support them for the reasons that i mentioned earlier.",
+            "recognised": "it's important that we support them for the rasons that i mentioned earlier.",
+            "reason": "The word 'reason' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "in the last few months, gun rights sporters across the state have flooded city and county offices, protesting the democratic proposals",
+            "recognised": "in the last few months, gun rights sporters across the state have flooded city and county offices, protesting the democratic",
+            "reason": "The word 'proposals' is missing causing but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and he says there's no limit to the number of local gun owners he would deputize to help him block those laws from enforced.",
+            "recognised": "and he says there's no limit to the number of local gun owners he would deputize to help him block thosn laws from enforced.",
+            "reason": "The word 'those' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "now, over 100 cities and counties in virginia voted to become what some call \"second amendment sanctuaries\", places where newly-passed gun laws will not be enforced",
+            "recognised": "now, over 100 cities and counties in virginia voted to become what some call \"second amendment sanctuaries\", places where newly-passed gun laws will not",
+            "reason": "The words 'be enfornced' are not recognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "and we're the people that want it to play by the rules and to respect our rights. ",
+            "recognised": "and we're the people that want it to play by the rules and tori respect our rights. ",
+            "reason": "The word 'respect' is misrecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "isn't it natural that the courts would handle that?",
+            "recognised": "isn't it nathat the courts would handle that?",
+            "reason": "The words 'natural that' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "it shall not be infringed.",
+            "recognised": "it shall not be fringed.",
+            "reason": "The word 'infringed' is misrecognized causing but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the roads are dangerous, there's a lot of work to do.",
+            "recognised": "the roads are dangerous there's a lot of work to do.",
+            "reason": "Missing comma but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "because, you see, the snow really curls around for eastern massachusetts and maine into the afternoon.",
+            "recognised": "because you see the snow really curls around for eastern massachusetts and maine into the afternoon.",
+            "reason": "Missing commas but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "officials say a resource officer at the school, along with other officers who responded, tried to get the student to put the gun down",
+            "recognised": "officials say a resource officer at the school, along with other officers who responded, tried to get the vehae h20his hands ouof",
+            "reason": "The words 'student to put the gun down' are misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "an officer was forced to discharge his firearm, striking the suspect.",
+            "recognised": "an officer was forced to discharge his firearm, striking the suspikect.",
+            "reason": "The word 'suspect' is misrecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "police did respond to the scene.",
+            "recognised": "poce did respond to the scene.",
+            "reason": "The word 'police' is misrecognnized causing causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "three to six inches of rainfall along the western rivers. i'd to see them rise towards the weekend and could see flooding on sunday.",
+            "recognised": "three to six inches of rainfall along the western rivers. they'll rise towards the weekend and could see flooding on sunday.",
+            "reason": "The words 'I'd like to see them' are conveyed as 'they'll rise' causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "by the way, do you remember steve kornacki said the smart money was on the terrier group because of how many times they have won in the past?",
+            "recognised": "by the way, do you remember steve kornacki said the smart money was on the terrier group because of how many times they have won in the past.",
+            "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so much to talk about, including something i accidentally let slip on the show.",
+            "recognised": "so much to talk about, including something i accidentally let slip on the slow.",
+            "reason": "The word 'show' is misrecognnized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "what is that cake made of that it was that hard to cut with a sword?",
+            "recognised": "what is that cake made of that it was that hard to cut with a sword.",
+            "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "but the real winner may have been this young superfan on the sidelines who received djokovic's racket.",
+            "recognised": "but the real winner may have been this young superfan on the sidelines who received djokovic's jacket.",
+            "reason": "The word 'raquet' is mirecognized causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "and hitcamp.com will direct you to campsites on everything from public parks to private farms, starting at $20 a day.",
+            "recognised": "and hitcamp.com will correct you to campsites on everything from public parks to private farms, starting at $20 a day.",
+            "reason": "The word 'direct' is mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "well, it's great to chat with you.",
+            "recognised": "will, it's great to chat with you.",
+            "reason": "The word 'well' is misrecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we have a meat lovers, a pepperoni and a combo in that.",
+            "recognised": "we have a meat lovers, a pepperoni and a combo enact.",
+            "reason": "The words 'in that' are mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "but take a look at this baked goodness!",
+            "recognised": "but take a look at this big goodness!",
+            "reason": "The word 'baked' is mirecognized causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "not only do we use 2 types of cranberries, we use a premium dried cranberry",
+            "recognised": "not only do we used 2 types of cranberries, we use a premium dried cranberry",
+            "reason": "The word 'use' is misrecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and then we use a frozen cranberry so you get a little bit of tart with that little bit of sweetness",
+            "recognised": "and then we use a frozen cranberry so you get a little bit of tarte with that little bit of sweetness",
+            "reason": "The word 'tart' is misrecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "meteorologist mary ours joins us from home with a first look at your local forecast.",
+            "recognised": "meteorologist, mary ours joins us from home with a first look at your local forecast.",
+            "reason": "A comma has been added but the viewer can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "this morning, new castle police and volunteers are on foot in heavily wooded areas, like el rio beach.",
+            "recognised": "this morning, new castle police and volunteers are on foot and heavily wooded areas, like el rio beach.",
+            "reason": "The word 'in' is misrecognized but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he has represented the north hills since 2001.",
+            "recognised": "he has represented the north hill since 2001.",
+            "reason": "The word 'Hills' is misrecognized but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "right now things are calm.",
+            "recognised": "right now things are combat.",
+            "reason": "The word 'calm' is mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "look at this two dew points.",
+            "recognised": "look at these two points.",
+            "reason": "The word 'dew' is mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "and the house has never been the main target of our investigation anyway.",
+            "recognised": "and the house has never been the mon target of our investigation anyway.",
+            "reason": "The word 'main' is mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "without going into the details of the case, which i don't want to give.",
+            "recognised": "without going into the details of the case, which i want to give.",
+            "reason": "The word 'don't' is missing causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "man, i did not trick anybody.",
+            "recognised": "man, i didn't like anybody.",
+            "reason": "The words did not trick are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "then they'll be folded over so that you can glue the blank backside straight into your notebook.",
+            "recognised": "then they'll be folded over so that you can glue the black backside straight into your notebook.",
+            "reason": "The word blank is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "ok, so when we talk about conduction we're telling us that thermal energy transfers from here to here but there has to be direct contact.",
+            "recognised": "when we talk about conduction, we are telling us that thermal energy transfers from year-to-year butter had to be direct contact.",
+            "reason": "The words here to here AND but there are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "who feels confident they can go to the board and show with the red pen where that transfer of energy is taking place?",
+            "recognised": "he feels confident they can go to the board and show with the red pen where that transfer of energy is taking place?",
+            "reason": "The word who is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "show us where thermal energy is moving to.",
+            "recognised": "show us where thermal energy is moving too.",
+            "reason": "The word to is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "why did we draw arrows going into the house?",
+            "recognised": "i did we draw arrows going into the house?",
+            "reason": "The word why is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we see the red arrows and then we see some little blocks that she sketched.",
+            "recognised": "we see the red arrows and then we see some little blocks that she sketched or stop",
+            "reason": "The word full stop is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they are going to block or slow down how quickly that heat is moving.",
+            "recognised": "they are going to block or slow down have quickly that he did moving.",
+            "reason": "The words heat is moving are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "yesterday when you left class you did some exit questions on conductors and insulators.",
+            "recognised": "yesterday when you live class, you did to mix it questions.",
+            "reason": "The words left and exit are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "who would like to read our learning target for today?",
+            "recognised": "you would like to read our learning target for today?",
+            "reason": "The word who is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "is that one yours, jim?",
+            "recognised": "is that when yours, jim?",
+            "reason": "The word one is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we think ella's will melt because she is holding a conductor.",
+            "recognised": "we think ellis will melt because she is holding a conductor.",
+            "reason": "The word Ella's is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "who feels confident they can go to the board and show with the red pen where that transfer of thermal energy is taking place?",
+            "recognised": "who feels confident they can go to the board and shall with the red pen where the transfer of thermal energy is taking place?",
+            "reason": "The word show is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "who can explain why that's correct?",
+            "recognised": "you can explain why that is correct?",
+            "reason": "The word who is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "because the house has insulation in it.",
+            "recognised": "because the house has installation in it.",
+            "reason": "The word insulation is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they will block and slow down how quickly the heat is moving.",
+            "recognised": "they will block and slow down who quickly the heat is moving.",
+            "reason": "The word how is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "what could we also call heat transfer?",
+            "recognised": "what can be also call heat transfer?",
+            "reason": "The words could we are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "have we heard them before?",
+            "recognised": "have we had them before?",
+            "reason": "The word heard is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we're going to do two things for each of the words in our foldable.",
+            "recognised": "we're going to do 2 things for each of the words in our foldable.",
+            "reason": "The word two is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "is that one yours, jim?",
+            "recognised": "is that when yours, jim?",
+            "reason": "The word one is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you have two different objects that you are to sketch in your notebook.",
+            "recognised": "you have two different objects that you were to schedule your notebook.",
+            "reason": "The word are is mirecognized but the user can still understand the sentence. The words sketch in are misrecognized causing the meaning of the sentence to be lost.",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "hold on, let me unfreeze you.",
+            "recognised": "hold on, let me unphrase you.",
+            "reason": "The word unfreeze is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "do we have a similar sketch in our notebooks?",
+            "recognised": "do we have a similar sketching our notebooks?",
+            "reason": "The words sketch in are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "ok, once we are glued in and ready to go we are going to do two things for each of those words in our foldable.",
+            "recognised": "ok, once we argued in and ready to go we are going to do two things for each of those words in our foldable.",
+            "reason": "The words are glued are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they are spoons.",
+            "recognised": "they are rooms.",
+            "reason": "The word spoons is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "why did we draw arrows going into the house?",
+            "recognised": "why did we draw our rows going into the house?",
+            "reason": "The word arrows is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "what does the 'c' stand for?",
+            "recognised": "what does the season for?",
+            "reason": "The words C stand are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "how do you identify each type of heat transfer?",
+            "recognised": "how do you identify each type of feature?",
+            "reason": "The words heat transfer are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "do we have a similar sketch in our notebooks?",
+            "recognised": "do we have a similar sketch on a notebooks?",
+            "reason": "The words in our are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "heat transfers from here to here.",
+            "recognised": "heat transfers from here to hear.",
+            "reason": "The word here is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "man, i did not trick anybody.",
+            "recognised": "man, i did not check anybody.",
+            "reason": "The word trick is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "make sure that you have a glue stick and scissors.",
+            "recognised": "make sure that you have a clue stick and scissors.",
+            "reason": "The word glue stick is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we are going to do a very quick review.",
+            "recognised": "we are going to qucikly view.",
+            "reason": "The words quick review are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "what do we mean by equilibrium?",
+            "recognised": "what do we mean by equilibrium question",
+            "reason": "The word question mark is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "insulators are not very good for heat transfer.",
+            "recognised": "insulated are not very good for heat transfer.",
+            "reason": "The word insulators is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "what can we infer about our vocab terms we have been talking about?",
+            "recognised": "what can we infer about our vocab firms we have been talking about?",
+            "reason": "The word terms is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they are going to slow down how quickly that heat is moving.",
+            "recognised": "they are going to slow down how quickly that peter is moving.",
+            "reason": "The word heat is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "that needs to face me.",
+            "recognised": "that leads to face me.",
+            "reason": "The word needs is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "flip your card correctly.",
+            "recognised": "let your card correctly.",
+            "reason": "The word flip is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "what words there do we not know yet?",
+            "recognised": "what words there to be not know yet?",
+            "reason": "The words do we are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you literally can't get fired from working for the government.",
+            "recognised": "you literally can get fired from working for the government.",
+            "reason": "The word can't is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i'd go to happy hour and tell everyone i was a special assistant at the peace corps.",
+            "recognised": "i'd go to happier and tell everyone i was a special assistant at the peace corps.",
+            "reason": "The words happy hour are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "there was my friend opening a food truck and i was thinking maybe i should do that even though i'm an awful driver and a bad cook.",
+            "recognised": "there was my friend opening a food truck and i was thinking maybe i should do that even though i'm an awful driver and a bad kick.",
+            "reason": "The word cook is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i was like, man, that was brutal.",
+            "recognised": "i was like, man, that was brittle.",
+            "reason": "The word brutal is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i was getting texts from this guy.",
+            "recognised": "i was getting texts from the sky.",
+            "reason": "The words this guy are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the success symbol for my generation isn't climbing the career ladder, it's doing work that matters.",
+            "recognised": "the accessible for my generation isn't climbing the career ladder, it's doing work that matters.",
+            "reason": "The words success symbol are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i worked four different jobs while writing my book.",
+            "recognised": "i worked for different jobs while writing my book.",
+            "reason": "The word four is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they asked for my business card.",
+            "recognised": "they ask for my business card.",
+            "reason": "The word asked is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it was only when i met other young people going through the exact same thing i was that i was able to turn my quarter life crisis into a breakthrough.",
+            "recognised": "it was only when i met other young people going through the exact same thing i was that a turned my quarter life crisis into a breakthrough.",
+            "reason": "The words I was able to turn are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you have to start hustling with intention and with purpose.",
+            "recognised": "you have to start hassling with intention and with purpose.",
+            "reason": "The word hustling is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i worked four different jobs while writing my book.",
+            "recognised": "i worked four different jobs while writing my bit.",
+            "reason": "The word book is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "she knew she would start her own business so she needed to save money.",
+            "recognised": "she knew she would start our rows business so she needed to save money.",
+            "reason": "The words her own are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i was like, 'leave me alone'.",
+            "recognised": "i was like, 'leave me alone' full stop",
+            "reason": "The word full stop is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "do not let being a beginner limit your hustle.",
+            "recognised": "do not let being a beginner limit your hassle.",
+            "reason": "The word hustle is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he met the team, they hit it off, he got hired.",
+            "recognised": "he met the team, they hit it off, he retired.",
+            "reason": "The word hired is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i used to come home every night to my roomate dan.",
+            "recognised": "i used to come home every night to my remit dan.",
+            "reason": "The word roommate is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i've been working 10 years since college and i still owe sally mae $10,000 in student loans.",
+            "recognised": "i've been working 10 years since college and i still wrote sally mae $10,000 in student loans.",
+            "reason": "The word owe is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "if i ever see her on tinder i am swiping left.",
+            "recognised": "if i ever see her on tinder i am starting left.",
+            "reason": "The word swiping is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we can split the bill.",
+            "recognised": "we can split the ill.",
+            "reason": "The word bill is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i want to start being a creative.",
+            "recognised": "i want to start being aggressive.",
+            "reason": "The words a creative are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "she worked as a marketing director for a jewellery company in san francisco.",
+            "recognised": "she worked as a marketing director for a jury company in san francisco.",
+            "reason": "The word jewellery is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "he helps me design this book cover.",
+            "recognised": "he helps me designed this book cover.",
+            "reason": "The word design is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i felt this pain when i was getting out of bed.",
+            "recognised": "i thought this pain when i was getting out of bed.",
+            "reason": "The word felt is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i rode up the elevator to my desk.",
+            "recognised": "i rode up the elevator to my days.",
+            "reason": "The word desk is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he asked me one simple question.",
+            "recognised": "he asked me once a question.",
+            "reason": "The words one simple are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he had a lot of opportunities due to his priviledge that his peers simply didn't have.",
+            "recognised": "he had a lot of opportunities due to his priviledge that his beer simply didn't have.",
+            "reason": "The word peers is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "do not let being a beginner limit your hustle.",
+            "recognised": "do not let being a beginner eliminate your hustle.",
+            "reason": "The word limit is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "70% of americans are disengaged at their jobs.",
+            "recognised": "70% of americans are disengaging their jobs.",
+            "reason": "The word disengaged is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they were talking about making the world more innovative, compassionate and sustainable.",
+            "recognised": "they were talking about making the world more innovative, passionate and sustainable.",
+            "reason": "The word compassionate is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "despite unprecedented levels of unemployment in student debt, our generation wants to work with purpose.",
+            "recognised": "despite unprecedented levels of unemployment in student debt, our generation was to work with purpose.",
+            "reason": "The word wants is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "my friend, a corporate lawyer, has it all figured out.",
+            "recognised": "my friend, a corporate law, has it all figured out.",
+            "reason": "The word lawyer is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "no two peoples' definitions are the same.",
+            "recognised": "no two peoples' definition of the same.",
+            "reason": "The words definitions are are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "a lot of people call our generation lazy, the lazy generation.",
+            "recognised": "a lot of people call our generation lays, the lazy generation.",
+            "reason": "The word lazy is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "my parents were impressed.",
+            "recognised": "my parents were in press.",
+            "reason": "The word impressed is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "my friends were impressed.",
+            "recognised": "my friends weren't restful.",
+            "reason": "The words were impressed are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i had job security.",
+            "recognised": "i urge obscurity.",
+            "reason": "The words had job security are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "ted started moneythink.",
+            "recognised": "ted started money thing.",
+            "reason": "The word Moneythink is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he teaches financial literacy an entrepreneurship to urban youth.",
+            "recognised": "he teaches financial literacy and entrepreneurship to yours.",
+            "reason": "The words urban youth are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the only reason i did write a book is because people like evan held me acocuntable.",
+            "recognised": "the owner reason i did write a book is because people like evan held me acocuntable.",
+            "reason": "The word only is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he was going back to grad school at the age of 30 to become a social studies teacher.",
+            "recognised": "he was gained ago that scored the age of 30 to become a social studies teacher.",
+            "reason": "The words going back to grad school are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "how will you create your own path?",
+            "recognised": "how will you create your rampart?",
+            "reason": "The words own path are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i still owe sally mae $10,000 in student loans.",
+            "recognised": "i still owe sally mae $10,000 in strewn loans.",
+            "reason": "The word student is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i met this crazy guy once in san francisco.",
+            "recognised": "i met this crazy guy wants and surpluses go.",
+            "reason": "The words once in San Francisco are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "take a risk, sign up for the class, volunteer, work abroad, launch the crowdfunding campaign.",
+            "recognised": "take a risk, sign up for the class, volunteer, work abroad, launch the craft your campaign.",
+            "reason": "The words crowdfunding campaign are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "because when you pursue meaningful work, you inspire others to as well.",
+            "recognised": "because when you pursue many for work, you inspire others to as well.",
+            "reason": "The word meaningful is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i climbed the career ladder.",
+            "recognised": "i climb the career ladder.",
+            "reason": "The word climbed is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i was making $70,000 a year by the age of 28.",
+            "recognised": "i was speaking $70,000 a year by the age of 28.",
+            "reason": "The word making is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they're literally getting paid to mess things up in the company they work for.",
+            "recognised": "they literally getting paid to mess things up and the company they work for.",
+            "reason": "The word in is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it was called starting bloc.",
+            "recognised": "it was cold starting bloc.",
+            "reason": "The word called is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "stop comparing yourself to others and find something meaningful to you.",
+            "recognised": "stop comparing yourself to others and fun something meaningful to you.",
+            "reason": "The word find is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so as a matter of fact, you do not need to have a job.",
+            "recognised": "so aswell matter of fact, you do not need to have a job.",
+            "reason": "The words as a are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i'm a writer, i'm mostly broke.",
+            "recognised": "i'm a writer, i'm mostly brick.",
+            "reason": "The word broke is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "start the blog, build a website, make the ask.",
+            "recognised": "start the block, built a website, make the ask.",
+            "reason": "The word blog is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "this is not about finding one calling or purpose because i do not think that is possible.",
+            "recognised": "this is not about finding one calling all purpose because i do not think that is possible.",
+            "reason": "The word or is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "have you had the talk with your boss yet?",
+            "recognised": "have you had the talk with your boss it?",
+            "reason": "The word yet is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he helped me design the book cover.",
+            "recognised": "he helps me design the book cover.",
+            "reason": "The word helped is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he was travelling with his girlfriend in peru.",
+            "recognised": "he was travelling with his governor in peru.",
+            "reason": "The word girlfriend is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "it was there that i met believers.",
+            "recognised": "it was there that eyes met believers.",
+            "reason": "The word I is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it is a non-profit that teaches financial literacy and entrepreneurship to urban youth.",
+            "recognised": "it is a non-profit that teaches financial literacy and audible inertia to avenues.",
+            "reason": "The words entrepreneurship to urban youth are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "don't let being a beginner limit your hustle.",
+            "recognised": "don't let being a beginner limit your hostel.",
+            "reason": "The word hustle is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i hate my job, i hate my life.",
+            "recognised": "i hit my job, i hate my life.",
+            "reason": "The word hate is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "this talk will teach you a few lessons i learned on my journey that can help anyone that's stuck in a quarter life crisis.",
+            "recognised": "this talk will teach you a few lessons i learned on my journey that can help anyone that's stuck on a quarter life crisis.",
+            "reason": "The word in is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the majority of the world thinks like dan.",
+            "recognised": "the majority of the world things like dan.",
+            "reason": "The word thinks is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "if i ever see you on tinder, i'm swiping left.",
+            "recognised": "if i ever see you on tender, i'm swiping left.",
+            "reason": "The word Tinder is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "thank you, you made the ask.",
+            "recognised": "thank you, you made the task.",
+            "reason": "The word ask is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he meets his team and gets hired as the lead designer.",
+            "recognised": "he meets his team and gets tired as the lead designer.",
+            "reason": "The word hired is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he was travelling with his fiancee.",
+            "recognised": "he was travelling with his yonsei.",
+            "reason": "The word fiancee is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i'm a gonner.",
+            "recognised": "i'm a donna.",
+            "reason": "The word gonner is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i'll believe it when i see it.",
+            "recognised": "leave it when i see it.",
+            "reason": "The words I'll believe are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he texted me every single week after the programme.",
+            "recognised": "the text of me every single week after the programme.",
+            "reason": "The words he texted me are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "not your parents, not your boss, not your friends on facebook.",
+            "recognised": "not your parents, not your boss, runs on facebook.",
+            "reason": "The word friends is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i thought maybe i should open a truck.",
+            "recognised": "i thought maybe i should open a track.",
+            "reason": "The word truck is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i could turn my quarter-life crisis into a breakthrough.",
+            "recognised": "i could turn my quarter-life prices into a breakthrough.",
+            "reason": "The word crisis is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "how can you align your own gifts with the impact you want to have?",
+            "recognised": "how can you align your rain gifts with the impact you want to have?",
+            "reason": "The word own is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "she was learning skills to apply to her own business.",
+            "recognised": "she was learning skills to apply to harrowing business.",
+            "reason": "The words her own are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "people will support you when you start working with purpose.",
+            "recognised": "people will support you when uses art working with purpose.",
+            "reason": "The words you start are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the majority of the world thinks like dan.",
+            "recognised": "the majority of the world thinks they can.",
+            "reason": "The words like Dan are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "tom started the car wash because he realised how hard it was for his brother to find work due to his autism.",
+            "recognised": "tom started the car was because he realised how hard it was for his brother to find work due to his office.",
+            "reason": "The word wash is mirecognized but the user can still understand the sentence. The word autism is misrecognized causing the meaning of the sentence to be lost.",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "a lot of people like to call us the lazy generation.",
+            "recognised": "a lot of people like to close the lazy generation.",
+            "reason": "The words call us are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the pain was so bad i developed shingles on my side.",
+            "recognised": "the pain was so bad i develop shingles on my side.",
+            "reason": "The word developed is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i want to support social entrepreneurs.",
+            "recognised": "i want to sport social entrepreneurs.",
+            "reason": "The word support is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "this is not about finding one calling or purpose because i do not think that is possible.",
+            "recognised": "this is not about finding won calling or purpose because i do not think that is possible.",
+            "reason": "The word one is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i was fortunate enough to have parents who appreciated my opinions and my voice from a very early age.",
+            "recognised": "i was fortunate enough to have parents who appreciated my opinions and my boys from a very early age.",
+            "reason": "The word voice is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "they are in experiences where the actual environment is not treating them as the treasure that they are.",
+            "recognised": "they are inexperienced where the actual environment is not treating them as the treasure that they are.",
+            "reason": "The words in experiences are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "there were times where he would be a bully to my grandmother.",
+            "recognised": "there were times where he would be a billy to my grandmother.",
+            "reason": "The word bully is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you know her mum, right?",
+            "recognised": "you no harm on, right?",
+            "reason": "The words you know her mum are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you cannot call me hey you for the rest of our lives.",
+            "recognised": "you cannot call me hey you for the rest of the lace.",
+            "reason": "The words our lives are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you shouldn't yell at grandma like that.",
+            "recognised": "you shouldn't yell at grammar like that.",
+            "reason": "The word grandma is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i had to get my star.",
+            "recognised": "i had to get my start.",
+            "reason": "The word star is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it's whether you got that star in kindergarten.",
+            "recognised": "it's whether you got that starring kindergarten.",
+            "reason": "The words star in are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you make me feel like i want to curtsy.",
+            "recognised": "you make me feel like i want kids.",
+            "reason": "The words to curtsy are misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i missed the word white.",
+            "recognised": "i missed the word quiet.",
+            "reason": "The word white is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "how do you start teaching voice?",
+            "recognised": "how do you start teaching boys?",
+            "reason": "The word voice is misrecognized causing the meaning of the sentence to be changed ",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i blacked out.",
+            "recognised": "i blocked out.",
+            "reason": "The word blacked is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i hear two good lessons there.",
+            "recognised": "i hear to good lessons there.",
+            "reason": "The word two is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it is a hard thing to ask young kids to do.",
+            "recognised": "it is a half thing to ask young kids to do.",
+            "reason": "The word hard is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "she always talked to use like we had sense.",
+            "recognised": "she always talked to us like we had seems.",
+            "reason": "The word sense is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "one day he cashed out his whole paycheck.",
+            "recognised": "window he cashed out his whole paycheck.",
+            "reason": "The words one day are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "when he taught my brother how to throw, he taught me how to throw.",
+            "recognised": "when hit with my brother how to throw, he taught me how to throw.",
+            "reason": "The words he taught are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "there's a lot of talk about using your voice, standing up for something.",
+            "recognised": "there's a lot of talk about using your voice, standing up or something.",
+            "reason": "The word for is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "there are plenty of kids who are beating the odds every single day.",
+            "recognised": "there are plenty of kids who are bidding the odds every single day.",
+            "reason": "The word beating is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "whether you got that star in kindergarten.",
+            "recognised": "whether you got back star in kindergarten.",
+            "reason": "The word that is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "when he taught my brother how to throw, he taught me how to throw.",
+            "recognised": "when he talked my brother how to throw, he taught me how to throw.",
+            "reason": "The word taught is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i tell my girls this every day.",
+            "recognised": "i tell my girls is every day.",
+            "reason": "The word this is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i say that to parents out there.",
+            "recognised": "i say that you parents out there.",
+            "reason": "The word to is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you teach it young by listening and asking your child questions.",
+            "recognised": "you teacher young by listening and asking your child questions.",
+            "reason": "The words teach it are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i could not stand by and watch her be yelled at for no reason",
+            "recognised": "i could not stand by and watch how the older than no reason.",
+            "reason": "The words her be yelled at for are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "having a man in a young woman's life who adores her.",
+            "recognised": "having a man and a young woman's life who adores her.",
+            "reason": "The word in is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "when you find that person, you hold on to them.",
+            "recognised": "when you find that person, you go along to them.",
+            "reason": "The words hold on are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "but i knew at a very young age that i was smart.",
+            "recognised": "but only at a very young age that i was smart.",
+            "reason": "The words I knew are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i try to tell sasha and malia, don't go to other 14 year olds for information, you are all dumb",
+            "recognised": "i try to tell sasha and malia, don't go to other 14 new roles for information, you are all dumb",
+            "reason": "The words year olds are mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "she always talked to us like we had sense.",
+            "recognised": "she always talk to us like we had sense.",
+            "reason": "The word talked is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you have to get the mum face right.",
+            "recognised": "you have to get the mum phase right.",
+            "reason": "The word face is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you know your crew.",
+            "recognised": "you know your career.",
+            "reason": "The word crew is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "that is what kids need to do who don't have mentors in their lives.",
+            "recognised": "that is what kids need to do who don't have matters in their lives.",
+            "reason": "The word mentors is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "when he taught my brother how to throw, he taught me how to throw.",
+            "recognised": "when he taught my brother how to throw, he taught me how too throw.",
+            "reason": "The word to is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the former raven, former 49er, tackled there by eric rowe",
+            "recognised": "the former raven former forty niner, tackle there by eric rowe",
+            "reason": "A comma is missing but the viewer can still understand the sentence (minor), the word 'tackled' is mirecognized but the user can still understand the sentence (minor).",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he recovers just in time to allow foles to make the turn and pick up that first down. kelce, one of the better athletes that you will find playing that center ",
+            "recognised": "he recovers just in time to allow foles to make the turn and pick up that first down kelsey, one of the better athletes that you will find playing that center",
+            "reason": "A fullstop is missing but the viewer can still understand the sentence (minor), the word 'Kelce' is mirecognized but the user can still understand the sentence (minor).",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "folks think he is the best center in the league.",
+            "recognised": "phone think he is the best center in the league.",
+            "reason": "The word 'folks' is mirecognized causing the meaning of the sentece to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "and the pass is caught by ertz, the tight end",
+            "recognised": "and the pass is caught by burgess",
+            "reason": "The word 'Ertz' is mirecognized causing the meaning of the sentece to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "he was their leading receiver during the regular season",
+            "recognised": "he was there leading receiver during the regular season",
+            "reason": "The word 'their' is mirecognized but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he might have been the mvp had he stayed healthy. hurt against the rams in december",
+            "recognised": "he might have been the mvp had he stayed healthy bird against the rams in december",
+            "reason": "A full stop is missing but the viewer can still understand the sentence (minor), the word 'hurt' is mirecognized causing the meaning of the sentece to be lost (standard)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "here to corey clement and clement gets inside the 10 and sets up a first down.",
+            "recognised": "here to corey clement and clement gets inside the tendencies of a first down.",
+            "reason": "The words 'ten and sets up' are mirecognized causing the meaning of the sentece to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "once again, the stunt catching up.",
+            "recognised": "once again to start catching up.",
+            "reason": "A comma is missing but the viewer can still understand the sentence (minor), the word 'stunt' is mirecognized causing the meaning of the sentence to be lost (standard).",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "jake elliot, a rookie, had to get him early in the season.",
+            "recognised": "jake elliott, a rookie and to get him early in the season.",
+            "reason": "A comma is missing but the viewer can still understand the sentence (minor), the word 'had' is mirecognized causing the meaning of the sentence to be lost (standard).",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "wherever you are, don't miss a moment of the super bowl",
+            "recognised": "wherever you are. i don't miss a moment of the super bowl",
+            "reason": "A full stop has been placed instead of a comma but the viewer can still understand the sentence (minor), the word 'I' has been added causing the meaning of the sentence to be changed (serious)",
+            "minor": 1,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "democrat shelley simons did not rule out seeking another recount.",
+            "recognised": "democrat shelly simonds did no trule out seeking another recount.",
+            "reason": "The word 'shelley' is mirecognized but the user can still understand the sentence (minor), the word 'simons'  is mirecognized but the user can still understand the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "she talked with peter alexander",
+            "recognised": "chicago peter alexander",
+            "reason": "The words 'she talked to' are mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "that grabbed my attention because you don't hear someone say that very often, right?",
+            "recognised": "that grabbed my attention because you don't hear someone say that very often. right.",
+            "reason": "A full stop has been written instead of a comma after the word 'often' but the user can still understand the sentence (minor), a full stop has been written instead of a question mark but the user can still understand the meaning of the sentence (minor).",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "on the women's side it was barbara krejcikova.",
+            "recognised": "on the women's side it was barbara chieko",
+            "reason": "The word 'KREJcIKOVA' is mirecognized causing the meaning of the sentence to be lost.",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "she's one of only seven women to actually accomplish that feat",
+            "recognised": "she's one of only seven women to actually accomplish feat",
+            "reason": "The word 'that' is missing but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it's a boy. who can tell?",
+            "recognised": "it's a boy who can tell",
+            "reason": "Missing full stop but the user can still understand the sentence (minor), missing question mark but the viewer can still understand the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i forgot, i didn't dust this week.",
+            "recognised": "i forgot i did just last this week.",
+            "reason": "The words 'didn't dust' are mirecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "they still risk deportation, but if they fail, they risk kidnap, extortion and death.",
+            "recognised": "they still risk deportation, but if they fail, there is kidnap extortion and death. ",
+            "reason": "The words 'they risk' are mirecognized causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "i'm not her greatest fan but i do admire what she's doing.",
+            "recognised": "not a great just found but i do admire what she's doing ",
+            "reason": "The word 'I' is missing but the user can still understand the meaning of the sentence (minor), the words 'her greatests fan' are mirecognized causing the meaning of the sentence to be lost (standard)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the cranberry orange is gone, but have no fear.",
+            "recognised": "the cranberry orange is gone  but have no fearful",
+            "reason": "The word 'fear' is misrecognized but the user can still understand the meaning of the sentence (minor), missing full stop at the end but the user can still understand the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we use cinnamon chips, so you get the light sweetness of the cinnamon chip.",
+            "recognised": "we use cinnamon chips, so you get light sweetness of the cinnamon chip.",
+            "reason": "The word 'the' is missing but the user can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we underestimated the power of social media and the corrosive potency of the racist label.",
+            "recognised": "we underestimated the power of social media and the corrosive potency of the racist level.",
+            "reason": "The word 'label' is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "adina miccio, who brings us david's cookies, is on the line",
+            "recognised": "adina miccio who brings us david's cookies is on the line",
+            "reason": "Missing comma but the viewer can still understand the meaning of the sentence (minor), missing comma but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "yeah, you can completely cut them in half and make 32",
+            "recognised": "yeah, you can completely cut lemon half and make 32",
+            "reason": "The words 'in half' are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you will get a box of the cinnamon and then a box of your other flavor that you choose. they come in two.",
+            "recognised": "you will get a box of the cinnamon and then a box of your other flavor that you choose. they come into.",
+            "reason": "The words 'in two' are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "we have been loving all of that, and guess what?",
+            "recognised": "we have been loving all of that, and guess what.",
+            "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you are going to choose your flavor combination that you have sent to you",
+            "recognised": "you're gonna choose your flavor combination that you'd like have sent to you",
+            "reason": "The words 'you'd like' are omitted causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "we have lots of great resource ",
+            "recognised": "we have lots of great resources ",
+            "reason": "The word 'resources' is misrecognized but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so, my name's jonathan poritz. i'm a professor of mathematics",
+            "recognised": "so, my name's jonathan poritz i'm a professor at mathematics ",
+            "reason": "Missing full stop but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i had really understood creative commons, what's free, what's not free.",
+            "recognised": "i had really understood creative comments, what's free, what's not free. ",
+            "reason": "The word 'commons' is misrecognized causing the meaning of the sentece to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "it's a lot deeper and a lot more complex and subtle than it appears at first",
+            "recognised": "it's a lots deeper and a lot more complex and subtle than it appears at first",
+            "reason": "The word 'lot' is misrecognized but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so, it's a never-ending, but it's ultimate a very fascinating and interesting area",
+            "recognised": "so it's a never ending, but it's ultimately very fascinating and interesting area. ",
+            "reason": "The word 'a' is ommitted but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and the creators received this bundle of exclusive rights",
+            "recognised": "and the creators receive this bundle of exclusive rights",
+            "reason": "The word 'received' is misrecognized but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it means you didn't copy it from someplace else. it's your own expression.",
+            "recognised": "it means you didn't copy it from some place else, it's your own expression. ",
+            "reason": "The word 'somplace' is misspelled but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "but what we're going to focus on today in the limited time we have is fair use.",
+            "recognised": "but what we're going to focus on today in the limedded time we have is fair use.",
+            "reason": "The word 'limited' is misspelled but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "you'll see we've also posted a link to the slides, so you're welcome to download those and follow along",
+            "recognised": "you'll see we've also posted a link to the slides so you're welcome to download those and full ",
+            "reason": "The words 'follow along' are misrecognzed causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "we'll hold questions",
+            "recognised": "will hold questions",
+            "reason": "The word 'we'll' is misrecognized but the viewer can still understand the meaning of the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we have a great partnership with vitac, who will be doing our live captions today",
+            "recognised": "we have a great partnership with fightback who will be doing our life captions today",
+            "reason": "The word 'Vitac' is misrecognized causing the meaning of the sentence to be lost (standard), a comma is missing but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "be sure to visit ourwebsite, which is wcet.wiche.edu.",
+            "recognised": "be sure to visit our website which w cbt dot which you got to you?",
+            "reason": "The words 'wcet.wiche.edu' are misrecognized causing the meaning of the sentence to be lost (standard), a question mark is used instead of a full stop but the viewer can still undersand the sentence (minor)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i'm a professor of mathematics at colorado university, in pueblo, colorado.",
+            "recognised": "i'm a professor of mathematics at colors at university in pueblo, colorado.",
+            "reason": "The word 'Colorado' is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "a strange thing for a technologist to learn.",
+            "recognised": "a strange thing for technologies to learn.",
+            "reason": "The words 'a technologist' are misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i was one of those who just kind of assumed if i could find it online, it's free, i can use it.",
+            "recognised": "i was one of those who just kind of assumed if i could find it online it's free i can use it.",
+            "reason": "Missing comma but the viewer can still understand the meaning of the sentence (minor), missing comma but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we have a presentation that we're gonna have by jim talking about copyright",
+            "recognised": "we have some presentation that we're gonna have that by jim talking about copyright",
+            "reason": "The word 'a' is misrecognized but the viewer can still unserstand the meaning of the sentence (minor), the word 'that' has been added but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "jonathan is going to talk to you about an overview of creative commons",
+            "recognised": "jonathan is going to talk about overview of creative commons",
+            "reason": "The words 'to you' are omitted but the viewer can still unserstand the meaning of the sentence (minor), the word 'an' is omitted but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i have the unenviable task of attempting to teach you some copyright basics in seven minutes.",
+            "recognised": "i have the unenviable task of attempting to teach you some copyright basics in seven minutes ",
+            "reason": "Missing full stop but the user can still understand the sentence (minor)",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "think of a play. publicly display the works.",
+            "recognised": "think of the play publicly display the works.",
+            "reason": "The word 'a' is misrecognized but the viewer can still unserstand the meaning of the sentence (minor), missing full stop causing the meaning of the sentence to be lost (standard)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "fair use is centuries old.",
+            "recognised": "fair use is centuries sold.",
+            "reason": "The word 'old' is misrecognized causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you'll see we've also posted a link to the slides, so you're welcome to download those and follow along.",
+            "recognised": "you'll see we've also posted a link to the science they are welcome to download those and fall on.",
+            "reason": "The words 'slides so you' are misrecognized causing the meaning of the sentence to be lost (standard), the words 'follow along' are misrecognized causing the meaning of the sentence to be lost (standard)",
+            "minor": 0,
+            "standard": 2,
+            "serious": 0
+        },
+        {
+            "reference": "again, feel free to post any other questions, and we'll get to those after the quick conversation",
+            "recognised": "again for the post any other questions and we'll get to those after that the conversation",
+            "reason": "The words 'feel free' are misrecognized causing the meaning of the sentence to be lost (standard), the word 'that' is added but the viewer can still understand the meaning of the sentence (minor)",
+            "minor": 1,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "failed to mention that my name is megan, and i direct our programs",
+            "recognised": "failed to mention that my name is making an age actor programs",
+            "reason": "The word 'Megan' is misrecognized causing the meaning of the sentence to be lost (standard), the words 'and I direct' are misrecognized causing the meaning of the sentence to be lost (standard)",
+            "minor": 0,
+            "standard": 2,
+            "serious": 0
+        },
+        {
+            "reference": "i wanted designs that were recognisable but again individual.  ",
+            "recognised": "i want to designs that were recognisable but individual. ",
+            "reason": "The word 'wanted' is misrecognised but the user can still understand the sentence. ",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "that was upcycled from another production.  \n",
+            "recognised": "it was up cycled from another production. ",
+            "reason": "The word 'upcycled' is misrecognised but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so, from our experience we've learnt that actually the more fun that we have standing up here performing to you as an audience, um, the more challenges that crop up and the more things that happen actually adds to our level of enjoyment, believe it or not.\n",
+            "recognised": "from our experience, we have learnt that the more fun we have standing up here and performing, the more challenges that crop up and the more things that happened, it adds to our level of enjoyment. ",
+            "reason": "The word 'happen' is misrecognised but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and i hope that as we continue to perform and as we evolve and hopefully recruit new members, these philosophies will continue to change with the way we do things and inform what we do and how we perform.  ",
+            "recognised": "i hope that as we continue to perform and evolve and hopefully recruit new members, these philosophies will continue to change and form what we do and how we perform. ",
+            "reason": "The word 'inform' is misrecognised but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "in fact, we're looking at the moment at a 2018 project, er,  which is going to be a very different experience for us. um, this is going to be called four families of the fallen and it will be a commemoration of the armistice of the first world war.",
+            "recognised": "looking at a 2018 project, it will be a different experience for us, and it will be called four families of the fallen and it will be a commemoration of the armistice of the first world war. ",
+            "reason": "The word 'Armistice' is misrecognised but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "we will create a stage, ideally perhaps in the high street at weybridge, um, but i think we'll probably, we will have to introduce dialogue.",
+            "recognised": "we will create a stage, ideally in the high street, we will have to introduce dialogue though. ",
+            "reason": "The word 'street' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "to our members of the cast or anybody else, then please ask away.",
+            "recognised": "two members of the cast or anybody else, please ask away.",
+            "reason": "The words 'to our' are misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "no, we're not members of equity. this\u2026 we're just a volunteer group.",
+            "recognised": "now, we are just a volunteer group.",
+            "reason": "The word 'no' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "what is quite fortunate is that what hangs at the back of drury lane, and has hung there for a long, long time is a genuine picasso painting.",
+            "recognised": "what is quite fortunate is that what hangs at the back of drury lane and has hung there for a long time as a genuine picasso painting. ",
+            "reason": "The word 'is' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the strangest thing about fires in theatres is that most people now will know if there is a problem because the name mr jet and mr sands sort of entered common parlance.  ",
+            "recognised": "the strangest thing about fires in theatres is that most people now we'll know if there is a problem because the name mr jet and mr sands have entered common parlance.  ",
+            "reason": "The word 'will' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i\u2019m not sure if it was an adaptation of the agatha christie novel, but it was certainly called witness for the prosecution. ",
+            "recognised": "i'm not sure if it was an adaptation of the novel, but it was cold witness for the prosecution. ",
+            "reason": "The word 'called' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the manager would then walk onto the stage, announce to the audience that they had to leave.  ",
+            "recognised": "the manager would walk onto the stage and announced to the audience that they had to leave. ",
+            "reason": "The word 'announce' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "my fair lady, with a local lass, julie andrews, who comes from just, just up the road, and rex harrison.  ",
+            "recognised": "my fair lady, with local lass julie andrews, he comes from just up the road, and rex harrison. ",
+            "reason": "The word 'who' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "cameron mackintosh\u2019s revival of the show, that ran at the national theatre, transferred here in 2001 with jonathan pryce in the lead.  ",
+            "recognised": "cameron mackintosh's revival of the show that run at the national theatre transferred herein 2001 with jonathan pryce in the lead.  ",
+            "reason": "The words 'ran' and 'here in' are misrecognised but the user can still understand the sentence",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "in 1976, michael bennett\u2019s a chorus line came in, shifting things away from the big staging and putting the emphasis back on the performer.  ",
+            "recognised": "in 1976, michael bennett is a chorus line came in, shifting things away from the big staging and putting  the emphasis back on the performer. ",
+            "reason": "The word 'Bennett's' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and my english teacher arranged for us to go and see this musical. ",
+            "recognised": "my english teacher arranged 1st to go and see this musical. ",
+            "reason": "The words 'for us' are misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": " and burnt down in \u201974? ",
+            "recognised": "and bent down in 74.  ",
+            "reason": "The word 'burnt' is mirecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "so, you could hire the royal retiring room, which is the room behind the royal box, the prince of wales room.",
+            "recognised": "so you could hire the real retiring room behind the royal box, the prince of wales room.  ",
+            "reason": "The word 'royal' is misrecognised [the first time] causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "so there was a large period when the theatre was dark.",
+            "recognised": "there was a lodge period when the theatre was dark.",
+            "reason": "The word 'large' is misrecognised causing the meaning of the sentence to be lost.",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "for example, there were other rooms that were, um, opened up and the stuff that we found there made the basis of what became the theatre museum which sadly has closed now.  ",
+            "recognised": "for example there were other rooms that were opened up and the stuff that we found there made the basis of what became the theatre museum which sadly has close now. ",
+            "reason": "The word 'closed' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it\u2019s got the original stage notes, it\u2019s got actors' notes in it.  ",
+            "recognised": "it has got the original stage notes, it's got actors notes in it.  ",
+            "reason": "The word 'actors'' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i also was interested in the other woman who seemed to have a french accent or some sort of accent.",
+            "recognised": "i was also interested in the other woman, who seem to have a french accent or some sort of accent. ",
+            "reason": "The word 'seem' is misrecognsied but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and many, many women, over 40,000 comfort women were transported from china into the front line. ",
+            "recognised": "many women over 40,000 women, were transported from china into the frontline. ",
+            "reason": "The words 'front line' are misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and the significance of the house where we filmed, i think, is important because it's where a war diary was discovered in the rafters of the house so i couldn't let that fact go either.  ",
+            "recognised": "the significant of where we filmed is important because it is where we discovered a war diary in the rafters of the house. ",
+            "reason": "The word 'significance' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "they had tried to court martial her and then realised that they couldn't court martial somebody who wasn't actually enlisted.",
+            "recognised": "she tried to court-martial her, and realised they couldn't court-martial someone who wasn't enlisted. ",
+            "reason": "The word 'they' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and the first clip i wanted to play you is actually from a bbc documentary that was filmed in the early 90s.",
+            "recognised": "the first clip i wanted to play you as from a bbc documentary that was filmed in the early 90s.",
+            "reason": "The word 'is' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and he began recording an audio diary.",
+            "recognised": "and he began recording and audio diary.",
+            "reason": "The word 'an' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and no doubt the short films were instrumental really in allowing us to get some support.",
+            "recognised": "and no doubt that the short films where instrumental in allowing us to get some support.",
+            "reason": "The word 'were' is misrecognised but the user can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "because if you wanted to buy some medicine, you would possibly go into what was called an apothecary, \n",
+            "recognised": "if you want to do by some medicine, you would possibly go to an apothecary. ",
+            "reason": "The words 'wanted to buy' are misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and he was such a famous collector that there is this anecdote that he would send spies, which means people to buy for him in auction houses. ",
+            "recognised": "he was such a famous collector that they were these anecdotes that he would send spies, people do buy for him in auction houses. ",
+            "reason": "The words 'there' and 'to' are misrecognised but the user can still understand the sentence",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "he would buy groups of the same object.",
+            "recognised": "he would by groups of the same object.",
+            "reason": "The word 'buy' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "how museums were born and how, you know, collections were born as cabinet of curiosity. ",
+            "recognised": "how collections were born. his habit of curiosity. ",
+            "reason": "The word 'cabinet' is misrecognised causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "so any questions about henry or how he collected? ",
+            "recognised": "any questions about henry or how we collected?  ",
+            "reason": "The word 'he' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "there was a warehouse in snow hill.",
+            "recognised": "there was a warehouse in salthill.",
+            "reason": "The words 'Snow Hill' are misrecognised causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "snow hill.",
+            "recognised": "noel hill.",
+            "reason": "The word 'Snow' is misrecognised causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "so people believed that it could bring them everything they wanted.",
+            "recognised": "people believe that it could bring them everything they wanted. ",
+            "reason": "The word 'believed' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so in harry potter there's this scene that they will plant mandrakes.",
+            "recognised": "in harry potter there is a scene where they replant mandrake.",
+            "reason": "The words 'will plant' and 'mandrakes' are misrecognised, but the user can still understand the sentence.",
+            "minor": 2,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "can\u2019t really work out the reason. ",
+            "recognised": "i can work out the reason. ",
+            "reason": "The word 'can't' is misrecognised, causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "but you can see that the piano is an extension of your emotions ",
+            "recognised": "the piano is an extension of your motion. ",
+            "reason": "The word 'emotions' is misrecognised, casuing the meaning of the sentence to be lost.",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "and you can get the things out on the piano.",
+            "recognised": "you can get things out in the piano.",
+            "reason": "The word 'on' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so i think when a subtitler is able to get that input",
+            "recognised": "when a subtitle can get that input ",
+            "reason": "The word 'subtitler' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "a composer is able to sit down with the director and discuss the approach.",
+            "recognised": "a composer is able to sit down with the director and discussed the approach.",
+            "reason": "The word 'discuss' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so it\u2019s about trying to bring subtitlers into that world.",
+            "recognised": "it\u2019s about run to bring subtitlers into that world.",
+            "reason": "The word' trying' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "there were one or two descriptions of the kind of music being played.  ",
+            "recognised": "there were one or two descriptions on the music being played. ",
+            "reason": "The word 'of' is misrecognised [the first time], but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "there are stand in hands.",
+            "recognised": "there are standing hands.",
+            "reason": "The word 'stand in' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and they wanted serious subjects and realism, and for painting to have a real moral purpose.\n",
+            "recognised": "they wanted serious subject and realism, and for \npainting to have a real moral purpose.\n",
+            "reason": "The word 'subjects' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i took a picture of it with my friends.",
+            "recognised": " i took a picture of it with my friend.",
+            "reason": "The word 'friends' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and a navigation engineer was a very, very important role in those days.\n",
+            "recognised": "i navigation engineer was an important role in those days.\n",
+            "reason": "The word 'a' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and the artist, tove jansson, and here\u2019s a challenge for the subtitlers, getting finnish names down. ",
+            "recognised": "the artist, tove jansson, and here is a challenge for\nthe subtitlers, getting finish names down.\n",
+            "reason": "The word 'Finnish' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and you can see from that, that it doesn\u2019t just cause a problem for the brain, it causes a problem for us as a society as well. ",
+            "recognised": "you can see from that it doesn't just cause a problem for the brain, it causes a problem force as a society.  ",
+            "reason": "The words 'for us' are misrecognised, causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "between three and four weeks their brain adapts, and then totally interacts with the world normally. ",
+            "recognised": "between three and for weeks, their brain adapts and they interact with the world normally. ",
+            "reason": "The word 'four' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "now to voluntarily change your beliefs is hard ",
+            "recognised": "to voluntarily change your beliefs it's hard. ",
+            "reason": "The word 'is' is misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "because he says, \"the root of all suffering is attachment.\" ",
+            "recognised": "he says the route of all suffering is attachment. ",
+            "reason": "The word 'root' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "that means that the stress they're undergoing is so, so strong that it only has one of two ways to go. ",
+            "recognised": "that means the stress they are undergoing is so strong but it only has one of two ways to go. ",
+            "reason": "The word 'that' is misrecognised [the second time] but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "and her self image, thinking that she is a problem for other people. ",
+            "recognised": "in herself image thinking that she is a problem for other people. ",
+            "reason": "The words 'her self' are misrecognised but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "so had that burnt down, there perhaps would have been a bit of history lost.",
+            "recognised": "had that burnt down, they would perhaps have been a bit of history lost. ",
+            "reason": "The word 'there' is misrecognised, but the user can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "it became the longest running show at drury lane eclipsing my fair lady and making a star of a then chorus girl catherine zeta jones, of whom i will talk more a little bit later.",
+            "recognised": "it became the longest running show in drury lane and making a star of then core skill catherine zeta jones, of whom i will talk more later.  ",
+            "reason": "The words 'chorus girl' are misrecognised, causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "i'll play you a clip.",
+            "recognised": "i'll play you a click.",
+            "reason": "The word 'clip' is misrecognised, causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "she had a chance meeting with emeline pankhurst.",
+            "recognised": "she had a chance meeting with emily pankhurst ",
+            "reason": "The word 'Emeline' is misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "when it is something so integral like this, the film does not get it across.",
+            "recognised": "weight is integral like this, the film does not get it across.",
+            "reason": " The words 'when it is' are misrecognised, causing the meaning of the sentence to be lost.",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you can feel the emotion, whether it's high or low\u2026",
+            "recognised": "you can feel the emotion, hi all over.",
+            "reason": "The words 'or low' are misrecognised, causing the meaning of the sentence to be lost.",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "you can't say music for a deaf person is loud or not. ",
+            "recognised": "you can't say music for a deaf person is allowed.",
+            "reason": "The word 'loud' is misrecognised, causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        }
+    ]
+}

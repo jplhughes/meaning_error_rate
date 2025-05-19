@@ -1,0 +1,466 @@
+{
+    "results": [
+        {
+            "reference": "the first topic is the supreme court.",
+            "recognised": "the first top sick is the supreme court.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n the first [top topic] <sick> is the supreme court .",
+            "insertions": 1,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 8,
+            "wer": 25.0,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"topic\" misrecognized as \"top sick\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"topic\" misrecognized as \"top sick\" (standard)"
+                },
+                {
+                    "minor": "1",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"topic\" misrecognized as \"top sick\" (standard), \"is\" omitted (minor)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 2,
+            "meaning_error_rate": 6.25,
+            "target": {
+                "minor": 0,
+                "standard": 1,
+                "serious": 0,
+                "reason": "The word 'topic' is misrecognised causing the meaning of the sentence to be lost",
+                "meaning_error_rate": 6.25
+            },
+            "mer_diff": 0.0
+        },
+        {
+            "reference": "the final of the 2016 presidential debates between secretary of state hillary clinton and donald j. trump.",
+            "recognised": "the final of the 2016 presidential debates between is secretary of state hillary clinton and donald j. trump.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n the final of the 2016 presidential debates between <is> secretary of state hillary clinton and donald j . trump .",
+            "insertions": 1,
+            "deletions": 0,
+            "substitions": 0,
+            "reference_count": 19,
+            "wer": 5.26,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "2",
+                    "serious": "0",
+                    "reason": "\"between\" misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (standard)"
+                },
+                {
+                    "minor": "1",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"between\" is misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (minor)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "2",
+                    "serious": "0",
+                    "reason": "\"between\" misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (standard)"
+                }
+            ],
+            "voted_penality": 1.0,
+            "vote_count": 2,
+            "meaning_error_rate": 5.26,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "The word 'is' is added but the viewer can still understand the sentence",
+                "meaning_error_rate": 1.32
+            },
+            "mer_diff": 3.95
+        },
+        {
+            "reference": "the audience here in the hall has promised to remain silent",
+            "recognised": "the audience here in the hall has promised to remain silence",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n the audience here in the hall has promised to remain [silence silent]",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 11,
+            "wer": 9.09,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"silent\" misrecognized as \"silence\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"silent\" misrecognized as \"silence\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"silent\" misrecognized as \"silence\" (standard)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 3,
+            "meaning_error_rate": 4.55,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "The word 'silent' is misrecognised but the viewer can still understand the sentence",
+                "meaning_error_rate": 2.27
+            },
+            "mer_diff": 2.27
+        },
+        {
+            "reference": "no cheers, boos or other interruptions",
+            "recognised": "no choose, boos or other interruptions",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n no [choose cheers] , boos or other interruptions",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 7,
+            "wer": 14.29,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"cheers\" misrecognized as \"choose\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"cheers\" misrecognized as \"choose\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"cheers\" misrecognized as \"choose\" (standard)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 3,
+            "meaning_error_rate": 7.14,
+            "target": {
+                "minor": 0,
+                "standard": 1,
+                "serious": 0,
+                "reason": "The word 'cheers' is misrecognised causing the meaning of the sentence is lost",
+                "meaning_error_rate": 7.14
+            },
+            "mer_diff": 0.0
+        },
+        {
+            "reference": "the next president will almost certainly have at least one appointment, which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "recognised": "the next president will almost certainly have at least one appointment which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n the next president will almost certainly have at least one appointment {,} which means that you will in effect determine the balance of the court for what could be the next quarter century .",
+            "insertions": 0,
+            "deletions": 1,
+            "substitions": 0,
+            "reference_count": 34,
+            "wer": 2.94,
+            "predictions": [
+                {
+                    "minor": 0,
+                    "standard": 0,
+                    "serious": 0,
+                    "reason": "\",\" misrecognized as \" \" (minor)"
+                },
+                {
+                    "minor": 0,
+                    "standard": 0,
+                    "serious": 0,
+                    "reason": "\",\" misrecognised as \" \" (minor)"
+                },
+                {
+                    "minor": "1",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "\",\" misrecognized as \" \" (minor)"
+                }
+            ],
+            "voted_penality": 0.0,
+            "vote_count": 2,
+            "meaning_error_rate": 0.0,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "Missing comma before 'which' that does not prevent the viewer from understanding the sentence.",
+                "meaning_error_rate": 0.74
+            },
+            "mer_diff": -0.74
+        },
+        {
+            "reference": "i think when we talk about the supreme court, it really raises the central issue in this election.",
+            "recognised": "i think when we talk about the supreme court, it really races the central issue in this election.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n i think when we talk about the supreme court , it really [races raises] the central issue in this election .",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 20,
+            "wer": 5.0,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"raises\" misrecognized as \"races\" (standard)"
+                },
+                {
+                    "minor": "2",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"supreme\" misrecognized as \"supreme\" (minor), \"court\" misrecognized as \"court\" (minor), \"raises\" misrecognized as \"races\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"supreme\" misrecognized as \"races\" (standard)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 2,
+            "meaning_error_rate": 2.5,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "The word 'raises' is misrecognised but the viewer can still understand the sentence",
+                "meaning_error_rate": 1.25
+            },
+            "mer_diff": 1.25
+        },
+        {
+            "reference": "the kind of people that i would be looking to nominate to the court would be in the great tradition of standing up to the powerful.",
+            "recognised": "the kind of people that i would be looking to nominate to the court. would be in the great tradition of standing up to the powerful.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n the kind of people that i would be looking to nominate to the court <.> would be in the great tradition of standing up to the powerful .",
+            "insertions": 1,
+            "deletions": 0,
+            "substitions": 0,
+            "reference_count": 27,
+            "wer": 3.7,
+            "predictions": [
+                {
+                    "minor": "2",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "\"would\" is repeated (minor), \"be\" is omitted (minor)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "2",
+                    "serious": "0",
+                    "reason": "\"court\" is omitted (standard), \"would\" is repeated (standard)"
+                },
+                {
+                    "minor": "3",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "\"would\" is duplicated (minor), \"be\" is duplicated (minor), full stop is missed out (minor)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 1,
+            "meaning_error_rate": 1.85,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "A full stop has been added but the viewer can still understand the sentence.",
+                "meaning_error_rate": 0.93
+            },
+            "mer_diff": 0.93
+        },
+        {
+            "reference": "now we have about ten minutes for open discussion.",
+            "recognised": "now have about ten minutes for open discussion.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n now {we} have about ten minutes for open discussion .",
+            "insertions": 0,
+            "deletions": 1,
+            "substitions": 0,
+            "reference_count": 10,
+            "wer": 10.0,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "\"we\" is omitted (minor)"
+                },
+                {
+                    "minor": 0,
+                    "standard": 0,
+                    "serious": 0,
+                    "reason": "\"we\" is omitted (minor)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"we\" is omitted (standard)"
+                }
+            ],
+            "voted_penality": 0.0,
+            "vote_count": 2,
+            "meaning_error_rate": 0.0,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "The word 'we' is not recognised but the viewer can still understand the sentence",
+                "meaning_error_rate": 2.5
+            },
+            "mer_diff": -2.5
+        },
+        {
+            "reference": "how will you ensure the 2nd amendment is protected?",
+            "recognised": "how will you ensure the 2nd amendment is protected,",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n how will you ensure the 2nd amendment is protected [, ?]",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 10,
+            "wer": 10.0,
+            "predictions": [
+                {
+                    "minor": 0,
+                    "standard": 0,
+                    "serious": 0,
+                    "reason": "ellipsis has been added but is not incorrect (minor)"
+                },
+                {
+                    "minor": "1",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "incomplete sentence, \",\" is added but makes sense (minor)"
+                },
+                {
+                    "minor": 0,
+                    "standard": 0,
+                    "serious": 0,
+                    "reason": "question mark has been omitted (minor)"
+                }
+            ],
+            "voted_penality": 0.0,
+            "vote_count": 2,
+            "meaning_error_rate": 0.0,
+            "target": {
+                "minor": 1,
+                "standard": 0,
+                "serious": 0,
+                "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+                "meaning_error_rate": 2.5
+            },
+            "mer_diff": -2.5
+        },
+        {
+            "reference": "but the real winner may have been this young superfan on the sidelines who received djokovic's racket.",
+            "recognised": "but the real winner may have been this young superfan on the sidelines who received djokovic's jacket.",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n but the real winner may have been this young superfan on the sidelines who received djokovic's [jacket racket] .",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 18,
+            "wer": 5.56,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"racket\" misrecognized as \"jacket\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"racket\" misrecognized as \"jacket\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"racket\" misrecognized as \"jacket\" (standard)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 3,
+            "meaning_error_rate": 2.78,
+            "target": {
+                "minor": 0,
+                "standard": 0,
+                "serious": 1,
+                "reason": "The word 'raquet' is mirecognized causing the meaning of the sentence to be changed",
+                "meaning_error_rate": 5.56
+            },
+            "mer_diff": -2.78
+        },
+        {
+            "reference": "but take a look at this baked goodness!",
+            "recognised": "but take a look at this big goodness!",
+            "comparison": "Key: [recognised reference] {deletion} <insertion>\n but take a look at this [big baked] goodness !",
+            "insertions": 0,
+            "deletions": 0,
+            "substitions": 1,
+            "reference_count": 9,
+            "wer": 11.11,
+            "predictions": [
+                {
+                    "minor": "0",
+                    "standard": "0",
+                    "serious": "0",
+                    "reason": "\"baked\" misrecognized as \"big\" but easily read through (minor)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"baked\" misrecognised as \"big\" (standard)"
+                },
+                {
+                    "minor": "0",
+                    "standard": "1",
+                    "serious": "0",
+                    "reason": "\"baked\" misrecognized as \"big\" (standard)"
+                }
+            ],
+            "voted_penality": 0.5,
+            "vote_count": 2,
+            "meaning_error_rate": 5.56,
+            "target": {
+                "minor": 0,
+                "standard": 0,
+                "serious": 1,
+                "reason": "The word 'baked' is mirecognized causing the meaning of the sentence to be changed",
+                "meaning_error_rate": 11.11
+            },
+            "mer_diff": -5.56
+        }
+    ],
+    "usage": {
+        "total_tokens": 0,
+        "cost": 0
+    },
+    "summary": {
+        "wer": 6.94,
+        "total_reference_count": 173,
+        "total_penalty": 4.5,
+        "meaning_error_rate": 2.6,
+        "accuracy": 2.75
+    }
+}

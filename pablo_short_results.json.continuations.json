@@ -1,0 +1,57 @@
+[
+    [
+        "\"topic\" misrecognized as \"top sick\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"topic\" misrecognized as \"top sick\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"topic\" misrecognized as \"top sick\" (standard), \"is\" omitted (minor)\nResult: 1 minor + 1 standard + 0 serious = 0.75 penalty"
+    ],
+    [
+        "\"between\" misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (standard)\nResult: 0 minor + 2 standard + 0 serious = 1.0 penalty",
+        "\"between\" is misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (minor)\nResult: 1 minor + 1 standard + 0 serious = 0.75 penalty",
+        "\"between\" misrecognized as \"between is\" (standard), \"state\" misrecognized as \"of state\" (standard)\nResult: 0 minor + 2 standard + 0 serious = 1.0 penalty"
+    ],
+    [
+        "\"silent\" misrecognized as \"silence\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"silent\" misrecognized as \"silence\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"silent\" misrecognized as \"silence\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty"
+    ],
+    [
+        "\"cheers\" misrecognized as \"choose\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"cheers\" misrecognized as \"choose\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"cheers\" misrecognized as \"choose\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty"
+    ],
+    [
+        "\",\" misrecognized as \" \" (minor)\nResult: 0.25 penalty",
+        "\",\" misrecognised as \" \" (minor)\nResult: 0.25 penalty",
+        "\",\" misrecognized as \" \" (minor)\nResult: 1 minor + 0 standard + 0 serious = 0.25 penalty"
+    ],
+    [
+        "\"raises\" misrecognized as \"races\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"supreme\" misrecognized as \"supreme\" (minor), \"court\" misrecognized as \"court\" (minor), \"raises\" misrecognized as \"races\" (standard)\nResult: 2 minor + 1 standard + 0 serious = 1.5 penalty",
+        "\"supreme\" misrecognized as \"races\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty"
+    ],
+    [
+        "\"would\" is repeated (minor), \"be\" is omitted (minor)\nResult: 2 minor + 0 standard + 0 serious = 0.5 penalty",
+        "\"court\" is omitted (standard), \"would\" is repeated (standard)\nResult: 0 minor + 2 standard + 0 serious = 1.0 penalty",
+        "\"would\" is duplicated (minor), \"be\" is duplicated (minor), full stop is missed out (minor)\nResult: 3 minor + 0 standard + 0 serious = 0.75 penalty"
+    ],
+    [
+        "\"we\" is omitted (minor)\nResult: 0 minor + 0 standard + 0 serious = 0 penalty",
+        "\"we\" is omitted (minor)\nResult: 0.25 penalty",
+        "\"we\" is omitted (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty"
+    ],
+    [
+        "ellipsis has been added but is not incorrect (minor)\nResult: 0.25 penalty",
+        "incomplete sentence, \",\" is added but makes sense (minor)\nResult: 1 minor + 0 standard + 0 serious = 0.25 penalty",
+        "question mark has been omitted (minor)\nResult: 0.25 penalty"
+    ],
+    [
+        "\"racket\" misrecognized as \"jacket\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"racket\" misrecognized as \"jacket\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"racket\" misrecognized as \"jacket\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.25 penalty"
+    ],
+    [
+        "\"baked\" misrecognized as \"big\" but easily read through (minor)\nResult: 0 minor + 0 standard + 0 serious = 0.0 penalty",
+        "\"baked\" misrecognised as \"big\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.5 penalty",
+        "\"baked\" misrecognized as \"big\" (standard)\nResult: 0 minor + 1 standard + 0 serious = 0.25 penalty"
+    ]
+]

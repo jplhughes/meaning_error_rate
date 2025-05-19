@@ -1,0 +1,92 @@
+{
+    "examples": [
+        {
+            "reference": "the first topic is the supreme court.",
+            "recognised": "the first top sick is the supreme court.",
+            "reason": "The word 'topic' is misrecognised causing the meaning of the sentence to be lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the final of the 2016 presidential debates between secretary of state hillary clinton and donald j. trump.",
+            "recognised": "the final of the 2016 presidential debates between is secretary of state hillary clinton and donald j. trump.",
+            "reason": "The word 'is' is added but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the audience here in the hall has promised to remain silent",
+            "recognised": "the audience here in the hall has promised to remain silence",
+            "reason": "The word 'silent' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "no cheers, boos or other interruptions",
+            "recognised": "no choose, boos or other interruptions",
+            "reason": "The word 'cheers' is misrecognised causing the meaning of the sentence is lost",
+            "minor": 0,
+            "standard": 1,
+            "serious": 0
+        },
+        {
+            "reference": "the next president will almost certainly have at least one appointment, which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "recognised": "the next president will almost certainly have at least one appointment which means that you will in effect determine the balance of the court for what could be the next quarter century.",
+            "reason": "Missing comma before 'which' that does not prevent the viewer from understanding the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "i think when we talk about the supreme court, it really raises the central issue in this election.",
+            "recognised": "i think when we talk about the supreme court, it really races the central issue in this election.",
+            "reason": "The word 'raises' is misrecognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "the kind of people that i would be looking to nominate to the court would be in the great tradition of standing up to the powerful.",
+            "recognised": "the kind of people that i would be looking to nominate to the court. would be in the great tradition of standing up to the powerful.",
+            "reason": "A full stop has been added but the viewer can still understand the sentence.",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "now we have about ten minutes for open discussion.",
+            "recognised": "now have about ten minutes for open discussion.",
+            "reason": "The word 'we' is not recognised but the viewer can still understand the sentence",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "how will you ensure the 2nd amendment is protected?",
+            "recognised": "how will you ensure the 2nd amendment is protected,",
+            "reason": "Missing question mark but the viewer can still understand the meaning of the question",
+            "minor": 1,
+            "standard": 0,
+            "serious": 0
+        },
+        {
+            "reference": "but the real winner may have been this young superfan on the sidelines who received djokovic's racket.",
+            "recognised": "but the real winner may have been this young superfan on the sidelines who received djokovic's jacket.",
+            "reason": "The word 'raquet' is mirecognized causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        },
+        {
+            "reference": "but take a look at this baked goodness!",
+            "recognised": "but take a look at this big goodness!",
+            "reason": "The word 'baked' is mirecognized causing the meaning of the sentence to be changed",
+            "minor": 0,
+            "standard": 0,
+            "serious": 1
+        }
+    ]
+}

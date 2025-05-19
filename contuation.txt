@@ -1,0 +1,6 @@
+"suspected" is omitted (minor), "um John Hughes" misrecognized as "Tom booze" (serious)
+Result: 1 minor + 0 standard + 1 serious = 1.25 penalty
+"suspected" is omitted (standard), "um" is recognized (ignorable), "John Hughes" is misrecognized as "Tom booze" (standard)
+Result: 0 minor + 3 standard + 0 serious = 1.5 penalty
+"suspected" misrecognized as "murderer" causing misinformation (serious), "John Hughes" misrecognized as "Tom booze" (standard)
+Result: 0 minor + 0 standard + 2 serious = 2.0 penalty
